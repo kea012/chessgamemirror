@@ -1,4 +1,4 @@
-# \Chess Game\
+# Chess Game
  
 > Authors: \[Kenny Ea](https://github.com/kea012)\
 >          \[Ryan Gomez](https://github.com/potobeans)\
