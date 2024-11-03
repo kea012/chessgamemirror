@@ -7,7 +7,8 @@ Authors: [Kenny Ea](https://github.com/kea012)
 
 ## Project Description
 
-Description: 
+Description:
+
 A basic chess game with complete playable functionality. The game is played on an 8 by 8 checkered board with black and white squares. There are six different types of pieces, each able to make unique movements across the board. The game is played by two players, with one controlling a team consisting initially of 16 black pieces and the other player controlling an identical team of 16 white pieces. The game is turn-based, each turn consisting of the player choosing a single move for one of their pieces, with each type having their own unique movement traits. The game ends when a player’s “king” piece is both under attack and restricted from movement due to the opposing player’s pieces, without a method of blocking the attack.
 
 Why is it important to us?:
