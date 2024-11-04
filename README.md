@@ -65,23 +65,7 @@ yes
 Player 1 goes first and is white.
 Player 2 goes second and is black.
 
-    A    B   C    D   E    F    G   H
-     
-1  [♖]  [♘]  [♗]  [♕]  [♔]  [♗]  [♘]  [♖]
-
-2  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]
-
-3  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-4  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-5  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-6  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-7  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]
-
-8  [♜]  [♞]  [♝]  [♛]  [♚]  [♝]  [♞]  [♜]
+![Screenshot 2024-11-04 at 2 57 51 PM](https://github.com/user-attachments/assets/55ffda62-ab95-4574-bcc3-c4179c3f52df)
 
 Player 1 select your input.
 
@@ -102,23 +86,7 @@ A3
 
 Display Board:
 
-    A   B    C    D   E    F    G   H
-     
-1  [♖]  [♘]  [♗]  [♕]  [♔]  [♗]  [♘]  [♖]
-
-2  [ ]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]
-
-3  [♙ ]  [ ]   [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-4  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-5  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-6  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]  [  ]
-
-7  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]
-
-8  [♜]  [♞]  [♝]  [♛]  [♚]  [♝]  [♞]  [♜]
+![Screenshot 2024-11-04 at 2 58 56 PM](https://github.com/user-attachments/assets/2a5279d1-718f-4b43-896b-a711aed24b2e)
 
 Player 2 select your input.
 
