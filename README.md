@@ -46,6 +46,14 @@ As a team we will create a basic chase game. Before entering the game, players w
 
 Navigation Diagram Description:
 
+When the user begins the program, they will first be prompted to make an input to start a new game. Once the user starts a new game, the main gameplay loop will begin and the chessboard will be printed to the screen with all pieces in their proper initial positions.
+
+Once a game has started, the first player will take their turn. During each turn, players will input text to select one of their pieces positions and then input text to select a new position to move that piece. If the player makes an invalid input (e.g. enters an invalid position to move a piece to) they will be prompted to input new values again until their input is valid. After a player makes a valid movement for their selected piece, the program will print out the board, updated to reflect the movement (and capture, if one was made). If the player moves a pawn to the opposite end of the board during their turn, they will be prompted to make an input to select a piece to promote their pawn to. Once the player makes a valid input, the board again be printed, this time to reflect the piece that their pawn has been promoted to. After this, the player's turn will be completed.
+
+After each player's turn, the program will check if any game-ending conditions have been reached, which means either a checkmate or a draw. If a draw is detected, the game will end with no winner, sending the user back to the start screen. If a checkmate is detected, the game will end with the player who put the other player in checkmate as the winner and will send the user back to the start screen. From the start screen, the user can make an input to start a new game.
+
+If no game-ending conditions are detected after one player’s turn, then the other player’s turn will begin. Both player’s turns will function the exact same way, where they can make one valid movement for one of their pieces.
+
 Navigation Diagram Visual:
 
 ![Screenshot 2024-11-04 at 2 52 16 PM](https://github.com/user-attachments/assets/0ed6d3aa-5a04-4045-a466-c38455416276)
