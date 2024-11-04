@@ -46,10 +46,66 @@ As a team we will create a basic chase game. Before entering the game, players w
 > Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
 
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+
+Screen Layout Description:
+
+Our chess game will be done through a terminal. Below is a basic layout of how the game will work. We will start by asking if the players want to play or not. If they enter “no”, the program will quit. If they enter “yes” as you see below, we will tell the players how the roles will work between player1 and player2. We will also output the initial chess board game. After that we then prompt player 1 to input with a display menu that gives them their options. Our display menu will allow them to create a new game, quit the game, and make a move. If a player selects m, we will prompt them to select the position of the piece they want to move and then, prompt them to enter the position that they want to move to. After every turn we will automatically display the chess board. Once player1 is done we then prompt player two to go with the same menu. The game will run in this general format. We will account for input errors. If they enter something wrong we will just prompt the players with the menu and board while telling them to try again.
+
+Screen Layout Visual In Terminal:
+
+If you want to start a new chess game, enter “yes” or “no”.
+
+yes
+
+Player 1 goes first and is white.
+Player 2 goes second and is black.
+
+     A    B   C    D   E    F    G   H
+1  [♖]  [♘]  [♗]  [♕]  [♔]  [♗]  [♘]  [♖]
+2  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]
+3  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+4  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+5  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+6  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+7  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]
+8  [♜]  [♞]  [♝]  [♛]  [♚]  [♝]  [♞]  [♜]
+
+Player 1 select your input.
+
+Chess Game Menu:
+	create new game enter “cng”
+	to quit game enter “qg”
+	make a move enter “m”
+
+m
+
+Enter position of piece.
+
+A2
+
+Where do you want to move this piece?
+
+A3
+
+Display Board:
+
+     A   B    C    D   E    F    G   H
+1  [♖]  [♘]  [♗]  [♕]  [♔]  [♗]  [♘]  [♖]
+2  [ ]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]  [♙]
+3  [♙]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+4  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+5  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+6  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+7  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]  [♟]
+8  [♜]  [♞]  [♝]  [♛]  [♚]  [♝]  [♞]  [♜]
+
+Player 2 select your input.
+
 
 ## Class Diagram
- > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
+
+![Screenshot 2024-11-04 at 2 44 09 PM](https://github.com/user-attachments/assets/97fcec15-296d-41ee-8d2b-e9843b518af7)
+
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
