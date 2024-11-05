@@ -29,7 +29,7 @@ As a team we will create a basic chase game. Before entering the game, players w
 
 ### Navigation Diagram
 
-Navigation Diagram Description:
+Description:
 
 When the user begins the program, they will first be prompted to make an input to start a new game. Once the user starts a new game, the main gameplay loop will begin and the chessboard will be printed to the screen with all pieces in their proper initial positions.
 
@@ -45,7 +45,7 @@ Navigation Diagram Visual:
 
 ### Screen Layouts
 
-Screen Layout Description:
+Description:
 
 Our chess game will be done through a terminal. Below is a basic layout of how the game will work. We will start by asking if the players want to play or not. If they enter “no”, the program will quit. If they enter “yes” as you see below, we will tell the players how the roles will work between player1 and player2. We will also output the initial chess board game. After that we then prompt player 1 to input with a display menu that gives them their options. Our display menu will allow them to create a new game, quit the game, and make a move. If a player selects m, we will prompt them to select the position of the piece they want to move and then, prompt them to enter the position that they want to move to. After every turn we will automatically display the chess board. Once player1 is done we then prompt player two to go with the same menu. The game will run in this general format. We will account for input errors. If they enter something wrong we will just prompt the players with the menu and board while telling them to try again.
 
