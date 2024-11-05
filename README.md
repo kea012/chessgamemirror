@@ -105,9 +105,8 @@ Class Diagram Description:
 
 Class Diagram Visual:
 
-![Screenshot 2024-11-04 at 2 44 09 PM](https://github.com/user-attachments/assets/97fcec15-296d-41ee-8d2b-e9843b518af7)
+![Screenshot 2024-11-04 at 5 06 02 PM](https://github.com/user-attachments/assets/056d9fdc-7641-4640-bfb3-351fdff70dbf)
 
- 
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
  
