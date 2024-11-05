@@ -86,7 +86,7 @@ Player 2 select your input.
 
 ## Class Diagram
 
-Class Diagram Description:
+Description:
 
 The Character class is a base class that each of the classes for the different types of chess pieces inherits from. It includes member variables that are common to all the types of pieces. It includes some mutator and accessor functions for some of its member variables and some functions that will be overridden in the subclasses for the different pieces to represent the different behavior of the pieces.
 
