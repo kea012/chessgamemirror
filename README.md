@@ -79,7 +79,7 @@ A3
 
 Display Board:
 
-![ascii chessboard move 2](https://github.com/user-attachments/assets/ecc1e36d-01a4-4519-87fc-25419fab2bf5)
+![ascii chessboard move 2](https://github.com/user-attachments/assets/9d004ad5-af43-4413-96a7-e3fe4b1b7a24)
 
 Player 2 select your input.
 
