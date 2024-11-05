@@ -58,7 +58,7 @@ yes
 Player 1 goes first and is white.
 Player 2 goes second and is black.
 
-![Screenshot 2024-11-04 at 2 57 51 PM](https://github.com/user-attachments/assets/55ffda62-ab95-4574-bcc3-c4179c3f52df)
+![ascii chessboard](https://github.com/user-attachments/assets/7fb97c1c-c906-47ba-adc4-a654ed932c6b)
 
 Player 1 select your input.
 
