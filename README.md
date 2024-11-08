@@ -65,7 +65,9 @@ Player 1 select your input.
 Chess Game Menu:
 
 create new game enter “cng”
+
 to quit game enter “qg”
+
 make a move enter “m”
 
 m
