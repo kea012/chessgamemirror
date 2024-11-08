@@ -63,9 +63,9 @@ Player 2 goes second and is black.
 Player 1 select your input.
 
 Chess Game Menu:
-   create new game enter “cng”
-   to quit game enter “qg”
-   make a move enter “m”
+create new game enter “cng”
+to quit game enter “qg”
+make a move enter “m”
 
 m
 
