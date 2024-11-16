@@ -28,8 +28,9 @@ public:
     Board* getGameBoard();
     turn getTurn();
     std::string getOutputString();
+    GameState* getGameState();
     void updateGameState(GameState* newGameState);
-    bool updateTurn(bool endingGame = false);
+    bool updateTurn(bool gameEnding = false);
     bool updatePiecePosition(std::string newPosStr);
     bool updateMovePosition(std::string newPosStr);
     bool inputToAction(std::string userInput);

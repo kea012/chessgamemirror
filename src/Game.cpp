@@ -3,6 +3,7 @@
 Game::Game() {
     currGameState = new MenuScreen();
     currTurn = noTurn;
+    outputStr = "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
 }
 
 Game::~Game() {
@@ -26,24 +27,32 @@ std::string Game::getOutputString() {
     return outputStr;
 }
 
+GameState* Game::getGameState() {
+    return currGameState;
+}
+
 void Game::updateGameState(GameState* newGameState) {
     delete currGameState;
     currGameState = newGameState;
 }
 
-bool Game::updateTurn(bool endingGame = false) {
-    if (currTurn = noTurn) {
-        return false;
-    }
-    if (endingGame) {
-        currTurn = noTurn;
+bool Game::updateTurn(bool gameEnding = false) {
+    if (gameEnding) {
+        if (currTurn = noTurn)
+            return false;
+        else
+            currTurn = noTurn;
     }
     else {
-        if (currTurn == whiteTurn) {
-            currTurn = blackTurn;
-        }
-        else if (currTurn == blackTurn) {
-            currTurn = whiteTurn;
+        switch(currTurn) {
+            case(noTurn):
+                currTurn = whiteTurn;
+                break;
+            case(whiteTurn):
+                currTurn = blackTurn;
+                break;
+            case(blackTurn):
+                currTurn = whiteTurn;
         }
     }
     return true;

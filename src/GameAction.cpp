@@ -10,7 +10,7 @@ std::string InvalidInput::performAction(Game* activeGame) {
 
 std::string CreateGame::performAction(Game* activeGame) {
     activeGame->updateGameState(new SelectingPiece);
-    return "Starting new game...";
+    return "Starting new game...\nWhite player's turn";
 }
 
 // EndProgram functions
@@ -70,30 +70,37 @@ std::string CheckMove::performAction(Game* activeGame) {
 
 std::string MovePiece::performAction(Game* activeGame) {
     activeGame->moveSelectedPiece();
-    if (true) { // Check for any game ending conditions / set winner or draw
+    std::string str = "Moved piece from initial position to new position";
+    if (true) { // Check for any game ending conditions
         activeGame->updateGameState(new EndScreen);
         if (true) { // Someone won
-            return "Someone won the game";
+            str += "\nSomeone won the game";
         }
-        if (true) {
-            return "The game ended in a draw";
+        else { // Draw
+            str += "\nThe game ended in a draw";
         }
+        activeGame->updateTurn(true);
+        str += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
+        return str;
     }
     activeGame->updateTurn();
-    return "Moved piece from initial position to new position";
+    str += "\nPlayer's turn"; // will check current player's turn
+    return str;
 }
 
 // Retire functions
 
 std::string Retire::performAction(Game* activeGame) {
     activeGame->updateGameState(new MenuScreen);
-    return "Player who didn't retire won the game"; // will check current player's turn
+    std::string str = "Player who didn't retire won the game"; // will check current player's turn
+    str += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
+    return str;
 }
 
 // ReturnToMenu functions
 
 std::string ReturnToMenu::performAction(Game* activeGame) {
     activeGame->updateGameState(new MenuScreen);
-    return "Enter 'S' to start a new game or 'Q' to quit the program";
+    return "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
 }
 
