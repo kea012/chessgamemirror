@@ -23,6 +23,14 @@ turn Game::getTurn() {
     return currTurn;
 }
 
+Position Game::getSelectedPiecePos() {
+    return piecePos;
+}
+
+Position Game::getSelectedMovePos() {
+    return movePos;
+}
+
 std::string Game::getOutputString() {
     return outputStr;
 }
@@ -36,7 +44,7 @@ void Game::updateGameState(GameState* newGameState) {
     currGameState = newGameState;
 }
 
-bool Game::updateTurn(bool gameEnding = false) {
+bool Game::updateTurn(bool gameEnding) {
     if (gameEnding) {
         if (currTurn = noTurn)
             return false;
@@ -66,6 +74,11 @@ bool Game::updateMovePosition(std::string newPosStr) {
     return movePos.setPositionFromString(newPosStr);
 }
 
+void Game::resetPositions() {
+    piecePos.resetPosition();
+    movePos.resetPosition();
+}
+
 bool Game::inputToAction(std::string userInput) {
     if (!currGameState)
         return false;
@@ -77,5 +90,9 @@ bool Game::performCurrAction() {
     if (!currAction)
         return false;
     outputStr = currAction->performAction(this);
+    return true;
+}
+
+bool Game::moveSelectedPiece() {
     return true;
 }

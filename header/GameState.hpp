@@ -6,9 +6,12 @@
 #include <string>
 #include <cctype>
 
+class Game;
+class GameAction;
+
 class GameState {
 public:
-    virtual GameAction* parseUserInput(std::string userInput);
+    virtual GameAction* parseUserInput(std::string userInput) = 0;
 };
 
 class MenuScreen : public GameState {

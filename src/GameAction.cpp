@@ -9,8 +9,9 @@ std::string InvalidInput::performAction(Game* activeGame) {
 // CreateGame functions
 
 std::string CreateGame::performAction(Game* activeGame) {
-    activeGame->updateGameState(new SelectingPiece);
-    return "Starting new game...\nWhite player's turn";
+    activeGame->updateGameState(new TurnStart);
+    activeGame->updateTurn();
+    return "Starting new game...\nWhite player's turn\nEnter 'M' to make a move or 'Q' to quit game";
 }
 
 // EndProgram functions
@@ -34,7 +35,7 @@ CheckPiece::CheckPiece(Position newPiecePos) {
 }
 
 std::string CheckPiece::performAction(Game* activeGame) {
-    if (true) { // User selected position that does not contain piece that they can move / will have to check current turn / could have different return strings
+    if (false) { // User selected position that does not contain piece that they can move / will have to check current turn / could have different return strings
         activeGame->updateGameState(new SelectingPiece);
         return "Select a valid position";
     }
@@ -57,11 +58,11 @@ CheckMove::CheckMove(Position newMovePos) {
 }
 
 std::string CheckMove::performAction(Game* activeGame) {
-    if (true) { // User selected position that selected piece cannot move to
+    if (false) { // User selected position that selected piece cannot move to
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
     }
-    activeGame->updatePiecePosition(movePos.getPositionString());
+    activeGame->updateMovePosition(movePos.getPositionString());
     activeGame->updateGameState(new ConfirmingMove);
     return "Enter 'C' to confirm movement or 'R' to select a different position";
 }
@@ -70,10 +71,13 @@ std::string CheckMove::performAction(Game* activeGame) {
 
 std::string MovePiece::performAction(Game* activeGame) {
     activeGame->moveSelectedPiece();
-    std::string str = "Moved piece from initial position to new position";
-    if (true) { // Check for any game ending conditions
+    std::string initialPos = activeGame->getSelectedPiecePos().getPositionString();
+    std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
+    activeGame->resetPositions();
+    std::string str = "Moved piece from " + initialPos + " to " + finalPos;
+    if (false) { // Check for any game ending conditions
         activeGame->updateGameState(new EndScreen);
-        if (true) { // Someone won
+        if (false) { // Someone won
             str += "\nSomeone won the game";
         }
         else { // Draw
@@ -84,15 +88,23 @@ std::string MovePiece::performAction(Game* activeGame) {
         return str;
     }
     activeGame->updateTurn();
-    str += "\nPlayer's turn"; // will check current player's turn
+    activeGame->updateGameState(new TurnStart);
+    if (activeGame->getTurn() == whiteTurn) {
+        str += "\nWhite player's turn";
+    }
+    else if (activeGame->getTurn() == blackTurn) {
+        str += "\nBlack player's turn";
+    }
+    str += "\nEnter 'M' to make a move or 'Q' to quit";
     return str;
 }
 
 // Retire functions
 
 std::string Retire::performAction(Game* activeGame) {
-    activeGame->updateGameState(new MenuScreen);
+    activeGame->updateGameState(new EndScreen);
     std::string str = "Player who didn't retire won the game"; // will check current player's turn
+    activeGame->updateTurn(true);
     str += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
     return str;
 }
@@ -103,4 +115,3 @@ std::string ReturnToMenu::performAction(Game* activeGame) {
     activeGame->updateGameState(new MenuScreen);
     return "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
 }
-

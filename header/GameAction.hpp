@@ -4,9 +4,12 @@
 #include "../header/Game.hpp"
 #include "../header/GameState.hpp"
 
+class Game;
+class GameState;
+
 class GameAction {
 public:
-    virtual std::string performAction(Game* activeGame);
+    virtual std::string performAction(Game* activeGame) = 0;
 };
 
 class InvalidInput : public GameAction {
