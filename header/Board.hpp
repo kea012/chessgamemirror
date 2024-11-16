@@ -1,17 +1,29 @@
-#ifndef BOARD_HPP
-#define BOARD_HPP
+#ifndef _BOARD_H_
+#define _BOARD_H_
 
+#include "../header/Character.hpp"
 #include "../header/Position.hpp"
 #include <string>
+#include <vector>
 
-// INCOMPLETE VERSION OF CLASS FOR TESTING / FUNCTIONALITY OF GAME CLASS
+class Character;
 
 class Board {
-public:
-    bool isSpaceOccupied(Position pos);
-    bool hasMoves(Position piecePos);
-    bool isValidMovement(Position piecePos, Position movePos);
-    std::string checkPieceColor(Position piecePos);
+	private:
+		Character* chessBoard[8][8] = {nullptr};
+		std::vector<Character*> whitePieces;
+		std::vector<Character*> blackPieces;
+	public:
+		bool isSpaceOccupied(std::string position);
+		bool isSpaceOccupied(Position pos);
+		bool hasMoves(Position piecePos);
+		bool isValidMovement(Position piecePos, Position movePos);
+		std::string checkPieceColor(Position piecePos);
+		Character* addPiece();
+		void movePiece();
+		void capturePiece();
+		bool stalemate();
+		void printBoard();
 };
 
 #endif
