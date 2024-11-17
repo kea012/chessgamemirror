@@ -5,18 +5,18 @@ using namespace std;
 Character::Character(CharacterType type, string characterColor) : type(type), characterColor(characterColor) {}
 
 CharacterType Character::getType() const {
-  return this->type;
+  return type;
 }
 
 bool Character::setAliveStatus() {
-  this->alive = false;
-  return this->alive;
+  alive = false;
+  return alive;
 }
 
 bool Character::getAliveStatus() const {
-  return this->alive;
+  return alive;
 }
 
 std::string Character::getColor() const {
-  return this->characterColor;
+  return characterColor;
 }
