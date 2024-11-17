@@ -1,8 +1,7 @@
 #include "../header/Character.hpp"
 #include "gtest/gtest.h"
 
-
-TEST (Character, MakePawn) {
+TEST (Pawn, MakePawn) {
 
 Pawn testPawn = Pawn("w");
 
