@@ -8,5 +8,5 @@ ADD_EXECUTABLE(charactertest
     tests/test.cpp
 )
 
-TARGET_LINK_LIBRARIES(test gtest gtest_main)
+TARGET_LINK_LIBRARIES(charactertest gtest gtest_main)
 TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
