@@ -4,6 +4,7 @@
 #include "../header/Character.hpp"
 
 class Pawn : public Character {
+    public:
     Pawn(std::string characterColor);
     void promotion();
 };
