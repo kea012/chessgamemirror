@@ -4,7 +4,6 @@ ADD_SUBDIRECTORY(tests/googletest)
 
 ADD_EXECUTABLE(charactertest
     src/Character.cpp
-    src/Board.cpp
     tests/test.cpp
 )
 
