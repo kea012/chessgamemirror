@@ -3,7 +3,7 @@
 Authors: [Kenny Ea](https://github.com/kea012)
          [Ryan Gomez](https://github.com/potobeans)
          [Ethan Mukai](https://github.com/emukai3)
-         [Yuzhe Le](https://github.com/L-yz16)      
+         [Yuzhe Lin](https://github.com/L-yz16)      
 
 ## Project Description
 
