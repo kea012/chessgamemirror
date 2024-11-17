@@ -1,5 +1,5 @@
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+#ifndef PAWN_HPP
+#define PAWN_HPP
 
 #include "../header/Character.hpp"
 
@@ -9,4 +9,4 @@ class Pawn : public Character {
     void promotion();
 };
 
-#endif // CHARACTER_HPP
+#endif // PAWN_HPP
