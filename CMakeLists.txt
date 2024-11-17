@@ -5,7 +5,7 @@ ADD_SUBDIRECTORY(tests/googletest)
 ADD_EXECUTABLE(charactertest
     src/Character.cpp
     src/Board.cpp
-    test/test.cpp
+    tests/test.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest gtest_main)
