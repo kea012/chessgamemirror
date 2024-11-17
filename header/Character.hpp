@@ -3,23 +3,19 @@
 
 #include <string>
 #include <vector>
+#include "../header/Board.hpp"
 
-enum CHARACTER_TYPE {
-  BISHOP,
-  PAWN,
-  KING,
-  QUEEN,
-  KNIGHT,
-  ROOK
-};
+enum CharacterType {PAWN, KING, KNIGHT, BISHOP, ROOK, QUEEN};
 
 class Character {
   protected:
-    CHARACTER_TYPE Character_Type;
-    std::string Character_Color;
-    bool Character_AliveStatus = true;
+    bool alive = true;
+    CharacterType type;
+    std::string characterColor;
+    Board* boardOfMoves;
   public:
-    CHARACTER_TYPE getType() const;
+    Character(CharacterType type, std::string characterColor, Board* boardOfMoves);
+    CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
     std::string getColor() const;
