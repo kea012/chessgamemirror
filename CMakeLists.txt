@@ -9,4 +9,4 @@ ADD_EXECUTABLE(charactertest
 )
 
 TARGET_LINK_LIBRARIES(charactertest gtest gtest_main)
-TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
+TARGET_COMPILE_DEFINITIONS(charactertest PRIVATE gtest_disable_pthreads=ON)
