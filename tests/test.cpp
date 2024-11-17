@@ -1,4 +1,5 @@
 #include "../header/Character.hpp"
+#include "../header/Pawn.hpp"
 #include "gtest/gtest.h"
 
 TEST (Pawn, MakePawn) {
