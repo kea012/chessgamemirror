@@ -2,7 +2,7 @@
 
 using namespace std; 
 
-Character::Character(CharacterType type, string characterColor, Board* boardOfMoves) : type(type), characterColor(characterColor), boardOfMoves(boardOfMoves) {}
+Character::Character(CharacterType type, string characterColor, Board boardOfMoves) : type(type), characterColor(characterColor), boardOfMoves(boardOfMoves) {}
 
 CharacterType Character::getType() const {
   return this->type;
