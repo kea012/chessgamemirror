@@ -9,4 +9,4 @@ ADD_EXECUTABLE(pawntest
 )
 
 TARGET_LINK_LIBRARIES(pawntest gtest gtest_main)
-TARGET_COMPILE_DEFINITIONS(charactertest PRIVATE gtest_disable_pthreads=ON)
+TARGET_COMPILE_DEFINITIONS(pawntest PRIVATE gtest_disable_pthreads=ON)
