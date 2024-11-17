@@ -1,6 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
-ADD_SUBDIRECTORY(test/googletest)
+ADD_SUBDIRECTORY(tests/googletest)
 
 ADD_EXECUTABLE(charactertest
     src/Character.cpp
