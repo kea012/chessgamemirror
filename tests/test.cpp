@@ -4,9 +4,7 @@
 
 TEST (Character, MakeCharacter) {
 
-string board[0]
-
-Character testChar = Character(PAWN, "w", board);
+Character testChar = Character(PAWN, "w");
 
 EXPECT_EQ(testChar.getType(), 0);
 EXPECT_EQ(testChar.getAliveStatus(), true);
