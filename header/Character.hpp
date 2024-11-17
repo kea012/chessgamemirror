@@ -19,7 +19,7 @@ class Character {
     bool setAliveStatus();
     bool getAliveStatus() const;
     std::string getColor() const;
-    virtual std::vector<std::string>* generatePossibleMoves(int x, int y) = 0;
+    virtual std::vector<std::string>* generatePossibleMoves(int x, int y);
 };
 
 #endif // CHARACTER_HPP
