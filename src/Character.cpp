@@ -18,5 +18,5 @@ bool Character::getAliveStatus() const {
 }
 
 std::string Character::getColor() const {
-  return this->characterColorColor;
+  return this->characterColor;
 }
