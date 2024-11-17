@@ -2,9 +2,9 @@
 #include "gtest/gtest.h"
 
 
-TEST (Character, MakeCharacter) {
+TEST (Character, MakePawn) {
 
-Character testChar = Character(PAWN, "w");
+Pawn testPawn = Pawn("w");
 
 EXPECT_EQ(testChar.getType(), 0);
 EXPECT_EQ(testChar.getAliveStatus(), true);

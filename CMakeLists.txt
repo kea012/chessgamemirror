@@ -2,10 +2,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 ADD_SUBDIRECTORY(tests/googletest)
 
-ADD_EXECUTABLE(charactertest
+ADD_EXECUTABLE(pawntest
     src/Character.cpp
+    src/Pawn.cpp
     tests/test.cpp
 )
 
-TARGET_LINK_LIBRARIES(charactertest gtest gtest_main)
+TARGET_LINK_LIBRARIES(pawntest gtest gtest_main)
 TARGET_COMPILE_DEFINITIONS(charactertest PRIVATE gtest_disable_pthreads=ON)
