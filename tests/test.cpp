@@ -8,5 +8,5 @@ Character testChar = Character(PAWN, "w");
 
 EXPECT_EQ(testChar.getType(), 0);
 EXPECT_EQ(testChar.getAliveStatus(), true);
-EXPECT_EQ(testChar.getColor(), true);
+EXPECT_EQ(testChar.getColor(), "w");
 }
