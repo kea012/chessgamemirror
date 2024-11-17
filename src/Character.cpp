@@ -10,7 +10,7 @@ CharacterType Character::getType() const {
 
 bool Character::setAliveStatus() {
   this->alive = false;
-  return alive;
+  return this->alive;
 }
 
 bool Character::getAliveStatus() const {
