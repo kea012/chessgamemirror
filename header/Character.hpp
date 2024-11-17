@@ -12,9 +12,9 @@ class Character {
     bool alive = true;
     CharacterType type;
     std::string characterColor;
-    std::string board[0];
+    std::string board[64];
   public:
-    Character(CharacterType type, std::string characterColor, std::string board[0]);
+    Character(CharacterType type, std::string characterColor);
     CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
