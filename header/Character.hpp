@@ -14,7 +14,7 @@ class Character {
     std::string characterColor;
     std::string board[];
   public:
-    Character(CharacterType type, std::string characterColor, std::string board);
+    Character(CharacterType type, std::string characterColor, std::string board[]);
     CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
