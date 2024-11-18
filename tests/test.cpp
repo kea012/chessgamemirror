@@ -1,6 +1,7 @@
 #include "../header/Character.hpp"
 #include "../header/Pawn.hpp"
 #include "../header/Queen.hpp"
+#include "../header/Bishop.hpp"
 #include "gtest/gtest.h"
 
 TEST (Pawn, MakePawn) {
