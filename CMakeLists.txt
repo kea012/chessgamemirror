@@ -6,6 +6,7 @@ ADD_EXECUTABLE(test
     src/Character.cpp
     src/Pawn.cpp
     src/Queen.cpp
+    src/Bishop.cpp
     tests/test.cpp
 )
 
