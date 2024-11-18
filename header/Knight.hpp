@@ -5,8 +5,8 @@
 
 class Knight : public Character {
   public:
-    Knight(std::string Character_Color);
+    Knight(std::string characterColor);
     std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 
-#endif // KNIGHT_HPP
+#endif // KNIGHT_HPP 
