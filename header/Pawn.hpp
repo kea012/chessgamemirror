@@ -6,7 +6,6 @@
 class Pawn : public Character {
     public:
     Pawn(std::string characterColor);
-    void promotion();
 };
 
 #endif // PAWN_HPP
