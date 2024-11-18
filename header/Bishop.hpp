@@ -1,7 +1,7 @@
 #ifndef BISHOP_HPP
 #define BISHOP_HPP
 
-#include "Character.hpp"
+#include "../header/Character.hpp"
 
 class Bishop : public Character {
   public:

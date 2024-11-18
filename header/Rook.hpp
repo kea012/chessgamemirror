@@ -1,8 +1,8 @@
 #ifndef ROOK_HPP
 #define ROOK_HPP
 
-#include "Character.hpp"
-#include "Position.hpp"
+#include "../header/Character.hpp"
+#include "../header/Position.hpp"
 
 class Rook : public Character {
   private:
