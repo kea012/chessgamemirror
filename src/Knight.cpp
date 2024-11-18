@@ -1,5 +1,7 @@
 #include "../header/Knight.hpp"
 
+using namespace std;
+
 Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {} 
 
 std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
