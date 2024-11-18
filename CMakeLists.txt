@@ -5,8 +5,11 @@ ADD_SUBDIRECTORY(tests/googletest)
 ADD_EXECUTABLE(test
     src/Character.cpp
     src/Pawn.cpp
-    src/Queen.cpp
+    src/King.cpp
+    src/Knight.cpp
     src/Bishop.cpp
+    src/Rook.cpp
+    src/Queen.cpp
     tests/test.cpp
 )
 
