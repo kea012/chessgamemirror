@@ -2,15 +2,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 ADD_SUBDIRECTORY(tests/googletest)
 
-ADD_EXECUTABLE(test
+ADD_EXECUTABLE(pawntest
     src/Character.cpp
     src/Pawn.cpp
-    tests/test.cpp
-)
-
-ADD_EXECUTABLE(test
-    src/Character.cpp
-    src/Pawn.cpp
+    src/Queen.cpp
     tests/test.cpp
 )
 
