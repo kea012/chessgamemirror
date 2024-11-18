@@ -122,7 +122,7 @@ void Board::printBoard(){
     int row = 0;
     int column = 0;
     std::string board = "";
-    for (unsigned int i = 0; i < 63; ++i;){
+    for (unsigned int i = 0; i < 63; ++i){
         board += "|";
         if (chessBoard[row][column] == Pawn){
             if (chessBoard[row][column].getColor() = "w"){

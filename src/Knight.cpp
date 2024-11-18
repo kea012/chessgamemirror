@@ -1,9 +1,8 @@
 #include "../header/Knight.hpp"
 
-Knight::Knight(std::string Character_Color) {
-  this->Character_Type = KNIGHT;
-  this->Character_Color = Character_Color;
-}
+using namespace std;
+
+Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {} 
 
 std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();

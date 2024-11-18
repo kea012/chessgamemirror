@@ -1,18 +1,22 @@
 #include "../header/Character.hpp"
 
-CHARACTER_TYPE Character::getType() const {
-  return this->Character_Type;
+using namespace std; 
+
+Character::Character(CharacterType type, string characterColor) : type(type), characterColor(characterColor) {}
+
+CharacterType Character::getType() const {
+  return this->type;
 }
 
 bool Character::setAliveStatus() {
-  this->Character_AliveStatus = false;
-  return this->Character_AliveStatus;
+  this->alive = false;
+  return this->alive;
 }
 
 bool Character::getAliveStatus() const {
-  return this->Character_AliveStatus;
+  return this->alive;
 }
 
 std::string Character::getColor() const {
-  return this->Character_Color;
+  return this->characterColor;
 }

@@ -1,11 +1,11 @@
 #ifndef BISHOP_HPP
 #define BISHOP_HPP
 
-#include "Character.hpp"
+#include "../header/Character.hpp"
 
 class Bishop : public Character {
   public:
-    Bishop(std::string Character_Color);
+    Bishop(std::string characterColor);
     std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 

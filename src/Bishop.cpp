@@ -1,9 +1,8 @@
 #include "../header/Bishop.hpp"
 
-Bishop::Bishop(std::string Character_Color) {
-  this->Character_Type =BISHOP;
-  this->Character_Color = Character_Color;
-}
+using namespace std;
+
+Bishop::Bishop(string characterColor) : Character(BISHOP, characterColor) {}
 
 std::vector<std::string>* Bishop::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();

@@ -1,9 +1,8 @@
 #include "../header/Rook.hpp"
 
-Rook::Rook(std::string Character_Color) {
-  this->Character_Type =ROOK;
-  this->Character_Color = Character_Color;
-}
+using namespace std;
+
+Rook::Rook(string characterColor) : Character(ROOK, characterColor) {}
 
 bool Rook::getMovedStatus() const {
   return this->Character_Moved;
