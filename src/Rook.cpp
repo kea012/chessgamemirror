@@ -1,5 +1,7 @@
 #include "../header/Rook.hpp"
 
+using namespace std;
+
 Rook::Rook(string characterColor) : Character(ROOK, characterColor) {}
 
 bool Rook::getMovedStatus() const {
