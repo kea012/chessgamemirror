@@ -2,6 +2,9 @@
 #include "../header/Pawn.hpp"
 #include "../header/Queen.hpp"
 #include "../header/Bishop.hpp"
+#include "../header/Knight.hpp"
+#include "../header/Rook.hpp"
+#include "../header/King.hpp"
 #include "gtest/gtest.h"
 
 TEST (Pawn, MakePawn) {
