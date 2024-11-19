@@ -17,32 +17,32 @@ Board::Board(){
     int column = 0;
 
     //Push back all white pieces into white piece vector Z
-    whitePieces.push_back(Rook('w'));
-    whitePieces.push_back(Knight('w'));
-    whitePieces.push_back(Bishop('w'));
-    whitePieces.push_back(Queen('w'));
-    whitePieces.push_back(Bishop('w'));
-    whitePieces.push_back(Knight('w'));
-    whitePieces.push_back(Rook('w'));
+    whitePieces.push_back(new Rook("w"));
+    whitePieces.push_back(new Knight("w"));
+    whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new Queen("w"));
+    whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new Knight("w"));
+    whitePieces.push_back(new Rook("w"));
     for (unsigned int i = 0; i < 7; i++){
-        whitePieces.push_back(Pawn('w'));
+        whitePieces.push_back(new Pawn("w"));
     }
-    blackPieces.push_back(Rook('w'));
-    blackPieces.push_back(Knight('w'));
-    blackPieces.push_back(Bishop('w'));
-    blackPieces.push_back(Queen('w'));
-    blackPieces.push_back(Bishop('w'));
-    blackPieces.push_back(Knight('w'));
-    blackPieces.push_back(Rook('w'));
+    blackPieces.push_back(new Rook("w"));
+    blackPieces.push_back(new Knight("w"));
+    blackPieces.push_back(new Bishop("w"));
+    blackPieces.push_back(new Queen("w"));
+    blackPieces.push_back(new Bishop("w"));
+    blackPieces.push_back(new Knight("w"));
+    blackPieces.push_back(new Rook("w"));
     for (unsigned int i = 0; i < 7; i++){
-        blackPieces.push_back(Pawn('w'));
+        blackPieces.push_back(new Pawn("w"));
     }
 
     row = 0;
     column = 0;
     //set back pieces first then pawns for white
     for (unsigned int i = 0; i < 15; ++i){
-        chessBoard[row][column] = whitePieces(i);
+        chessBoard[row][column] = whitePieces.at(i);
         column++;
         if (column == 8){
             row++;
@@ -52,7 +52,7 @@ Board::Board(){
     row = 7;
     column = 0;
     for (unsigned int i = 0; i < 15; ++i){
-        chessBoard[row][column] = blackPieces(i);
+        chessBoard[row][column] = blackPieces.at(i);
         column++;
         if (column == 8){
             row--;
@@ -118,71 +118,23 @@ bool Board::stalemate(){
     return false;
 }
 
-void Board::printBoard(){
-    int row = 0;
-    int column = 0;
-    std::string board = "";
-    for (unsigned int i = 0; i < 63; ++i){
-        board += "|";
-        if (chessBoard[row][column] == Pawn){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♙";
-            }
-            else{
-                board += "♟";
-            }
+string Board::generateBoard(){
+    string board = "";
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            board += "|";
+            board += chessBoard[row][column]->getSymbol();
+            board += "|  ";
         }
-        else if (chessBoard[row][column] == Rook){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♖";
-            }
-            else{
-                board += "♜";
-            }
-        }
-        else if (chessBoard[row][column] == Knight){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♘";
-            }
-            else{
-                board += "♞";
-            }
-        }
-        else if (chessBoard[row][column] == Bishop){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♗";
-            }
-            else{
-                board += "♝";
-            }
-        }
-        else if (chessBoard[row][column] == Queen){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♕";
-            }
-            else{
-                board += "♛";
-            }
-        }
-        else if (chessBoard[row][column] == King){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♔";
-            }
-            else{
-                board += "♚";
-            }
-        }
-        else if (chessBoard[row][column] == nullptr){
-            board += "   ";
-        }
-        column++;
-        if (column == 8){
-            column = 0;
-            row++;
-        }
-
-
+        board += "\n";
+        board += to_string(row);
+        board + "  ";
     }
+    board += "A   B   C   D   E   F   G   H";
+    return board;
 }
 
+void Board::printBoard(string boardString){
+    cout << boardString;
+}
 
