@@ -13,7 +13,7 @@ class Character {
     CharacterType type;
     std::string characterColor;
     std::string symbol;
-    std::string board[64];
+    std::string* board[64];
   public: 
     Character(CharacterType type, std::string characterColor, std::string symbol);
     CharacterType getType() const;
