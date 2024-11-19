@@ -1,1 +1,9 @@
 .vscode/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+lib/
+pawntest
+test
+tests/googletest/
