@@ -4,7 +4,7 @@ using namespace std;
 
 Queen::Queen(string characterColor, string symbol) : Character(QUEEN, characterColor, symbol) {}
 
-std::vector<std::string>* Queen::generatePossibleMoves(int x, int y) {
+/*std::vector<std::string>* Queen::generatePossibleMoves(int x, int y) {
     vector<string>* move = new vector<string>();
     //up the board
     for (int i = y + 1; i < 8; ++i) {
@@ -119,4 +119,4 @@ std::vector<std::string>* Queen::generatePossibleMoves(int x, int y) {
     }
 
     return move;
-}
+}*/
