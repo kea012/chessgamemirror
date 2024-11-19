@@ -2,14 +2,14 @@
 
 using namespace std;
 
-Rook::Rook(string characterColor) : Character(ROOK, characterColor) {}
+Rook::Rook(string characterColor, string symbol) : Character(ROOK, characterColor, symbol) {}
 
 bool Rook::getMovedStatus() const {
-  return this->Character_Moved;
+  return this->characterMoved;
 }
 
 void Rook::setMoved() {
-  this->Character_Moved = true;
+  this->characterMoved = true;
 }
 
 std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) { 

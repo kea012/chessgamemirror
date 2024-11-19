@@ -5,7 +5,7 @@
 
 class King : public Character {
     public:
-    King(std::string characterColor);
+    King(std::string characterColor, std::string symbol);
     std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 

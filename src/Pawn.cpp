@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Pawn::Pawn(string characterColor) : Character(PAWN, characterColor) {}
+Pawn::Pawn(string characterColor, string symbol) : Character(PAWN, characterColor, symbol) {}
 
 std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
     vector<string>* move;

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {} 
+Knight::Knight(string characterColor, string symbol) : Character(KNIGHT, characterColor, symbol) {} 
 
 std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();

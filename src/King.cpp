@@ -2,7 +2,7 @@
 
 using namespace std;
 
-King::King(string characterColor) : Character(KING, characterColor) {}
+King::King(string characterColor, string symbol) : Character(KING, characterColor, symbol) {}
 
 std::vector<std::string>* King::generatePossibleMoves(int x, int y) {
     vector<string>* move;

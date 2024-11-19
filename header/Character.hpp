@@ -12,13 +12,15 @@ class Character {
     bool alive = true;
     CharacterType type;
     std::string characterColor;
+    std::string symbol;
     std::string board[64];
   public: 
-    Character(CharacterType type, std::string characterColor);
+    Character(CharacterType type, std::string characterColor, std::string symbol);
     CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
     std::string getColor() const;
+    std::string getSymbol() const;
     virtual std::vector<std::string>* generatePossibleMoves(int x, int y) = 0;
 };
 

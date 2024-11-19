@@ -5,7 +5,7 @@
 
 class Bishop : public Character {
   public:
-    Bishop(std::string characterColor);
+    Bishop(std::string characterColor, , std::string symbol);
     std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 
