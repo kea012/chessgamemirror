@@ -27,6 +27,7 @@ class Board {
 		bool hasMoves(Position piecePos);
 		bool isValidMovement(Position piecePos, Position movePos);
 		std::string checkPieceColor(Position piecePos);
+		std::string generateBoard();
 		Character* addPiece();
 		void movePiece();
 		void capturePiece();
