@@ -27,15 +27,15 @@ Board::Board(){
     for (unsigned int i = 0; i < 7; i++){
         whitePieces.push_back(new Pawn("w"));
     }
-    blackPieces.push_back(new Rook("b"));
-    blackPieces.push_back(new Knight("b"));
-    blackPieces.push_back(new Bishop("b"));
-    blackPieces.push_back(new Queen("b"));
-    blackPieces.push_back(new Bishop("b"));
-    blackPieces.push_back(new Knight("b"));
-    blackPieces.push_back(new Rook("b"));
+    blackPieces.push_back(Rook('b'));
+    blackPieces.push_back(Knight('b'));
+    blackPieces.push_back(Bishop('b'));
+    blackPieces.push_back(Queen('b'));
+    blackPieces.push_back(Bishop('b'));
+    blackPieces.push_back(Knight('b'));
+    blackPieces.push_back(Rook('b'));
     for (unsigned int i = 0; i < 7; i++){
-        blackPieces.push_back(new Pawn("b"));
+        blackPieces.push_back(Pawn('b'));
     }
 
     row = 0;

@@ -10,7 +10,7 @@ class Character;
 
 class Board {
 	private:
-		Character* chessBoard[8][8] = {nullptr};
+		Character* chessBoard[8][8] = {nullptr}; 
 		std::vector<Character*> whitePieces;
 		std::vector<Character*> blackPieces;
 	public:
