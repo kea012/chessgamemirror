@@ -2,7 +2,14 @@
 
 using namespace std;
 
-Rook::Rook(string characterColor, string symbol) : Character(ROOK, characterColor, symbol) {}
+Rook::Rook(string characterColor) : Character(ROOK, characterColor) {
+    if (characterColor == "w") {
+        symbol = "♜";
+    }
+    else if (characterColor == "b") {
+        symbol = "♖";
+    }
+}
 
 bool Rook::getMovedStatus() const {
   return this->characterMoved;

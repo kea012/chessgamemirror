@@ -9,7 +9,7 @@
 
 TEST (Pawn, MakePawn) {
 
-Pawn testPawn = Pawn("w", "♟");
+Pawn testPawn = Pawn("w");
 
 EXPECT_EQ(testPawn.getType(), 0);
 EXPECT_EQ(testPawn.getAliveStatus(), true);
@@ -19,7 +19,7 @@ EXPECT_EQ(testPawn.getSymbol(), "♟");
 
 TEST (King, MakeKing) {
 
-King testKing = King("w", "♚");
+King testKing = King("w");
 
 EXPECT_EQ(testKing.getType(), 1);
 EXPECT_EQ(testKing.getAliveStatus(), true);
@@ -29,7 +29,7 @@ EXPECT_EQ(testKing.getSymbol(), "♚");
 
 TEST (Knight, MakeKnight) {
 
-Knight testKnight = Knight("w", "♞");
+Knight testKnight = Knight("w");
 
 EXPECT_EQ(testKnight.getType(), 2);
 EXPECT_EQ(testKnight.getAliveStatus(), true);
@@ -39,7 +39,7 @@ EXPECT_EQ(testKnight.getSymbol(), "♞");
 
 TEST (Bishop, MakeBishop) {
 
-Bishop testBishop = Bishop("w", "♝");
+Bishop testBishop = Bishop("w");
 
 EXPECT_EQ(testBishop.getType(), 3);
 EXPECT_EQ(testBishop.getAliveStatus(), true);
@@ -49,7 +49,7 @@ EXPECT_EQ(testBishop.getSymbol(), "♝");
 
 TEST (Rook, MakeRook) {
 
-Rook testRook = Rook("w", "♜");
+Rook testRook = Rook("w");
 
 EXPECT_EQ(testRook.getType(), 4);
 EXPECT_EQ(testRook.getAliveStatus(), true);
@@ -59,7 +59,7 @@ EXPECT_EQ(testRook.getSymbol(), "♜");
 
 TEST (Queen, MakeQueen) {
 
-Queen testQueen = Queen("w", "♛");
+Queen testQueen = Queen("w");
 
 EXPECT_EQ(testQueen.getType(), 5);
 EXPECT_EQ(testQueen.getAliveStatus(), true);

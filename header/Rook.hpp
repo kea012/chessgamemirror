@@ -8,7 +8,7 @@ class Rook : public Character {
   private:
     bool characterMoved = false;
   public:
-    Rook(std::string characterColor, std::string symbol);
+    Rook(std::string characterColor);
     bool getMovedStatus() const;
     void setMoved();
     std::vector<std::string>* generatePossibleMoves(int x, int y) override;

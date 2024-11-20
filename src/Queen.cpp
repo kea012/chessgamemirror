@@ -2,7 +2,14 @@
 
 using namespace std;
 
-Queen::Queen(string characterColor, string symbol) : Character(QUEEN, characterColor, symbol) {}
+Queen::Queen(string characterColor) : Character(QUEEN, characterColor) {
+    if (characterColor == "w") {
+        symbol = "♛";
+    }
+    else if (characterColor == "b") {
+        symbol = "♕";
+    }
+}
 
 std::vector<std::string>* Queen::generatePossibleMoves(int x, int y) {
     vector<string>* move = new vector<string>();

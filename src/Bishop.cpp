@@ -2,7 +2,14 @@
 
 using namespace std;
 
-Bishop::Bishop(string characterColor, string symbol) : Character(BISHOP, characterColor, symbol) {}
+Bishop::Bishop(string characterColor) : Character(BISHOP, characterColor) {
+    if (characterColor == "w") {
+        symbol = "♝";
+    }
+    else if (characterColor == "b") {
+        symbol = "♗";
+    }
+}
 
 std::vector<std::string>* Bishop::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();
