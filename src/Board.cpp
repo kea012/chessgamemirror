@@ -27,7 +27,7 @@ Board::Board(){
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Rook("w"));
-    for (unsigned int i = 0; i < 7; i++){
+    for (unsigned int i = 0; i < 8; i++){
         whitePieces.push_back(new Pawn("w"));
     }
     blackPieces.push_back(new Rook("b"));
@@ -37,14 +37,14 @@ Board::Board(){
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Rook("b"));
-    for (unsigned int i = 0; i < 7; i++){
+    for (unsigned int i = 0; i < 8; i++){
         blackPieces.push_back(new Pawn("b"));
     }
 
     row = 0;
     column = 0;
     //set back pieces first then pawns for white
-    for (unsigned int i = 0; i < 15; ++i){
+    for (unsigned int i = 0; i < whitePieces.size(); ++i){
         chessBoard[row][column] = whitePieces.at(i);
         column++;
         if (column == 8){
@@ -54,7 +54,7 @@ Board::Board(){
     }
     row = 7;
     column = 0;
-    for (unsigned int i = 0; i < 15; ++i){
+    for (unsigned int i = 0; i < blackPieces.size(); ++i){
         chessBoard[row][column] = blackPieces.at(i);
         column++;
         if (column == 8){
@@ -71,6 +71,15 @@ Board::Board(){
         if (column == 8){
             row++;
             column = 0;
+        }
+    }
+}
+
+//destructor
+Board::~Board() {
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            delete chessBoard[row][column];
         }
     }
 }
