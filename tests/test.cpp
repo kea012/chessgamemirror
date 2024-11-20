@@ -69,7 +69,7 @@ EXPECT_EQ(testQueen.getSymbol(), "♛");
 }
 
 TEST (Board, MakeBoard) {
-    EEXPECT_NO_THROW(Board());
+    EXPECT_NO_THROW(Board());
 }
 
 
