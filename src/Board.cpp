@@ -23,6 +23,7 @@ Board::Board(){
     whitePieces.push_back(new Rook("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Queen("w"));
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
@@ -34,6 +35,7 @@ Board::Board(){
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Queen("b"));
+    whitePieces.push_back(new King("w"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Rook("b"));
