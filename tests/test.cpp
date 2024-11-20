@@ -72,4 +72,10 @@ TEST (Board, MakeBoard) {
     EXPECT_NO_THROW(Board());
 }
 
+TEST (Board, PrintBoard) {
+    Board testBoard;
+    string printBoard = testBoard.generateBoard();
+    EXPECT_EQ(testBoard.printBoard(), printBoard);
+}
+
 
