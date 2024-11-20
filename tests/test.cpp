@@ -66,3 +66,9 @@ EXPECT_EQ(testQueen.getAliveStatus(), true);
 EXPECT_EQ(testQueen.getColor(), "w");
 EXPECT_EQ(testQueen.getSymbol(), "♛");
 }
+
+TEST (Board, MakeBoard) {
+    EEXPECT_NO_THROW(Board());
+}
+
+
