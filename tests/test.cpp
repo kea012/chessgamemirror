@@ -7,6 +7,9 @@
 #include "../header/Rook.hpp"
 #include "../header/King.hpp"
 #include "gtest/gtest.h"
+#include <string>
+
+using namespace std;
 
 TEST (Pawn, MakePawn) {
 
@@ -71,6 +74,23 @@ EXPECT_EQ(testQueen.getSymbol(), "♛");
 TEST (Board, MakeBoard) {
     EXPECT_NO_THROW(Board());
 }
+
+TEST (Board, PrintBoard) {
+    Board* testBoard = new Board();
+    string board = "1|♜||♞||♝||♚||♛||♝||♞||♜|\n2|♟||♟||♟||♟||♟||♟||♟||♟|\n3| || || || || || || || |\n4| || || || || || || || |\n5| || || || || || || || |\n6| || || || || || || || |\n7|♙||♙||♙||♙||♙||♙||♙||♙|\n8|♖||♘||♗||♕||♔||♗||♘||♖|\n  A  B  C  D  E  F  G  H";
+    string printBoard = testBoard->generateBoard();
+    EXPECT_EQ(printBoard, board);
+}
+
+/*1|♜||♞||♝||♚||♛||♝||♞||♜|
+2|♟||♟||♟||♟||♟||♟||♟||♟|
+3| || || || || || || || |
+4| || || || || || || || |
+5| || || || || || || || |
+6| || || || || || || || |
+7|♙||♙||♙||♙||♙||♙||♙||♙|
+8|♖||♘||♗||♕||♔||♗||♘||♖|
+  A  B  C  D  E  F  G  H*/
 
 
 

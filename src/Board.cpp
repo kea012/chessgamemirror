@@ -132,10 +132,10 @@ bool Board::stalemate(){
 }
 
 string Board::generateBoard(){
-    string board = " ";
+    string board = "";
     for (unsigned int row = 0; row < 8; ++row){
+         board += to_string(row+1);
         for (unsigned int column = 0; column < 8; ++column){
-            board += to_string(row+1);
             board += "|";
             if (chessBoard[row][column] == nullptr){
                 board += " ";
@@ -143,12 +143,12 @@ string Board::generateBoard(){
             else{
                 board += chessBoard[row][column]->getSymbol();
             }
-            board += "| ";
+            board += "|";
         }
         board += "\n";
         board + "  ";
     }
-    board += " A   B   C   D   E   F   G   H";
+    board += "  A  B  C  D  E  F  G  H";
     return board;
 }
 
