@@ -44,7 +44,7 @@ Board::Board(){
     row = 0;
     column = 0;
     //set back pieces first then pawns for white
-    for (unsigned int i = 0; i < 15; ++i){
+    for (unsigned int i = 0; i < whitePiece.size(); ++i){
         chessBoard[row][column] = whitePieces.at(i);
         column++;
         if (column == 8){
@@ -54,7 +54,7 @@ Board::Board(){
     }
     row = 7;
     column = 0;
-    for (unsigned int i = 0; i < 15; ++i){
+    for (unsigned int i = 0; i < blackPieces.size(); ++i){
         chessBoard[row][column] = blackPieces.at(i);
         column++;
         if (column == 8){
