@@ -27,7 +27,7 @@ Board::Board(){
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Rook("w"));
-    for (unsigned int i = 0; i < 7; i++){
+    for (unsigned int i = 0; i < 8; i++){
         whitePieces.push_back(new Pawn("w"));
     }
     blackPieces.push_back(new Rook("b"));
@@ -37,7 +37,7 @@ Board::Board(){
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Rook("b"));
-    for (unsigned int i = 0; i < 7; i++){
+    for (unsigned int i = 0; i < 8; i++){
         blackPieces.push_back(new Pawn("b"));
     }
 
