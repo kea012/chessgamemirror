@@ -35,7 +35,7 @@ Board::Board(){
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Queen("b"));
-    whitePieces.push_back(new King("w"));
+    blackPieces.push_back(new King("b"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Rook("b"));
@@ -132,7 +132,7 @@ bool Board::stalemate(){
 }
 
 string Board::generateBoard(){
-    string board = "";
+    string board = " ";
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
