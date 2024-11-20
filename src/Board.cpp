@@ -137,12 +137,12 @@ string Board::generateBoard(){
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
             if (chessBoard[row][column] == nullptr){
-                board += "   ";
+                board += " ";
             }
             else{
                 board += chessBoard[row][column]->getSymbol();
             }
-            board += "|  ";
+            board += "| ";
         }
         board += "\n";
         board += to_string(row+1);
