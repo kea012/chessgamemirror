@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include "../header/Board.hpp"
 
 enum CharacterType {PAWN, KING, KNIGHT, BISHOP, ROOK, QUEEN};
 
