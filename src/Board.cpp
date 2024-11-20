@@ -27,15 +27,15 @@ Board::Board(){
     for (unsigned int i = 0; i < 7; i++){
         whitePieces.push_back(new Pawn("w"));
     }
-    blackPieces.push_back(new Rook("w"));
-    blackPieces.push_back(new Knight("w"));
-    blackPieces.push_back(new Bishop("w"));
-    blackPieces.push_back(new Queen("w"));
-    blackPieces.push_back(new Bishop("w"));
-    blackPieces.push_back(new Knight("w"));
-    blackPieces.push_back(new Rook("w"));
+    blackPieces.push_back(new Rook("b"));
+    blackPieces.push_back(new Knight("b"));
+    blackPieces.push_back(new Bishop("b"));
+    blackPieces.push_back(new Queen("b"));
+    blackPieces.push_back(new Bishop("b"));
+    blackPieces.push_back(new Knight("b"));
+    blackPieces.push_back(new Rook("b"));
     for (unsigned int i = 0; i < 7; i++){
-        blackPieces.push_back(new Pawn("w"));
+        blackPieces.push_back(new Pawn("b"));
     }
 
     row = 0;
@@ -96,22 +96,21 @@ bool isValidMovement(Position piecePos, Position movePos) {
     return false;
 }
 
-std::string checkPieceColor(Position piecePos) {
+string checkPieceColor(Position piecePos) {
     // Complete function will return color of the Character at piecePos
     return "black";
 }
-
 
 Character* Board::addPiece(){
     return nullptr;
 }
 
 void Board::movePiece(){
-
+    return;
 }
 
 void Board::capturePiece(){
-
+    return;
 }
 
 bool Board::stalemate(){
@@ -123,11 +122,16 @@ string Board::generateBoard(){
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
-            board += chessBoard[row][column]->getSymbol();
+            if (chessBoard[row][column] == nullptr){
+                board += "   ";
+            }
+            else{
+                board += chessBoard[row][column]->getSymbol();
+            }
             board += "|  ";
         }
         board += "\n";
-        board += to_string(row);
+        board += to_string(row+1);
         board + "  ";
     }
     board += "A   B   C   D   E   F   G   H";
@@ -135,6 +139,5 @@ string Board::generateBoard(){
 }
 
 void Board::printBoard(string boardString){
-    cout << boardString;
+    cout << boardString << endl;
 }
-
