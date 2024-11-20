@@ -20,7 +20,7 @@ void Pawn::setMoved() {
 }
 
 std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
-   vector<string>* move = new vector<string>();
+   vector<string> move = new vector<string>();
    /* //up the board
     for (int i = y + 1; i < 8; ++i) {
         if (board[x][i].is_empty()){
