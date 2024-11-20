@@ -2,7 +2,14 @@
 
 using namespace std;
 
-King::King(string characterColor) : Character(KING, characterColor) {}
+King::King(string characterColor) : Character(KING, characterColor) {
+    if (characterColor == "w") {
+        symbol = "♚";
+    }
+    else if (characterColor == "b") {
+        symbol = "♔";
+    }
+}
 
 std::vector<std::string>* King::generatePossibleMoves(int x, int y) {
     vector<string>* move;

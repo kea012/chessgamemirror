@@ -1,4 +1,7 @@
 #include "../header/Board.hpp"
+#include <iostream>
+
+using namespace std;
 
 //Sets up the piece color vectors and sets up pieces on the board
 //all indices without pieces are set to nullptr - check if that works in a character pointer class
