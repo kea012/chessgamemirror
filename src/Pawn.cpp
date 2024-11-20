@@ -21,7 +21,7 @@ void Pawn::setMoved() {
 
 std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
    vector<string>* move = new vector<string>();
-    //up the board
+   /* //up the board
     for (int i = y + 1; i < 8; ++i) {
         if (board[x][i].is_empty()){
             move->push_back(to_string(x)+to_string(i)); // this move forward one space 
@@ -64,7 +64,7 @@ std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
             break;
         }
         break;
-    } 
+    } */
      
     return move; 
 }
