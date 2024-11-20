@@ -32,7 +32,7 @@ class Board {
 		void movePiece();
 		void capturePiece();
 		bool stalemate();
-		void printBoard();
+		void printBoard(std::string boardString);
 };
 
 #endif
