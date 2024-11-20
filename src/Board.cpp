@@ -75,6 +75,15 @@ Board::Board(){
     }
 }
 
+//destructor
+Board::~Board() {
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            delete chessBoard[row][column];
+        }
+    }
+}
+
 bool Board::isSpaceOccupied(std::string position) {
      char column = position.at(0) - '0';
      char row = position.at(1) - '0';
