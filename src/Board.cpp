@@ -135,6 +135,7 @@ string Board::generateBoard(){
     string board = " ";
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
+            board += to_string(row+1);
             board += "|";
             if (chessBoard[row][column] == nullptr){
                 board += " ";
@@ -145,10 +146,9 @@ string Board::generateBoard(){
             board += "| ";
         }
         board += "\n";
-        board += to_string(row+1);
         board + "  ";
     }
-    board += "A   B   C   D   E   F   G   H";
+    board += " A   B   C   D   E   F   G   H";
     return board;
 }
 
