@@ -6,6 +6,8 @@
 #include "../header/Knight.hpp"
 #include "../header/Rook.hpp"
 #include "../header/King.hpp"
+#include "../header/Move.hpp"
+#include "../header/QueenMove.hpp"
 #include "gtest/gtest.h"
 #include <string>
 
@@ -80,6 +82,11 @@ TEST (Board, PrintBoard) {
     string board = "1|♜||♞||♝||♚||♛||♝||♞||♜|\n2|♟||♟||♟||♟||♟||♟||♟||♟|\n3| || || || || || || || |\n4| || || || || || || || |\n5| || || || || || || || |\n6| || || || || || || || |\n7|♙||♙||♙||♙||♙||♙||♙||♙|\n8|♖||♘||♗||♕||♔||♗||♘||♖|\n  A  B  C  D  E  F  G  H";
     string printBoard = testBoard->generateBoard();
     EXPECT_EQ(printBoard, board);
+}
+
+
+TEST (QueenMove, MakeQueenMove) {
+    EXPECT_NO_THROW(QueenMove("w"));
 }
 
 /*1|♜||♞||♝||♚||♛||♝||♞||♜|

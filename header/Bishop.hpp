@@ -6,7 +6,7 @@
 class Bishop : public Character {
   public:
     Bishop(std::string characterColor);
-    std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+    //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 
 #endif // BISHOP_HPP

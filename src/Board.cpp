@@ -67,7 +67,7 @@ Board::Board(){
 
     row = 2;
     column = 0;
-    for (unsigned int i = 0; i < 32; ++i){
+    for (unsigned int i = 0; i < 32; ++i){ 
         chessBoard[row][column] = nullptr;
         column++;
         if (column == 8){
@@ -79,6 +79,8 @@ Board::Board(){
 
 //destructor
 Board::~Board() {
+    whitePieces.clear();
+    blackPieces.clear();
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
             delete chessBoard[row][column];
@@ -154,4 +156,8 @@ string Board::generateBoard(){
 
 void Board::printBoard(string boardString){
     cout << boardString << endl;
+}
+
+Character* Board::getPiece(int row, int column) {
+    return chessBoard[row][column];
 }
