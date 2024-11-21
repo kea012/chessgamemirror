@@ -11,18 +11,12 @@ int main() {
     string printBoard = testBoard.generateBoard();
     testBoard.printBoard(printBoard);
 
-    Character* piece = testBoard.getPiece(4, 0);
+    QueenMove newMove = QueenMove(testBoard.getPiece(4, 0)->getColor(), testBoard);
+    vector<string> moves = newMove.generatePossibleMoves(4, 0);
 
-    if (piece == nullptr) {
-        cout << "null";
+    for (int i = 0; i < moves.size(); ++i) {
+        cout << moves.at(i);
     }
     
     return 0;
 }
-
- /*QueenMove newMove = QueenMove(testBoard->getPiece(4, 0)->getColor(), testBoard);
-    //vector<string> moves = newMove.generatePossibleMoves(4, 0);
-
-    for (int i = 0; i < moves.size(); ++i) {
-        cout << moves.at(i);
-    }*/

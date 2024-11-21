@@ -79,7 +79,8 @@ Board::Board(){
 
 //destructor
 Board::~Board() {
-   
+    whitePieces.clear();
+    blackPieces.clear();
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
             delete chessBoard[row][column];
