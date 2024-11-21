@@ -46,3 +46,47 @@ TEST(GameConstructorTests, DefaultBoard) {
 
     EXPECT_EQ(tBoard, nullptr);
 }
+
+TEST(UpdateTurnTests, whiteToBlackToWhite) {
+    Game tGame;
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), whiteTurn);
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), blackTurn);
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), whiteTurn);
+}
+
+TEST(UpdateTurnTests, whiteToNoTurn) {
+    Game tGame;
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), whiteTurn);
+
+    EXPECT_TRUE(tGame.updateTurn(true));
+    EXPECT_EQ(tGame.getTurn(), noTurn);
+}
+
+TEST(UpdateTurnTests, blackToNoTurn) {
+    Game tGame;
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), whiteTurn);
+
+    EXPECT_TRUE(tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), blackTurn);
+
+    EXPECT_TRUE(tGame.updateTurn(true));
+    EXPECT_EQ(tGame.getTurn(), noTurn);
+}
+
+TEST(UpdateTurnTests, noUpdate) {
+    Game tGame;
+
+    EXPECT_EQ(tGame.getTurn(), noTurn);
+    EXPECT_TRUE(!tGame.updateTurn());
+    EXPECT_EQ(tGame.getTurn(), noTurn);
+}
