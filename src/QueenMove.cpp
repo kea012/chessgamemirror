@@ -4,22 +4,25 @@ using namespace std;
 
 QueenMove::QueenMove(string color, Board* chessBoard) : Move(QUEENMOVE, color), chessBoard(chessBoard) {} 
 
-vector<string> QueenMove::generatePossibleMoves(int x, int y) {
+vector<string> QueenMove::generatePossibleMoves(int row, int column) {
     //up the board
-    for (int i = y + 1; i < 8; ++i) {
-        if (chessBoard->getPiece(x, i) == nullptr){
-            possibleMoves.push_back(to_string(x)+to_string(i));
+    
+    for (int i = row + 1; i < 8; ++i) {
+        if (chessBoard->getPiece(i, column) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(column));
         }
-        else if (chessBoard->getPiece(x, i)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, column)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
             break;
         }
         else {
-            possibleMoves.push_back(to_string(x)+to_string(i));
+            possibleMoves.push_back(to_string(i)+to_string(column));
             break;
         }
     }
+    return possibleMoves;
+}
 
-    //down the board
+    /*//down the board
     for (int i = y - 1; (i >=0)&&(i < 8); --i) {
         if (chessBoard->getPiece(x, i) == nullptr){
             possibleMoves.push_back(to_string(x)+to_string(i));
@@ -120,4 +123,4 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
         possibleMoves.push_back("0");
     }
     return possibleMoves;
-}
+}*/
