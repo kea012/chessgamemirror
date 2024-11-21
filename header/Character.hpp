@@ -14,6 +14,7 @@ class Character {
     std::string symbol;
   public: 
     Character(CharacterType type, std::string characterColor);
+    virtual ~Character() = default;
     CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
