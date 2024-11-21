@@ -2,15 +2,15 @@
 
 using namespace std;
 
-QueenMove::QueenMove(string color, Board chessBoard) : Move(QUEENMOVE, color), chessBoard(chessBoard) {} 
+QueenMove::QueenMove(string color, Board* chessBoard) : Move(QUEENMOVE, color), chessBoard(chessBoard) {} 
 
 vector<string> QueenMove::generatePossibleMoves(int x, int y) {
     //up the board
     for (int i = y + 1; i < 8; ++i) {
-        if (chessBoard.getPiece(x, i) == nullptr){
+        if (chessBoard->getPiece(x, i) == nullptr){
             possibleMoves.push_back(to_string(x)+to_string(i));
         }
-        else if (chessBoard.getPiece(x, i)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(x, i)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -21,10 +21,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //down the board
     for (int i = y - 1; (i >=0)&&(i < 8); --i) {
-        if (chessBoard.getPiece(x, i) == nullptr){
+        if (chessBoard->getPiece(x, i) == nullptr){
             possibleMoves.push_back(to_string(x)+to_string(i));
         }
-        else if (chessBoard.getPiece(x, i)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(x, i)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -35,10 +35,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //right side of the board
     for (int i = x + 1; i < 8; ++i) {
-        if (chessBoard.getPiece(i, y) == nullptr){
+        if (chessBoard->getPiece(i, y) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(y));
         }
-        else if (chessBoard.getPiece(i, y)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, y)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -49,10 +49,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //left side of the board;
     for (int i = x - 1; (i >= 0)&&(i < 8); --i) {
-        if (chessBoard.getPiece(i, y) == nullptr){
+        if (chessBoard->getPiece(i, y) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(y));
         }
-        else if (chessBoard.getPiece(i, y)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, y)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -63,10 +63,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //diagonol up and to the right of the board
     for (int i = x + 1, j = y + 1; (i < 8)&&(j < 8); ++i, ++j) {
-        if (chessBoard.getPiece(i, j) == nullptr){
+        if (chessBoard->getPiece(i, j) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(j));
         }
-        else if (chessBoard.getPiece(i, j)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -77,10 +77,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //diagnol up and to the left of the board
     for (int i = x - 1, j = y + 1; (i >= 0)&&(j < 8); --i, ++j) {
-        if (chessBoard.getPiece(i, j) == nullptr){
+        if (chessBoard->getPiece(i, j) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(j));
         }
-        else if (chessBoard.getPiece(i, j)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -91,10 +91,10 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //diagnol down and to the right of the board
     for (int i = x + 1, j = y - 1; (i < 8)&&(j >= 0); ++i, --j) {
-        if (chessBoard.getPiece(i, j) == nullptr){
+        if (chessBoard->getPiece(i, j) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(j));
         }
-        else if (chessBoard.getPiece(i, j)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
@@ -105,16 +105,19 @@ vector<string> QueenMove::generatePossibleMoves(int x, int y) {
 
     //diagnol down and to the left of the board
     for (int i = x - 1, j = y - 1; (i >= 0)&&(j >= 0); --i, --j) {
-        if (chessBoard.getPiece(i, j) == nullptr){
+        if (chessBoard->getPiece(i, j) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(j));
         }
-        else if (chessBoard.getPiece(i, j)->getColor() == chessBoard.getPiece(x, y)->getColor()) {
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(x, y)->getColor()) {
             break;
         }
         else {
             possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
+    }
+    if (possibleMoves.size() == 0) {
+        possibleMoves.push_back("0");
     }
     return possibleMoves;
 }

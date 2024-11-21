@@ -36,6 +36,7 @@ class Board {
 		bool stalemate();
 		void printBoard(std::string boardString);
 		Character* getPiece(int row, int column);
+		void setPiece(int row, int column, Character* insertChar);
 };
 
 #endif

@@ -161,3 +161,10 @@ void Board::printBoard(string boardString){
 Character* Board::getPiece(int row, int column) {
     return chessBoard[row][column];
 }
+
+void Board::setPiece(int row, int column, Character* insertChar) {
+    Character* temp = chessBoard[row][column];
+    chessBoard[row][column] = insertChar;
+    delete temp;
+}
+

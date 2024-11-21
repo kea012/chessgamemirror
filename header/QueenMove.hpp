@@ -5,9 +5,9 @@
 
 class QueenMove : public Move {
     private:
-    Board chessBoard;
+    Board* chessBoard;
     public:
-    QueenMove(std::string color, Board chessBoard);
+    QueenMove(std::string color, Board* chessBoard);
     std::vector<std::string> generatePossibleMoves(int x, int y) override; 
 };
 
