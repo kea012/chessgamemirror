@@ -102,8 +102,9 @@ TEST (QueenMove, MakeQueenMove) {
   A  B  C  D  E  F  G  H*/
 
 TEST(Board, getPiecce){
-    Board* chessBoard() = new Board();
+    Board* chessBoard = new Board();
     Rook testRook("w");
-    EXPECT_EQUAL(getPiece(7,0), testRook);
+    EXPECT_Eq(chessBoard->getPiece(7,0), testRook);
+    delete chessBoard;
 }
 
