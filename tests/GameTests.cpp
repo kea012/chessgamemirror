@@ -87,7 +87,7 @@ TEST(UpdateTurnTests, noUpdate) {
     Game tGame;
 
     EXPECT_EQ(tGame.getTurn(), noTurn);
-    EXPECT_TRUE(!tGame.updateTurn());
+    EXPECT_TRUE(!tGame.updateTurn(true));
     EXPECT_EQ(tGame.getTurn(), noTurn);
 }
 
