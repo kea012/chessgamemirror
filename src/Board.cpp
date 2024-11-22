@@ -168,3 +168,9 @@ void Board::setPiece(int row, int column, Character* insertChar) {
     delete temp;
 }
 
+void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+    Character* temp = chessBoard[initialRow][initialColumn];
+    chessBoard[newRow][newColumn] = temp;
+    chessBoard[initialRow][initialColumn] = nullptr;
+}
+

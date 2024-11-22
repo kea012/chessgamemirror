@@ -86,7 +86,9 @@ TEST (Board, PrintBoard) {
 
 
 TEST (QueenMove, MakeQueenMove) {
-    EXPECT_NO_THROW(QueenMove("w"));
+    Board* chessBoard = new Board();
+    EXPECT_NO_THROW(QueenMove("w", chessBoard));
+    delete chessBoard;
 }
 
 /*1|♜||♞||♝||♚||♛||♝||♞||♜|

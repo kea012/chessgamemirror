@@ -37,6 +37,7 @@ class Board {
 		void printBoard(std::string boardString);
 		Character* getPiece(int row, int column);
 		void setPiece(int row, int column, Character* insertChar);
+		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 };
 
 #endif
