@@ -23,6 +23,7 @@ Board::Board(){
     whitePieces.push_back(new Rook("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Queen("w"));
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
@@ -34,6 +35,7 @@ Board::Board(){
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Queen("b"));
+    blackPieces.push_back(new King("b"));
     blackPieces.push_back(new Bishop("b"));
     blackPieces.push_back(new Knight("b"));
     blackPieces.push_back(new Rook("b"));
@@ -65,7 +67,7 @@ Board::Board(){
 
     row = 2;
     column = 0;
-    for (unsigned int i = 0; i < 32; ++i){
+    for (unsigned int i = 0; i < 32; ++i){ 
         chessBoard[row][column] = nullptr;
         column++;
         if (column == 8){
@@ -77,6 +79,8 @@ Board::Board(){
 
 //destructor
 Board::~Board() {
+    whitePieces.clear();
+    blackPieces.clear();
     for (unsigned int row = 0; row < 8; ++row){
         for (unsigned int column = 0; column < 8; ++column){
             delete chessBoard[row][column];
@@ -135,21 +139,21 @@ bool Board::stalemate(){
 string Board::generateBoard(){
     string board = "";
     for (unsigned int row = 0; row < 8; ++row){
+         board += to_string(row+1);
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
             if (chessBoard[row][column] == nullptr){
-                board += "   ";
+                board += " ";
             }
             else{
                 board += chessBoard[row][column]->getSymbol();
             }
-            board += "|  ";
+            board += "|";
         }
         board += "\n";
-        board += to_string(row+1);
         board + "  ";
     }
-    board += "A   B   C   D   E   F   G   H";
+    board += "  A  B  C  D  E  F  G  H";
     return board;
 }
 
@@ -157,7 +161,19 @@ void Board::printBoard(string boardString){
     cout << boardString << endl;
 }
 
-
-Character* Board::getPiece(int row, int column){
+Character* Board::getPiece(int row, int column) {
     return chessBoard[row][column];
 }
+
+void Board::setPiece(int row, int column, Character* insertChar) {
+    Character* temp = chessBoard[row][column];
+    chessBoard[row][column] = insertChar;
+    delete temp;
+}
+
+void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+    Character* temp = chessBoard[initialRow][initialColumn];
+    chessBoard[newRow][newColumn] = temp;
+    chessBoard[initialRow][initialColumn] = nullptr;
+}
+

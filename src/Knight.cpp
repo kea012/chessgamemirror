@@ -11,9 +11,9 @@ Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {
     }
 }
 
-std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
+/*std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();
-  /*std::string move;
+  std::string move;
     if (x+1<8 && y+2<8) {
     move = std::to_string(x+1) + std::to_string(y+2);
     vec->push_back(move);
@@ -45,6 +45,6 @@ std::vector<std::string>* Knight::generatePossibleMoves(int x, int y) {
   if (x-1>=0 && y+2<8) {
     move = std::to_string(x-1) + std::to_string(y+2);
     vec->push_back(move);
-  }*/
+  }
   return vec;
-}
+}*/

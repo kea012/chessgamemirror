@@ -16,8 +16,9 @@
 class Character;
 
 class Board {
-	private:
+	protected:
 		Character* chessBoard[8][8] = {nullptr}; 
+	private:
 		std::vector<Character*> whitePieces;
 		std::vector<Character*> blackPieces;
 	public:
@@ -34,6 +35,9 @@ class Board {
 		void capturePiece();
 		bool stalemate();
 		void printBoard(std::string boardString);
+		Character* getPiece(int row, int column);
+		void setPiece(int row, int column, Character* insertChar);
+		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 };
 
 #endif
