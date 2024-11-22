@@ -103,6 +103,13 @@ Class Diagram Visual:
 
 ## Project Revision
 
+The Position class was introduced to help better follow the single-responsibility principle. The class helps to aggregate information regarding position, including the row and column in the chess board as separate integers and the position as a string containing a letter and number, which are very commonly used to describe a specific position in a chess board. The class is also able to convert between these different representations of position, helping to eliminate the need to do so in other classes.
+
+The GameState and GameAction classes and their subclasses were introduced to help better follow the single-responsibility rule, open-closed principle, and dependency inversion principle. Rather than having the Game class track all the different ways to parse user input, which regularly changes throughout an actual game, the Game class has a single GameState object, containing a subclass of GameState that implements the parseUserInput function according to the state the subclass represents. The parseUserInput function has a GameAction return type and will always return a specific GameAction subclass depending on the state itself and what input was read. Each GameAction subclass implements the performAction function, which performs actions on the Game object (which almost always includes updating its GameState variable) and returns a string to be output for the user.
+
+The Move class was introduced to better follow the single-responsibility rule and to avoid circular dependencies. Originally, the movement of pieces was to be in either the Board or Character class, but we realized that this would likely bloat the classes beyond their initial uses. We also found that because the movement of pieces required the interaction between the two classes, it was very possible that putting the functionality in either of the classes may have lead to circular dependencies, a problem that would have required a lot of extra work to fix. As a result, we determined that a new Move class would fulfill our needs in supplying the information as to how each piece moves and generating their possible moves based on a piece’s location relative to others. This class follows the Single-Responsibility Principle by having the single purpose of determining where a selected piece may move.
+
+
 ## Class Diagram With Solid Principles
 
 ![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/3acdf2b6-2fba-4d17-ab9e-062b3677cfd4)
