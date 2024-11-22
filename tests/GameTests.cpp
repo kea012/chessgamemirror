@@ -102,14 +102,14 @@ TEST(StateToActionTests, MenuScreenToCreateGame) {
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr);
 }
 
 TEST(StateToActionTests, MenuScreenToEndProgram) {
@@ -121,14 +121,14 @@ TEST(StateToActionTests, MenuScreenToEndProgram) {
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr);
 }
 
 TEST(StateToActionTests, MenuScreenToInvalidInput) {
@@ -140,14 +140,14 @@ TEST(StateToActionTests, MenuScreenToInvalidInput) {
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new MenuScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr);
 }
 
 TEST(StateToActionTests, EndScreenToCreateGame) {
@@ -159,14 +159,14 @@ TEST(StateToActionTests, EndScreenToCreateGame) {
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr);
 }
 
 TEST(StateToActionTests, EndScreenToReturnToMenu) {
@@ -178,14 +178,14 @@ TEST(StateToActionTests, EndScreenToReturnToMenu) {
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr);
 }
 
 TEST(StateToActionTests, EndScreenToInvalidInput) {
@@ -197,14 +197,14 @@ TEST(StateToActionTests, EndScreenToInvalidInput) {
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new EndScreen());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, TurnStartToSelectPiece) {
@@ -216,14 +216,14 @@ TEST(StateToActionTests, TurnStartToSelectPiece) {
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, TurnStartToSelectPiece) {
@@ -235,14 +235,14 @@ TEST(StateToActionTests, TurnStartToSelectPiece) {
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 // Will need to update once check for winner is implemented
@@ -255,14 +255,14 @@ TEST(StateToActionTests, TurnStartToRetire) {
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, TurnStartToInvalidInput) {
@@ -274,14 +274,14 @@ TEST(StateToActionTests, TurnStartToInvalidInput) {
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new TurnStart());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 // Will need to update tests once CheckPiece is implemented with Board checks
@@ -294,14 +294,14 @@ TEST(StateToActionTests, SelectingPieceToCheckPiece) {
     tGame.updateGameState(new SelectingPiece());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new SelectingPiece());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, SelectingPieceToInvalidInput) {
@@ -313,14 +313,14 @@ TEST(StateToActionTests, SelectingPieceToInvalidInput) {
     tGame.updateGameState(new SelectingPiece());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new SelectingPiece());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, SelectingMoveToSelectPiece) {
@@ -332,14 +332,14 @@ TEST(StateToActionTests, SelectingMoveToSelectPiece) {
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 // Will need to update tests once CheckMove is implemented with Board checks
@@ -352,14 +352,14 @@ TEST(StateToActionTests, SelectingMoveToCheckMove) {
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 TEST(StateToActionTests, SelectingMoveToInvalidInput) {
@@ -371,14 +371,14 @@ TEST(StateToActionTests, SelectingMoveToInvalidInput) {
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new SelectingMove());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
 
 /* Relies heavily on Board implementation, will need to have a valid piece and valid move selected
@@ -396,12 +396,12 @@ TEST(StateToActionTests, ConfirmingMoveToSelectMove) {
     tGame.updateGameState(new ConfirmingMove());
     tGame.inputToAction(tInput1);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr);
+    std::string tStr1 = tGame.getOutputString();
+    EXPECT_EQ(tStr1, expectedStr);
 
     tGame.updateGameState(new ConfirmingMove());
     tGame.inputToAction(tInput2);
     tGame.performCurrAction();
-    std::string tStr = tGame.getOutputString();
-    EXPECT_EQ(tStr, expectedStr); 
+    std::string tStr2 = tGame.getOutputString();
+    EXPECT_EQ(tStr2, expectedStr); 
 }
