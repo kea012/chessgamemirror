@@ -31,6 +31,7 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
     col = newCol;
     posStr[0] = row + 'A';
     posStr[1] = col + '1';
+    return true;
 }
 
 bool Position::setPositionFromString(std::string newPosStr) {

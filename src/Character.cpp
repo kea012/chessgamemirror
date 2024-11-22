@@ -23,5 +23,5 @@ std::string Character::getColor() const {
 
 std::string Character::getSymbol() const {
   return this->symbol;
-}
+} 
 

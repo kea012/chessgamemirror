@@ -11,7 +11,7 @@ Bishop::Bishop(string characterColor) : Character(BISHOP, characterColor) {
     }
 }
 
-std::vector<std::string>* Bishop::generatePossibleMoves(int x, int y) {
+/*std::vector<std::string>* Bishop::generatePossibleMoves(int x, int y) {
   std::vector<std::string>* vec = new std::vector<std::string>();
   /*std::string move;
   for (int i=1; i<8; i++) {
@@ -31,6 +31,6 @@ std::vector<std::string>* Bishop::generatePossibleMoves(int x, int y) {
       move = std::to_string(x-i) + std::to_string(y-i);
       vec->push_back(move);
     }
-  }*/
+  }
   return vec;
-}
+}*/
