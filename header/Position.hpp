@@ -14,7 +14,7 @@ public:
     Position(std::string newPositionString);
     void resetPosition();
     bool setPositionFromInts(int newRow, int newCol);
-    bool setPositionFromString(std::string newPosStr);
+    bool setPositionFromString(std::string newPositionString);
     bool isEmptyPosition();
     int getRow();
     int getCol();
