@@ -105,12 +105,14 @@ std::string Retire::performAction(Game* activeGame) {
     activeGame->updateGameState(new EndScreen);
     std::string newOutputString;
     if (activeGame->getTurn() == whiteTurn) {
-        newOutputString += "White retired, so black";
+        newOutputString = "White has retired, so black has won the game";
     }
     else if (activeGame->getTurn() == blackTurn) {
-        newOutputString += "Black has retired, so white";
+        newOutputString = "Black has retired, so white has won the game";
     }
-    newOutputString += " has won the game";
+    else {
+        newOutputString = "ERROR: No current turn set";
+    }
     activeGame->updateTurn(true);
     newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
     return newOutputString;
