@@ -69,6 +69,13 @@ bool Position::setPositionFromString(std::string newPosStr) {
     return true;
 }
 
+bool Position::isEmptyPosition() {
+    if (row == -1 || col == -1 || posStr == "--") {
+        return true;
+    }
+    return false;
+}
+
 int Position::getRow() {
     return row;
 }
