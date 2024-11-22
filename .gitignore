@@ -6,4 +6,3 @@ cmake_install.cmake
 lib/
 pawntest
 test
-tests/googletest/
