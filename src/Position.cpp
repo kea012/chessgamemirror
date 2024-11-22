@@ -10,8 +10,8 @@ Position::Position(int newRow, int newCol) {
     }
 }
 
-Position::Position(std::string newPosStr) {
-    if (!setPositionFromString(newPosStr)) {
+Position::Position(std::string newPositionString) {
+    if (!setPositionFromString(newPositionString)) {
         resetPosition();
     }
 }
@@ -19,7 +19,7 @@ Position::Position(std::string newPosStr) {
 void Position::resetPosition() {
     row = -1;
     col = -1;
-    posStr = "--";
+    positionString = "--";
 }
 
 bool Position::setPositionFromInts(int newRow, int newCol) {
@@ -29,15 +29,15 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
         return false;
     row = newRow;
     col = newCol;
-    posStr[0] = row + 'A';
-    posStr[1] = col + '1';
+    positionString[0] = row + 'A';
+    positionString[1] = col + '1';
     return true;
 }
 
-bool Position::setPositionFromString(std::string newPosStr) {
-    if (newPosStr.length() != 2)
+bool Position::setPositionFromString(std::string newPositionString) {
+    if (newPositionString.length() != 2)
         return false;
-    switch(::toupper(newPosStr.front())) {
+    switch(::toupper(newPositionString.front())) {
         case('A'):
         case('B'):
         case('C'):
@@ -50,7 +50,7 @@ bool Position::setPositionFromString(std::string newPosStr) {
         default:
             return false;
     }
-    switch(newPosStr.back()) {
+    switch(newPositionString.back()) {
         case('1'):
         case('2'):
         case('3'):
@@ -63,14 +63,14 @@ bool Position::setPositionFromString(std::string newPosStr) {
         default:
             return false;
     }
-    posStr = newPosStr;
-    posStr[0] = ::toupper(posStr.front());
+    positionString = newPositionString;
+    positionString[0] = ::toupper(positionString.front());
 
     return true;
 }
 
 bool Position::isEmptyPosition() {
-    if (row == -1 || col == -1 || posStr == "--") {
+    if (row == -1 || col == -1 || positionString == "--") {
         return true;
     }
     return false;
@@ -85,5 +85,5 @@ int Position::getCol() {
 }
 
 std::string Position::getPositionString() {
-    return posStr;
+    return positionString;
 }
