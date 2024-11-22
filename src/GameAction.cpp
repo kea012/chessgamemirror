@@ -103,10 +103,17 @@ std::string MovePiece::performAction(Game* activeGame) {
 
 std::string Retire::performAction(Game* activeGame) {
     activeGame->updateGameState(new EndScreen);
-    std::string str = "Player who didn't retire won the game"; // will check current player's turn
+    std::string newOutputString;
+    if (activeGame->getTurn() == whiteTurn) {
+        newOutputString += "White retired, so black has ";
+    }
+    else if (activeGame->getTurn() == blackTurn) {
+        newOutputString += "Black has retired, so white has ";
+    }
+    newOutputString += "won the game";
     activeGame->updateTurn(true);
-    str += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
-    return str;
+    newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
+    return newOutputString;
 }
 
 // ReturnToMenu functions
