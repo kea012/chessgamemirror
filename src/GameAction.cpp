@@ -9,6 +9,8 @@ std::string InvalidInput::performAction(Game* activeGame) {
 // CreateGame functions
 
 std::string CreateGame::performAction(Game* activeGame) {
+    // Will likely eventually write a specific function to check that certain expected preconditions are met
+    // (e.g. gameBoard object exists, currTurn is white or black) and reset Game members if not met
     /*
     if (!activeGame->createNewBoard()) {
         activeGame->updateGameState(new MenuScreen);
@@ -18,7 +20,10 @@ std::string CreateGame::performAction(Game* activeGame) {
     */
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
-    return "Starting new game...\nWhite player's turn\nEnter 'M' to make a move or 'Q' to quit game";
+    std::string outputString = "Starting new game...\n";
+    //outputString += activeGame->getGameBoard()->generateBoard() + "\n";
+    outputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
+    return outputString;
 }
 
 // EndProgram functions
@@ -95,15 +100,16 @@ std::string MovePiece::performAction(Game* activeGame) {
     std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
     activeGame->resetPositions();
     std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos;
+    //newOutputString += activeGame->getGameBoard()->generateBoard();
     if (false) { // Check for any game ending conditions
-        activeGame->updateGameState(new EndScreen);
-        if (false) { // Someone won
+        if (false) { // Checkmate
             newOutputString += "\nSomeone won the game";
         }
-        else { // Draw
+        else if (false) { // Draw
             newOutputString += "\nThe game ended in a draw";
         }
-        activeGame->updateTurn(true);
+        activeGame->updateGameState(new EndScreen);
+        activeGame->resetWholeGame();
         newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
         return newOutputString;
     }
@@ -130,7 +136,7 @@ std::string Retire::performAction(Game* activeGame) {
         newOutputString = "Black has retired, so white has won the game";
     }
     activeGame->updateGameState(new EndScreen);
-    activeGame->updateTurn(true);
+    activeGame->resetWholeGame();
     newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
     return newOutputString;
 }
