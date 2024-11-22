@@ -226,25 +226,6 @@ TEST(StateToActionTests, TurnStartToSelectPiece) {
     EXPECT_EQ(tStr2, expectedStr); 
 }
 
-TEST(StateToActionTests, TurnStartToSelectPiece) {
-    Game tGame;
-    std::string expectedStr = "Enter a position to select a piece";
-    std::string tInput1 = "M";
-    std::string tInput2 = "m";
-
-    tGame.updateGameState(new TurnStart());
-    tGame.inputToAction(tInput1);
-    tGame.performCurrAction();
-    std::string tStr1 = tGame.getOutputString();
-    EXPECT_EQ(tStr1, expectedStr);
-
-    tGame.updateGameState(new TurnStart());
-    tGame.inputToAction(tInput2);
-    tGame.performCurrAction();
-    std::string tStr2 = tGame.getOutputString();
-    EXPECT_EQ(tStr2, expectedStr); 
-}
-
 // Will need to update once check for winner is implemented
 TEST(StateToActionTests, TurnStartToRetire) {
     Game tGame;
