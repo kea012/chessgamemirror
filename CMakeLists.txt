@@ -1,6 +1,9 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+project(ChessGame)
 
 ADD_SUBDIRECTORY(tests/googletest)
+
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 ADD_EXECUTABLE(test
     src/Position.cpp
