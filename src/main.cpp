@@ -3,6 +3,7 @@
 #include "../header/Board.hpp"
 #include "../header/Move.hpp"
 #include "../header/QueenMove.hpp"
+#include "../header/RookMove.hpp"
 
 using namespace std;
 
@@ -43,6 +44,36 @@ int main() {
     if (testBoard->getPiece(2, 4)->getType() == 5){
         QueenMove newMove = QueenMove(testBoard->getPiece(2, 4)->getColor(), testBoard);
         vector<string> moves = newMove.generatePossibleMoves(2, 4);
+        for (int i = 0; i < moves.size(); ++i) {
+            cout << moves.at(i) << endl;
+        }
+    }
+
+//rook
+    if (testBoard->getPiece(1, 0)->getType() == 0) {
+        testBoard->setPiece(1, 0, nullptr);
+    }
+
+    printBoard = testBoard->generateBoard();
+    testBoard->printBoard(printBoard);
+
+    // try to get all the up moves for queen
+    if (testBoard->getPiece(0, 0)->getType() == 4){
+        RookMove newMove = RookMove(testBoard->getPiece(0, 0)->getColor(), testBoard);
+        vector<string> moves = newMove.generatePossibleMoves(0, 0);
+        for (int i = 0; i < moves.size(); ++i) {
+            cout << moves.at(i) << endl;
+        }
+    }
+
+    testBoard->movePiece(0, 0, 2, 0);
+
+    printBoard = testBoard->generateBoard();
+    testBoard->printBoard(printBoard);
+
+    if (testBoard->getPiece(2, 0)->getType() == 4){
+        RookMove newMove = RookMove(testBoard->getPiece(2, 0)->getColor(), testBoard);
+        vector<string> moves = newMove.generatePossibleMoves(2, 0);
         for (int i = 0; i < moves.size(); ++i) {
             cout << moves.at(i) << endl;
         }
