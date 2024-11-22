@@ -4,6 +4,7 @@
 #include "../header/Move.hpp"
 #include "../header/QueenMove.hpp"
 #include "../header/RookMove.hpp"
+#include "../header/BishopMove.hpp"
 
 using namespace std;
 
@@ -57,7 +58,7 @@ int main() {
     printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
 
-    // try to get all the up moves for queen
+    // try to get all the up moves for rook
     if (testBoard->getPiece(0, 0)->getType() == 4){
         RookMove newMove = RookMove(testBoard->getPiece(0, 0)->getColor(), testBoard);
         vector<string> moves = newMove.generatePossibleMoves(0, 0);
@@ -74,6 +75,29 @@ int main() {
     if (testBoard->getPiece(2, 0)->getType() == 4){
         RookMove newMove = RookMove(testBoard->getPiece(2, 0)->getColor(), testBoard);
         vector<string> moves = newMove.generatePossibleMoves(2, 0);
+        for (int i = 0; i < moves.size(); ++i) {
+            cout << moves.at(i) << endl;
+        }
+    }
+
+//bishop
+    // try to get all the up moves for bishop
+    if (testBoard->getPiece(0, 5)->getType() == 3){
+        BishopMove newMove = BishopMove(testBoard->getPiece(0, 5)->getColor(), testBoard);
+        vector<string> moves = newMove.generatePossibleMoves(0, 5);
+        for (int i = 0; i < moves.size(); ++i) {
+            cout << moves.at(i) << endl;
+        }
+    }
+
+    testBoard->movePiece(0, 5, 5, 0);
+
+    printBoard = testBoard->generateBoard();
+    testBoard->printBoard(printBoard);
+
+    if (testBoard->getPiece(5, 0)->getType() == 3){
+        BishopMove newMove = BishopMove(testBoard->getPiece(5, 0)->getColor(), testBoard);
+        vector<string> moves = newMove.generatePossibleMoves(5, 0);
         for (int i = 0; i < moves.size(); ++i) {
             cout << moves.at(i) << endl;
         }

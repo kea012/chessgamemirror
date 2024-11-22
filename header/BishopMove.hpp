@@ -1,14 +1,14 @@
-#ifndef ROOKMOVE_HPP
-#define ROOKMOVE_HPP
+#ifndef BISHOPMOVE_HPP
+#define BISHOPMOVE_HPP
 
 #include "../header/Move.hpp"
 
-class RookMove : public Move {
+class BishopMove : public Move {
     private:
     Board* chessBoard;
     public:
-    RookMove(std::string color, Board* chessBoard);
+    BishopMove(std::string color, Board* chessBoard);
     std::vector<std::string> generatePossibleMoves(int x, int y) override; 
 };
 
-#endif // ROOKMOVE_HPP
+#endif // BISHOPMOVE_HPP
