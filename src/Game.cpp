@@ -91,6 +91,15 @@ void Game::resetPositions() {
     movePos.resetPosition();
 }
 
+void Game::resetWholeGame() {
+    resetPositions();
+    updateTurn(true);
+    delete gameBoard;
+    gameBoard = nullptr;
+    delete currAction;
+    currAction = nullptr;
+}
+
 bool Game::inputToAction(std::string userInput) {
     if (!currGameState)
         return false;

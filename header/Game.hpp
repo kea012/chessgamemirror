@@ -46,6 +46,7 @@ public:
     bool updatePiecePosition(std::string newPosStr);
     bool updateMovePosition(std::string newPosStr);
     void resetPositions();
+    void resetWholeGame();
     bool inputToAction(std::string userInput);
     bool performCurrAction();
     bool moveSelectedPiece();
