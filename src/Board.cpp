@@ -95,12 +95,10 @@ bool Board::isSpaceOccupied(std::string position) {
 
 bool Board::isSpaceOccupied(Position pos) {
     // Complete function will check if there is a Character at pos
-    /*
     if (chessBoard[pos.getRow()][pos.getCol()] ==  nullptr){
         return false;
     }
     return true;
-    */
 }
 
 bool hasMoves(Position piecePos) {
@@ -159,8 +157,7 @@ void Board::printBoard(string boardString){
     cout << boardString << endl;
 }
 
-/*
+
 Character* Board::getPiece(int row, int column){
     return chessBoard[row][column];
 }
-*/
