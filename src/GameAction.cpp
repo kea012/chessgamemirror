@@ -105,12 +105,12 @@ std::string Retire::performAction(Game* activeGame) {
     activeGame->updateGameState(new EndScreen);
     std::string newOutputString;
     if (activeGame->getTurn() == whiteTurn) {
-        newOutputString += "White retired, so black has ";
+        newOutputString += "White retired, so black";
     }
     else if (activeGame->getTurn() == blackTurn) {
-        newOutputString += "Black has retired, so white has ";
+        newOutputString += "Black has retired, so white";
     }
-    newOutputString += "won the game";
+    newOutputString += " has won the game";
     activeGame->updateTurn(true);
     newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
     return newOutputString;
