@@ -74,29 +74,29 @@ std::string MovePiece::performAction(Game* activeGame) {
     std::string initialPos = activeGame->getSelectedPiecePos().getPositionString();
     std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
     activeGame->resetPositions();
-    std::string str = "Moved piece from " + initialPos + " to " + finalPos;
+    std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos;
     if (false) { // Check for any game ending conditions
         activeGame->updateGameState(new EndScreen);
         if (false) { // Someone won
-            str += "\nSomeone won the game";
+            newOutputString += "\nSomeone won the game";
         }
         else { // Draw
-            str += "\nThe game ended in a draw";
+            newOutputString += "\nThe game ended in a draw";
         }
         activeGame->updateTurn(true);
-        str += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
-        return str;
+        newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
+        return newOutputString;
     }
     activeGame->updateTurn();
     activeGame->updateGameState(new TurnStart);
     if (activeGame->getTurn() == whiteTurn) {
-        str += "\nWhite player's turn";
+        newOutputString += "\nWhite player's turn";
     }
     else if (activeGame->getTurn() == blackTurn) {
-        str += "\nBlack player's turn";
+        newOutputString += "\nBlack player's turn";
     }
-    str += "\nEnter 'M' to make a move or 'Q' to quit";
-    return str;
+    newOutputString += "\nEnter 'M' to make a move or 'Q' to quit";
+    return newOutputString;
 }
 
 // Retire functions
