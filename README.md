@@ -101,6 +101,13 @@ Class Diagram Visual:
 
 <img width="690" alt="Screenshot 2024-11-08 at 2 20 06 PM" src="https://github.com/user-attachments/assets/cc6b4dc8-1972-4775-a55c-93f19a1a6b9e">
 
+## Project Revision
+
+## Class Diagram With Solid Principles
+
+![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/3acdf2b6-2fba-4d17-ab9e-062b3677cfd4)
+
+
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
  
