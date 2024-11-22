@@ -3,7 +3,7 @@
 Game::Game() {
     currGameState = new MenuScreen();
     currTurn = noTurn;
-    outputStr = "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
+    outputString = "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
 }
 
 Game::~Game() {
@@ -32,7 +32,7 @@ Position Game::getSelectedMovePos() {
 }
 
 std::string Game::getOutputString() {
-    return outputStr;
+    return outputString;
 }
 
 GameState* Game::getGameState() {
@@ -89,7 +89,7 @@ bool Game::inputToAction(std::string userInput) {
 bool Game::performCurrAction() {
     if (!currAction)
         return false;
-    outputStr = currAction->performAction(this);
+    outputString = currAction->performAction(this);
     return true;
 }
 

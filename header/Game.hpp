@@ -29,7 +29,7 @@ private:
     GameState* currGameState = nullptr;
     GameAction* currAction = nullptr;
     turn currTurn;
-    std::string outputStr;
+    std::string outputString;
 public:
     Game();
     ~Game();
