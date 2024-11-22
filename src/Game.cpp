@@ -3,7 +3,7 @@
 Game::Game() {
     currGameState = new MenuScreen();
     currTurn = noTurn;
-    outputStr = "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
+    outputString = "WELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
 }
 
 Game::~Game() {
@@ -32,11 +32,25 @@ Position Game::getSelectedMovePos() {
 }
 
 std::string Game::getOutputString() {
-    return outputStr;
+    return outputString;
 }
 
 GameState* Game::getGameState() {
     return currGameState;
+}
+
+bool Game::createNewBoard() {
+    if (gameBoard != nullptr)
+        return false;
+    gameBoard = new Board();
+    return true;
+}
+
+bool Game::setBoard(Board* newGameBoard) {
+    if (gameBoard != nullptr)
+        return false;
+    gameBoard = newGameBoard;
+    return true;
 }
 
 void Game::updateGameState(GameState* newGameState) {
@@ -79,6 +93,15 @@ void Game::resetPositions() {
     movePos.resetPosition();
 }
 
+void Game::resetWholeGame() {
+    resetPositions();
+    updateTurn(true);
+    delete gameBoard;
+    gameBoard = nullptr;
+    delete currAction;
+    currAction = nullptr;
+}
+
 bool Game::inputToAction(std::string userInput) {
     if (!currGameState)
         return false;
@@ -89,10 +112,15 @@ bool Game::inputToAction(std::string userInput) {
 bool Game::performCurrAction() {
     if (!currAction)
         return false;
-    outputStr = currAction->performAction(this);
+    outputString = currAction->performAction(this);
     return true;
 }
 
 bool Game::moveSelectedPiece() {
+    if (piecePos.isEmptyPosition() || movePos.isEmptyPosition()) {
+        return false;
+    }
+    // Will check that gameBoard actually contains piece at piecePos and that
+    // movePos is a legal move for the piece
     return true;
 }
