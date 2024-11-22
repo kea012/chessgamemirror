@@ -91,6 +91,8 @@ TEST(UpdateTurnTests, noUpdate) {
     EXPECT_EQ(tGame.getTurn(), noTurn);
 }
 
+// Will try to update StateToActionTests to check that performCurrAction results in expected GameState
+
 TEST(StateToActionTests, MenuScreenToCreateGame) {
     Game tGame;
     std::string expectedStr = "Starting new game...\nWhite player's turn\nEnter 'M' to make a move or 'Q' to quit game";
@@ -243,7 +245,7 @@ TEST(StateToActionTests, TurnStartToSelectPiece) {
     EXPECT_EQ(tStr, expectedStr); 
 }
 
-// UPDATE ONCE WINNER CHECK IS IMPLEMENTED
+// Will need to update once check for winner is implemented
 TEST(StateToActionTests, TurnStartToRetire) {
     Game tGame;
     std::string expectedStr = "Player who didn't retire won the game\nEnter 'S' to start a new game or 'Q' to return to the menu";
@@ -282,7 +284,7 @@ TEST(StateToActionTests, TurnStartToInvalidInput) {
     EXPECT_EQ(tStr, expectedStr); 
 }
 
-// WILL NEED TO CREATE DIFFERENT TESTS FOR DIFFERENT POSSIBLE 'CheckPiece' OUTPUTS
+// Will need to update tests once CheckPiece is implemented with Board checks
 TEST(StateToActionTests, SelectingPieceToCheckPiece) {
     Game tGame;
     std::string expectedStr = "Enter a position to move selected piece to or 'R' to select a different piece";
@@ -340,7 +342,7 @@ TEST(StateToActionTests, SelectingMoveToSelectPiece) {
     EXPECT_EQ(tStr, expectedStr); 
 }
 
-// WILL NEED TO CREATE DIFFERENT TESTS FOR DIFFERENT POSSIBLE 'CheckMove' OUTPUTS
+// Will need to update tests once CheckMove is implemented with Board checks
 TEST(StateToActionTests, SelectingMoveToCheckMove) {
     Game tGame;
     std::string expectedStr = "Enter 'C' to confirm movement or 'R' to select a different position";
@@ -379,7 +381,7 @@ TEST(StateToActionTests, SelectingMoveToInvalidInput) {
     EXPECT_EQ(tStr, expectedStr); 
 }
 
-/* Relies on Board implementation, will need to have a valid piece and valid move selected
+/* Relies heavily on Board implementation, will need to have a valid piece and valid move selected
 TEST(StateToActionTests, ConfirmingMoveToMovePiece) {
 
 }
