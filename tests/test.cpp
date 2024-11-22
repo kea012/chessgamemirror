@@ -101,7 +101,7 @@ TEST (QueenMove, MakeQueenMove) {
 8|♖||♘||♗||♕||♔||♗||♘||♖|
   A  B  C  D  E  F  G  H*/
 
-TEST(Board, getPiecce)
+TEST(Board, getPiecce){
     Board* chessBoard() = new Board();
     Rook testRook("w");
     EXPECT_EQUAL(getPiece(7,0), testRook);
