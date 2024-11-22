@@ -103,6 +103,8 @@ Class Diagram Visual:
 
 ## Project Revision
 
+After meeting with the TA, the only thing that we needed to revise was the UML diagram. Below we not only fixed their suggestions, but we also added more to our diagram/project to account for the SOLID principle methodologies that we learned.
+
 The Position class was introduced to help better follow the single-responsibility principle. The class helps to aggregate information regarding position, including the row and column in the chess board as separate integers and the position as a string containing a letter and number, which are very commonly used to describe a specific position in a chess board. The class is also able to convert between these different representations of position, helping to eliminate the need to do so in other classes.
 
 The GameState and GameAction classes and their subclasses were introduced to help better follow the single-responsibility rule, open-closed principle, and dependency inversion principle. Rather than having the Game class track all the different ways to parse user input, which regularly changes throughout an actual game, the Game class has a single GameState object, containing a subclass of GameState that implements the parseUserInput function according to the state the subclass represents. The parseUserInput function has a GameAction return type and will always return a specific GameAction subclass depending on the state itself and what input was read. Each GameAction subclass implements the performAction function, which performs actions on the Game object (which almost always includes updating its GameState variable) and returns a string to be output for the user.
@@ -113,29 +115,6 @@ The Move class was introduced to better follow the single-responsibility rule an
 ## Class Diagram With Solid Principles
 
 ![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/3acdf2b6-2fba-4d17-ab9e-062b3677cfd4)
-
-
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
->  * Each team member should also submit the Individual Contributions Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
-
  
  > ## Final deliverable
  > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
