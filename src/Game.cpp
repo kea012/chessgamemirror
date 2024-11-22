@@ -43,12 +43,14 @@ bool Game::createNewBoard() {
     if (gameBoard != nullptr)
         return false;
     gameBoard = new Board();
+    return true;
 }
 
 bool Game::setBoard(Board* newGameBoard) {
     if (gameBoard != nullptr)
         return false;
     gameBoard = newGameBoard;
+    return true;
 }
 
 void Game::updateGameState(GameState* newGameState) {
@@ -115,5 +117,10 @@ bool Game::performCurrAction() {
 }
 
 bool Game::moveSelectedPiece() {
+    if (piecePos.isEmptyPosition() || movePos.isEmptyPosition()) {
+        return false;
+    }
+    // Will check that gameBoard actually contains piece at piecePos and that
+    // movePos is a legal move for the piece
     return true;
 }
