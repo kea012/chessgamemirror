@@ -9,6 +9,13 @@ std::string InvalidInput::performAction(Game* activeGame) {
 // CreateGame functions
 
 std::string CreateGame::performAction(Game* activeGame) {
+    /*
+    if (!activeGame->createNewBoard()) {
+        activeGame->updateGameState(new MenuScreen);
+        activeGame->resetWholeGame();
+        return "CRITICAL ERROR: Reseting...\nWELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
+    }
+    */
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
     return "Starting new game...\nWhite player's turn\nEnter 'M' to make a move or 'Q' to quit game";
@@ -115,7 +122,6 @@ std::string MovePiece::performAction(Game* activeGame) {
 // Retire functions
 
 std::string Retire::performAction(Game* activeGame) {
-    activeGame->updateGameState(new EndScreen);
     std::string newOutputString;
     if (activeGame->getTurn() == whiteTurn) {
         newOutputString = "White has retired, so black has won the game";
@@ -123,9 +129,7 @@ std::string Retire::performAction(Game* activeGame) {
     else if (activeGame->getTurn() == blackTurn) {
         newOutputString = "Black has retired, so white has won the game";
     }
-    else {
-        newOutputString = "ERROR: No current turn set";
-    }
+    activeGame->updateGameState(new EndScreen);
     activeGame->updateTurn(true);
     newOutputString += "\nEnter 'S' to start a new game or 'Q' to return to the menu";
     return newOutputString;
