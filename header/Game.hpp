@@ -39,6 +39,8 @@ public:
     Position getSelectedMovePos();
     std::string getOutputString();
     GameState* getGameState();
+    bool createNewBoard();
+    bool setBoard(Board* newGameBoard);
     void updateGameState(GameState* newGameState);
     bool updateTurn(bool gameEnding = false);
     bool updatePiecePosition(std::string newPosStr);

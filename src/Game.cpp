@@ -39,6 +39,18 @@ GameState* Game::getGameState() {
     return currGameState;
 }
 
+bool Game::createNewBoard() {
+    if (gameBoard != nullptr)
+        return false;
+    gameBoard = new Board();
+}
+
+bool Game::setBoard(Board* newGameBoard) {
+    if (gameBoard != nullptr)
+        return false;
+    gameBoard = newGameBoard;
+}
+
 void Game::updateGameState(GameState* newGameState) {
     delete currGameState;
     currGameState = newGameState;
