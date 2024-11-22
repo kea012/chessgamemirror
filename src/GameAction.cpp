@@ -20,10 +20,10 @@ std::string CreateGame::performAction(Game* activeGame) {
     */
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
-    std::string outputString = "Starting new game...\n";
+    std::string newOutputString = "Starting new game...\n";
     //outputString += activeGame->getGameBoard()->generateBoard() + "\n";
-    outputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
-    return outputString;
+    newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
+    return newOutputString;
 }
 
 // EndProgram functions
@@ -100,7 +100,7 @@ std::string MovePiece::performAction(Game* activeGame) {
     std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
     activeGame->resetPositions();
     std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos;
-    //newOutputString += activeGame->getGameBoard()->generateBoard();
+    //newOutputString += "\n" + activeGame->getGameBoard()->generateBoard();
     if (false) { // Check for any game ending conditions
         if (false) { // Checkmate
             newOutputString += "\nSomeone won the game";
