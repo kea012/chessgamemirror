@@ -1,4 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+project(ChessGame)
 
 ADD_SUBDIRECTORY(tests/googletest)
 
