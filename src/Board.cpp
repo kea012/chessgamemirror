@@ -115,9 +115,12 @@ bool isValidMovement(Position piecePos, Position movePos) {
     return false;
 }
 
-string checkPieceColor(Position piecePos) {
-    // Complete function will return color of the Character at piecePos
-    return "black";
+string Board::checkPieceColor(Position piecePos) {
+    Character* piece = chessBoard[piecePos.getRow()][piecePos.getCol()];
+    if (piece == nullptr) {
+        return "";
+    }
+    return piece->getColor();
 }
 
 Character* Board::addPiece(){
@@ -151,7 +154,6 @@ string Board::generateBoard(){
             board += "|";
         }
         board += "\n";
-        board + "  ";
     }
     board += "  A  B  C  D  E  F  G  H";
     return board;
