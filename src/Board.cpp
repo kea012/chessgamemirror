@@ -139,7 +139,7 @@ bool Board::stalemate(){
 string Board::generateBoard(){
     string board = "";
     for (unsigned int row = 0; row < 8; ++row){
-         board += to_string(row+1);
+         board += to_string(8-row);
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
             if (chessBoard[row][column] == nullptr){
