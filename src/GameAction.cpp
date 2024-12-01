@@ -99,8 +99,8 @@ std::string MovePiece::performAction(Game* activeGame) {
     std::string initialPos = activeGame->getSelectedPiecePos().getPositionString();
     std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
     activeGame->resetPositions();
-    std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos;
-    //newOutputString += "\n" + activeGame->getGameBoard()->generateBoard();
+    std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos + "\n";
+    newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     if (false) { // Check for any game ending conditions
         if (false) { // Checkmate
             newOutputString += "\nSomeone won the game";

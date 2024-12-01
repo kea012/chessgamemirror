@@ -120,7 +120,15 @@ bool Game::moveSelectedPiece() {
     if (piecePos.isEmptyPosition() || movePos.isEmptyPosition()) {
         return false;
     }
+
+    Character* piece = gameBoard->getPiece(piecePos.getRow(), piecePos.getCol());
+    //probably can be updated to use other functions we implemented
+    if (!piece || (currTurn == whiteTurn && piece->getColor() != "w") ||
+                 (currTurn == blackTurn && piece->getColor() != "b")) {
+        return false;
+    }
     // Will check that gameBoard actually contains piece at piecePos and that
     // movePos is a legal move for the piece
+    gameBoard->movePiece(piecePos.getRow(), piecePos.getCol(), movePos.getRow(), movePos.getCol());
     return true;
 }
