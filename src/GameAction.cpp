@@ -11,17 +11,17 @@ std::string InvalidInput::performAction(Game* activeGame) {
 std::string CreateGame::performAction(Game* activeGame) {
     // Will likely eventually write a specific function to check that certain expected preconditions are met
     // (e.g. gameBoard object exists, currTurn is white or black) and reset Game members if not met
-    /*
+    
     if (!activeGame->createNewBoard()) {
         activeGame->updateGameState(new MenuScreen);
         activeGame->resetWholeGame();
         return "CRITICAL ERROR: Reseting...\nWELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
     }
-    */
+    
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
     std::string newOutputString = "Starting new game...\n";
-    //outputString += activeGame->getGameBoard()->generateBoard() + "\n";
+    newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
     return newOutputString;
 }
