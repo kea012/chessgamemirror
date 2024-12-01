@@ -47,7 +47,7 @@ CheckPiece::CheckPiece(Position newPiecePos) {
 }
 
 std::string CheckPiece::performAction(Game* activeGame) {
-    /*
+    
     Character* tempChar = activeGame->getGameBoard()->getPiece(piecePos.getRow(), piecePos.getCol());
     turn currTurn = activeGame->getTurn();
     // Case where selected position does not contain one of the current player's pieces
@@ -57,13 +57,15 @@ std::string CheckPiece::performAction(Game* activeGame) {
         tempChar = nullptr;
         return "Selected position does not contain one of your pieces\nEnter a position to select a piece";
     }
+    /*
     if (false) { // Case where selected position contains current player's piece but piece has no legal moves
         activeGame->updateGameState(new SelectingPiece);
         tempChar = nullptr;
         return "Selected piece has no legal moves\nEnter a position to select a piece";
     }
-    tempChar = nullptr;
     */
+    tempChar = nullptr;
+    
     activeGame->updatePiecePosition(piecePos.getPositionString());
     activeGame->updateGameState(new SelectingMove);
     return "Enter a position to move selected piece to or 'R' to select a different piece";
