@@ -171,6 +171,41 @@ void Board::setPiece(int row, int column, Character* insertChar) {
     delete temp;
 }
 
+void Board::pawnPromotion(int row, int column, string type) {
+    Character* temp = chessBoard[row][column];
+    if (temp->getType() == 0) {
+        if ((row == 7) && (chessBoard[row][column]->getColor() == "w")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("w");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("w");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("w");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("w");
+            }
+        }
+        else if ((row == 0) && (chessBoard[row][column]->getColor() == "b")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("b");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("b");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("b");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("b");
+            }
+        }
+        delete temp;
+    }
+}
+
 void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
     chessBoard[newRow][newColumn] = temp;
