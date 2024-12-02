@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "../header/Board.hpp"
-#include "../header/Character.hpp"
 
 enum MoveType {PAWNMOVE, KINGMOVE, KNIGHTMOVE, BISHOPMOVE, ROOKMOVE, QUEENMOVE};
 
