@@ -38,7 +38,7 @@ class Board {
 		Character* getPiece(int row, int column);
 		void setPiece(int row, int column, Character* insertChar);
 		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
-		void pawnPromotion(int row, int column, string type);
+		void pawnPromotion(int row, int column, std::string type);
 };
 
 #endif
