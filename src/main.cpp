@@ -21,9 +21,9 @@ int main() {
     string printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
 
-    if (testBoard->getPiece(1, 4)->getType() == nullptr) {
+    if (testBoard->getPiece(1, 4) == nullptr) {
         cout << "null";
-        return;
+        return 0;
     }
 
       // try to get all the up moves for pawn
