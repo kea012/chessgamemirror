@@ -51,7 +51,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
             if (chessBoard->getPiece(i, column) == nullptr){
                 possibleMoves.push_back(to_string(i)+to_string(column));
             }
-            if (row != 6) {
+            if (row + 1 != 6) {
                 break;
             }
         }
