@@ -69,5 +69,5 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
         }
     }
     
-    return move; 
+    return possibleMoves; 
 }
