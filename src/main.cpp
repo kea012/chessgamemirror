@@ -37,7 +37,7 @@ int main() {
 
     if (testBoard->getPiece(6, 4)->getType() == 0){
         PawnMove newMove = PawnMove(testBoard->getPiece(6, 4)->getColor(), testBoard);
-        vector<string> moves = newMove.generatePossibleMoves(6 4);
+        vector<string> moves = newMove.generatePossibleMoves(6, 4);
         for (int i = 0; i < moves.size(); ++i) {
             cout << moves.at(i) << endl;
         }
