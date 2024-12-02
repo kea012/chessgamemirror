@@ -21,8 +21,8 @@ int main() {
     string printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
 
-    if (testBoard->getPiece(1, 4) == nullptr) {
-        cout << "null";
+    if (testBoard->getPiece(1, 4)->getType() == 0) {
+        cout << "pawn";
         return 0;
     }
 
