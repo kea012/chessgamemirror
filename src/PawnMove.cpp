@@ -44,7 +44,6 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
         }
     }
 
-
     //if black the piece moves forward up the board
     if (chessBoard->getPiece(row, column)->getColor() == "b") {
         for (int i = row - 1; (i >=0)&&(i < 8); --i) {
