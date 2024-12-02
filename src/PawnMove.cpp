@@ -30,7 +30,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
 
     //diagonol down and to the left of the board
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
-        for (int i = row + 1, j = column - 1; (i < 8)&&(j < 8); ++i, ++j) {
+        for (int i = row + 1, j = column - 1; (i < 8)&&(j < 8); ++i, --j) {
             if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
                 possibleMoves.push_back(to_string(i)+to_string(column));
                 break;
