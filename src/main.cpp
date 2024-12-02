@@ -35,6 +35,19 @@ int main() {
     printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
 
+    if (testBoard->getPiece(6, 4)->getType() == 0){
+        PawnMove newMove = PawnMove(testBoard->getPiece(6, 4)->getColor(), testBoard);
+        vector<string> moves = newMove.generatePossibleMoves(6 4);
+        for (int i = 0; i < moves.size(); ++i) {
+            cout << moves.at(i) << endl;
+        }
+    }
+
+    testBoard->movePiece(6, 4, 4, 4);
+
+    printBoard = testBoard->generateBoard();
+    testBoard->printBoard(printBoard);
+
     /*// try to get all the up moves for queen
     if (testBoard->getPiece(0, 4)->getType() == 5){
         QueenMove newMove = QueenMove(testBoard->getPiece(0, 4)->getColor(), testBoard);
