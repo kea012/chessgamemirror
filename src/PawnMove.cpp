@@ -22,7 +22,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
         for (int i = row + 1, j = column + 1; (i < 8)&&(j < 8); ++i, ++j) {
             if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-                possibleMoves.push_back(to_string(i)+to_string(column));
+                possibleMoves.push_back(to_string(i)+to_string(j));
                 break;
             }
         }
@@ -32,7 +32,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
         for (int i = row + 1, j = column - 1; (i < 8)&&(j >= 8); ++i, --j) {
             if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-                possibleMoves.push_back(to_string(i)+to_string(column));
+                possibleMoves.push_back(to_string(i)+to_string(j));
                 break;
             }
         }
@@ -55,7 +55,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (chessBoard->getPiece(row, column)->getColor() == "b") {
         for (int i = row - 1, j = column + 1; (i >= 0)&&(j < 8); --i, ++j) {
             if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
-                possibleMoves.push_back(to_string(i)+to_string(column));
+                possibleMoves.push_back(to_string(i)+to_string(j));
                 break;
             }
         }
@@ -64,7 +64,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     //diagnol up and to the left of the board
     for (int i = row - 1, j = column - 1; (i >= 0)&&(j >= 0); --i, --j) {
         if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
-            possibleMoves.push_back(to_string(i)+to_string(column));
+            possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
     }
