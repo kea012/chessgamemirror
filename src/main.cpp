@@ -32,12 +32,12 @@ int main() {
         }
     }
 
-    /*testBoard->movePiece(1, 4, 3, 4);
+    testBoard->movePiece(1, 4, 3, 4);
 
     printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
 
-    // try to get all the up moves for queen
+    /*// try to get all the up moves for queen
     if (testBoard->getPiece(0, 4)->getType() == 5){
         QueenMove newMove = QueenMove(testBoard->getPiece(0, 4)->getColor(), testBoard);
         vector<string> moves = newMove.generatePossibleMoves(0, 4);
