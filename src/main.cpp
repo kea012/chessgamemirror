@@ -30,7 +30,7 @@ int main() {
         }
     }
 
-    testBoard->movePiece(0, 4, 3, 4);
+    /*testBoard->movePiece(0, 4, 3, 4);
 
     printBoard = testBoard->generateBoard();
     testBoard->printBoard(printBoard);
@@ -109,9 +109,11 @@ int main() {
             cout << moves.at(i) << endl;
         }
     }
+    */
 
     delete testBoard;
     
     return 0;
 }
+
 
