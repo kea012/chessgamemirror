@@ -6,7 +6,7 @@ PawnMove::PawnMove(string color, Board* chessBoard) : Move(PAWNMOVE, color), che
 
 vector<string> PawnMove::generatePossibleMoves(int row, int column) {
 
-    //if white the piece moves forward up the board
+    //if white the piece moves forward down the board
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
         for (int i = row + 1; i < 8; ++i) {
             if (chessBoard->getPiece(i, column) == nullptr){
@@ -18,11 +18,30 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
         }
     }
 
-    count = 0;
+    //diagonol down and to the right of the board
+    if (chessBoard->getPiece(row, column)->getColor() == "w") {
+        for (int i = row + 1, j = column + 1; (i < 8)&&(j < 8); ++i, ++j) {
+            if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
+                possibleMoves.push_back(to_string(i)+to_string(column));
+                break;
+            }
+        }
+    }
+
+    //diagonol down and to the left of the board
+    if (chessBoard->getPiece(row, column)->getColor() == "w") {
+        for (int i = row + 1, j = column - 1; (i < 8)&&(j < 8); ++i, ++j) {
+            if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
+                possibleMoves.push_back(to_string(i)+to_string(column));
+                break;
+            }
+        }
+    }
+
 
     //if black the piece moves forward up the board
-    if (chessBoard->getPiece(row, column)->getColor() == "w") {
-        for (int i = row - 1; i < 8; --i) {
+    if (chessBoard->getPiece(row, column)->getColor() == "b") {
+        for (int i = row - 1; (i >=0)&&(i < 8); --i) {
             if (chessBoard->getPiece(i, column) == nullptr){
                 possibleMoves.push_back(to_string(i)+to_string(column));
             }
@@ -31,40 +50,24 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
             }
         }
     }
-    
-    /*//diagonol up and to the right of the board as well as en passant
-    for (int i = x + 1, j = y + 1; (i < 8)&&(j < 8); ++i, ++j) {
-        if ((board[i][j-1].getColor() != this->getColor()) && ((j-1) == 3)) {
-            if(board[i][j-1].getMovedStatus() == true) {
-                move->push_back(to_string(i)+to_string(j)); 
+
+    //diagnol up and to the right of the board
+    if (chessBoard->getPiece(row, column)->getColor() == "b") {
+        for (int i = row - 1, j = column + 1; (i >= 0)&&(j < 8); --i, ++j) {
+            if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+                possibleMoves.push_back(to_string(i)+to_string(column));
+                break;
             }
         }
-        if (board[i][j].is_empty()){
-            break;
-        }
-        else if (board[i][j].getColor() != this->getColor()) {
-            move->push_back(to_string(i)+to_string(j));
-            break;
-        }
-        break;
     }
 
-    //diagnol up and to the left of the board as well as en passant
-    for (int i = x - 1, j = y + 1; (i >= 0)&&(j < 8); --i, ++j) {
-        if ((board[i][j-1].getColor() != this->getColor()) && ((j-1) == 3)) {
-            if(board[i][j-1].getMovedStatus() == true) {
-                move->push_back(to_string(i)+to_string(j)); 
-            }
-        }
-        if (board[i][j].is_empty()){
+    //diagnol up and to the left of the board
+    for (int i = row - 1, j = column - 1; (i >= 0)&&(j >= 0); --i, --j) {
+        if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            possibleMoves.push_back(to_string(i)+to_string(column));
             break;
         }
-        else if (board[i][j].getColor() != this->getColor()) {
-            move->push_back(to_string(i)+to_string(j));
-            break;
-        }
-        break;
-    } */
-     
+    }
+    
     return move; 
 }
