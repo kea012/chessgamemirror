@@ -173,7 +173,7 @@ void Board::setPiece(int row, int column, Character* insertChar) {
 
 void Board::pawnPromotion(int row, int column, string type) {
     Character* temp = chessBoard[row][column];
-    if (temp->getType == 0) {
+    if (temp->getType() == 0) {
         if ((row == 7) && (chessBoard[row][column]->getColor() == "w")) {
             if ("KNIGHT") {
                 chessBoard[row][column] = new Knight("w");
