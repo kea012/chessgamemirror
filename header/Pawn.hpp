@@ -5,7 +5,7 @@
 
 class Pawn : public Character {
     private:
-    bool characterMoved = false;
+    int characterMoved = 0;
     public:
     Pawn(std::string characterColor);
     bool getMovedStatus() const;
