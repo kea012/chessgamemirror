@@ -25,3 +25,6 @@ std::string Character::getSymbol() const {
   return this->symbol;
 } 
 
+std::vector<Position> Character::getMoveList() const {
+  return this->moveList;
+}

@@ -43,3 +43,12 @@ void Rook::setMoved() {
 
   return vec;
 }*/
+
+void Rook::updateMoves(Position currPosition, Board* gameBoard) {
+    moveList.clear();
+    RookMove moveGetter(characterColor, gameBoard);
+    std::vector<std::string> moveStrings = moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
+    for (int i = 0; i < moveStrings.size(); i++) {
+        moveList.push_back(Position(moveStrings.at(i)));
+    }
+}

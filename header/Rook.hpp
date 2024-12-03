@@ -2,7 +2,7 @@
 #define ROOK_HPP
 
 #include "../header/Character.hpp"
-#include "../header/Position.hpp"
+#include "../header/RookMove.hpp"
 
 class Rook : public Character {
   private:
@@ -12,6 +12,7 @@ class Rook : public Character {
     bool getMovedStatus() const;
     void setMoved();
     //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+    virtual void updateMoves(Position currPosition, Board* gameBoard);
 };
 
 #endif // ROOK_HPP

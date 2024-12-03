@@ -16,3 +16,8 @@ King::King(string characterColor) : Character(KING, characterColor) {
     move->push_back("");
     return move;
 }*/
+
+void King::updateMoves(Position currPosition, Board* gameBoard) {
+    moveList.clear();
+    // Full implementation should use KingMove class
+}
