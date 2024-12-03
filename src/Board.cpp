@@ -167,8 +167,10 @@ Character* Board::getPiece(int row, int column) {
 
 void Board::setPiece(int row, int column, Character* insertChar) {
     Character* temp = chessBoard[row][column];
+    if (temp != nullptr) {
+        removePieceFromList(temp);
+    }
     chessBoard[row][column] = insertChar;
-    removePieceFromList(temp);
     delete temp;
 }
 
