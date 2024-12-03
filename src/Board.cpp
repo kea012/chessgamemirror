@@ -237,3 +237,14 @@ bool Board::removePieceFromList(Character* pieceToRemove) {
     }
     return false;
 }
+
+void Board::clearBoard() {
+    whitePieces.clear();
+    blackPieces.clear();
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            delete chessBoard[row][column];
+            chessBoard[row][column] = nullptr;
+        }
+    }
+}

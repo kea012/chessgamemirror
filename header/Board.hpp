@@ -40,6 +40,7 @@ class Board {
 		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 		void pawnPromotion(int row, int column, std::string type);
 		bool removePieceFromList(Character* pieceToRemove);
+		void clearBoard();
 };
 
 #endif
