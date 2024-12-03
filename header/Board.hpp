@@ -39,6 +39,7 @@ class Board {
 		void setPiece(int row, int column, Character* insertChar);
 		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 		void pawnPromotion(int row, int column, std::string type);
+		bool updatePieceList(Character* pieceToRemove);
 };
 
 #endif

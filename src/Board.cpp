@@ -212,3 +212,22 @@ void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
     chessBoard[initialRow][initialColumn] = nullptr;
 }
 
+bool Board::updatePieceList(Character* pieceToRemove) {
+    if (pieceToRemove->getColor() == "w") {
+        for (int i = 0; i < whitePieces.size(); i++) {
+            if (whitePieces.at(i) == pieceToRemove) {
+                whitePieces.erase(whitePieces.begin() + i);
+            }
+        }
+        return true;
+    }
+    if (pieceToRemove->getColor() == "b") {
+        for (int i = 0; i < blackPieces.size(); i++) {
+            if (blackPieces.at(i) == pieceToRemove) {
+                blackPieces.erase(blackPieces.begin() + i);
+            }
+        }
+        return true;
+    }
+    return false;
+}
