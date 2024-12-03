@@ -11,12 +11,12 @@ Pawn::Pawn(string characterColor) : Character(PAWN, characterColor) {
     }
 }
 
-bool Pawn::getMovedStatus() const {
+int Pawn::getMovedStatus() const {
   return this->characterMoved;
 }
 
 void Pawn::setMoved() {
-  this->characterMoved = true;
+  ++this->characterMoved;
 }
 
 /*std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
