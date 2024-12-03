@@ -188,6 +188,7 @@ void Board::pawnPromotion(int row, int column, string type) {
             else if ("QUEEN") {
                 chessBoard[row][column] = new Queen("w");
             }
+            whitePieces.push_back(chessBoard[row][column]);
         }
         else if ((row == 0) && (chessBoard[row][column]->getColor() == "b")) {
             if ("KNIGHT") {
@@ -202,6 +203,7 @@ void Board::pawnPromotion(int row, int column, string type) {
             else if ("QUEEN") {
                 chessBoard[row][column] = new Queen("b");
             }
+            blackPieces.push_back(chessBoard[row][column]);
         }
         removePieceFromList(temp);
         delete temp;
