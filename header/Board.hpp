@@ -30,8 +30,6 @@ class Board {
 		bool isValidMovement(Position piecePos, Position movePos);
 		std::string checkPieceColor(Position piecePos);
 		std::string generateBoard();
-		Character* addPiece();
-		void movePiece();
 		void capturePiece();
 		bool stalemate();
 		void printBoard(std::string boardString);

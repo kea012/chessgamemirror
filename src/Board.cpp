@@ -141,14 +141,6 @@ string Board::checkPieceColor(Position piecePos) {
     return chessBoard[piecePos.getRow()][piecePos.getCol()]->getColor();
 }
 
-Character* Board::addPiece(){
-    return nullptr;
-}
-
-void Board::movePiece(){
-    return;
-}
-
 void Board::capturePiece(){
     return;
 }
