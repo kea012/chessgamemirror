@@ -105,19 +105,40 @@ bool Board::isSpaceOccupied(Position pos) {
     return true;
 }
 
-bool hasMoves(Position piecePos) {
-    // Complete function will check if the Character at piecePos has available moves
+bool Board::hasMoves(Position piecePos) {
+    Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
+    if (currPiece == nullptr) {
+        return false;
+    }
+    std::vector<Position> currPieceMoveList = currPiece->getMoveList();
+    currPiece = nullptr;
+    if (currPieceMoveList.empty()) {
+        return false;
+    }
+    return true;
+}
+
+bool Board::isValidMovement(Position piecePos, Position movePos) {
+    if (!(hasMoves(piecePos))) {
+        return false;
+    }
+    Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
+    std::vector<Position> currPieceMoveList = currPiece->getMoveList();
+    currPiece = nullptr;
+    for (int i = 0; i < currPieceMoveList.size(); i++) {
+        if (currPieceMoveList.at(i) == movePos) {
+            return true;
+        }
+    }
     return false;
 }
 
-bool isValidMovement(Position piecePos, Position movePos) {
-    // Complete function will check if the position in movePos exists in the list of possible moves of the Character at piecePos
-    return false;
-}
-
-string checkPieceColor(Position piecePos) {
+string Board::checkPieceColor(Position piecePos) {
     // Complete function will return color of the Character at piecePos
-    return "black";
+    if (chessBoard[piecePos.getRow()][piecePos.getCol()] == nullptr) {
+        return "No piece at position";
+    }
+    return chessBoard[piecePos.getRow()][piecePos.getCol()]->getColor();
 }
 
 Character* Board::addPiece(){
