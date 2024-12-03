@@ -40,6 +40,10 @@ class Board {
 		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 		void pawnPromotion(int row, int column, std::string type);
 		bool removePieceFromList(Character* pieceToRemove);
+		bool generateAllPlayerMoves(std::string color);
+		bool removeAllSelfCheckMoves(std::string color);
+		Position getKingPosition(std::string color);
+		bool isKingInCheck(std::string color);
 		void clearBoard();
 };
 

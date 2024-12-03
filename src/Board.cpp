@@ -238,6 +238,80 @@ bool Board::removePieceFromList(Character* pieceToRemove) {
     return false;
 }
 
+bool Board::generateAllPlayerMoves(std::string color) {
+    if (color != "b" && color != "w")
+        return false;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr && currPiece->getColor() == color) {
+                currPiece->updateMoves(Position(row, col), this);
+            }
+            currPiece = nullptr;
+        }
+    }
+    return true;
+}
+
+bool Board::removeAllSelfCheckMoves(std::string color) {
+    if (color == "b") {
+
+        return true;
+    }
+    if (color == "w") {
+
+        return true;
+    }
+    return false;
+}
+
+Position Board::getKingPosition(std::string color) {
+    Position kingPosition;
+    if (color != "w" && color != "b") {
+        return kingPosition;
+    }
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr) {
+                if (currPiece->getColor() == color && currPiece->getType() == KING) {
+                    currPiece = nullptr;
+                    kingPosition.setPositionFromInts(row, col);
+                    return kingPosition;
+                }
+                currPiece = nullptr;
+            }
+        }
+    }
+    return kingPosition;
+}
+
+bool Board::isKingInCheck(std::string color) {
+    Position kingPosition = getKingPosition(color);
+    if (kingPosition.isEmptyPosition())
+        return false;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece == nullptr)
+                continue;
+            std::vector<Position> currPieceMoveList;
+            if (color == "w" && currPiece->getColor() == "b") {
+                currPieceMoveList = currPiece->getMoveList();
+            }
+            if (color == "b" && currPiece->getColor() == "w") {
+                currPieceMoveList = currPiece->getMoveList();
+            }
+            currPiece == nullptr;
+            for (int i = 0; i < currPieceMoveList.size(); i++) {
+                if (currPieceMoveList.at(i) == kingPosition)
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
 void Board::clearBoard() {
     whitePieces.clear();
     blackPieces.clear();
