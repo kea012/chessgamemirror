@@ -1,11 +1,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "../header/Position.hpp"
-#include "../header/Board.hpp"
-#include "../header/GameState.hpp"
-#include "../header/GameAction.hpp"
 #include <string>
+#include "../header/Position.hpp"
 
 class Position;
 class Board;

@@ -1,4 +1,8 @@
 #include "../header/Game.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
+#include "../header/GameState.hpp"
+#include "../header/GameAction.hpp"
 
 Game::Game() {
     currGameState = new MenuScreen();

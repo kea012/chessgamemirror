@@ -1,12 +1,10 @@
 #ifndef GAMESTATE_HPP
 #define GAMESTATE_HPP
 
-#include "../header/Game.hpp"
-#include "../header/GameAction.hpp"
 #include <string>
 #include <cctype>
+#include "../header/Position.hpp"
 
-class Game;
 class GameAction;
 
 class GameState {

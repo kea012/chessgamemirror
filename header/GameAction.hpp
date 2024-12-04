@@ -1,6 +1,9 @@
 #ifndef GAMEACTION_HPP
 #define GAMEACTION_HPP 
 
+#include <string>
+#include "../header/Position.hpp"
+
 class Game;
 
 class GameAction {
