@@ -316,19 +316,26 @@ bool Board::generateAllPlayerMoves(std::string color) {
             currPiece = nullptr;
         }
     }
+    removeAllSelfCheckMoves(color);
     return true;
 }
 
 bool Board::removeAllSelfCheckMoves(std::string color) {
-    if (color == "b") {
-
-        return true;
+    if (color != "b" && color != "w") {
+        return false;
     }
-    if (color == "w") {
-
-        return true;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr) {
+                if (currPiece->getColor() == color) {
+                    currPiece->removeSelfCheckMoves(Position(row, col), this);
+                }
+                currPiece = nullptr;
+            }
+        }
     }
-    return false;
+    return true;
 }
 
 Position Board::getKingPosition(std::string color) {
