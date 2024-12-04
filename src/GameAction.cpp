@@ -52,23 +52,22 @@ CheckPiece::CheckPiece(Position newPiecePos) {
 
 std::string CheckPiece::performAction(Game* activeGame) {
     
-    Character* tempChar = activeGame->getGameBoard()->getPiece(piecePos.getRow(), piecePos.getCol());
+    Character* tempCharacter = activeGame->getGameBoard()->getPiece(piecePos.getRow(), piecePos.getCol());
     turn currTurn = activeGame->getTurn();
     // Case where selected position does not contain one of the current player's pieces
-    if (tempChar == nullptr || (currTurn == whiteTurn && tempChar->getColor() == "b")
-        || (currTurn == blackTurn && tempChar->getColor() == "w")) {
+    if (tempCharacter == nullptr || (currTurn == whiteTurn && tempCharacter->getColor() == "b")
+        || (currTurn == blackTurn && tempCharacter->getColor() == "w")) {
         activeGame->updateGameState(new SelectingPiece);
-        tempChar = nullptr;
+        tempCharacter = nullptr;
         return "Selected position does not contain one of your pieces\nEnter a position to select a piece";
     }
-    /*
-    if (false) { // Case where selected position contains current player's piece but piece has no legal moves
+    // Case where selected position contains current player's piece but piece has no legal moves
+    if (false) {
         activeGame->updateGameState(new SelectingPiece);
-        tempChar = nullptr;
-        return "Selected piece has no legal moves\nEnter a position to select a piece";
+        tempCharacter = nullptr;
+        return "Selected piece has no legal moves\nEnter a position to select a different piece";
     }
-    */
-    tempChar = nullptr;
+    tempCharacter = nullptr;
     
     activeGame->updatePiecePosition(piecePos.getPositionString());
     activeGame->updateGameState(new SelectingMove);
@@ -111,11 +110,26 @@ std::string MovePiece::performAction(Game* activeGame) {
     activeGame->resetPositions();
     std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos + "\n";
     newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
-    if (false) { // Check for any game ending conditions
-        if (false) { // Checkmate
-            newOutputString += "\nSomeone won the game";
+
+    std::string nextTurnColor;
+    if (activeGame->getTurn() == blackTurn) {
+        nextTurnColor == "w";
+    }
+    else if (activeGame->getTurn() == whiteTurn) {
+        nextTurnColor == "b";
+    }
+    activeGame->getGameBoard()->generateAllPlayerMoves(nextTurnColor);
+
+    if (!activeGame->getGameBoard()->colorHasMoves(nextTurnColor)) {
+        if (activeGame->getGameBoard()->isKingInCheck(nextTurnColor)) {
+            if (activeGame->getTurn() == blackTurn) {
+                newOutputString += "\nBlack has won the game!";
+            }
+            else if (activeGame->getTurn() == whiteTurn)  {
+                newOutputString += "\nWhite has won the game!";
+            }
         }
-        else if (false) { // Draw
+        else {
             newOutputString += "\nThe game ended in a draw";
         }
         activeGame->updateGameState(new EndScreen);
