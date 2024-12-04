@@ -23,5 +23,5 @@ void King::updateMoves(Position currPosition, Board* gameBoard) {
 }
 
 Character* King::clone() {
-    
+    return new King(characterColor);
 }
