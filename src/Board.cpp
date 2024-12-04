@@ -115,6 +115,7 @@ Board& Board::operator=(const Board& rhs) {
             currPiece = nullptr;
         }
     }
+    return *this;
 }
 
 //destructor
