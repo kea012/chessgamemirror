@@ -183,7 +183,6 @@ bool Board::isValidMovement(Position piecePos, Position movePos) {
 }
 
 string Board::checkPieceColor(Position piecePos) {
-    // Complete function will return color of the Character at piecePos
     if (chessBoard[piecePos.getRow()][piecePos.getCol()] == nullptr) {
         return "No piece at position";
     }
@@ -201,7 +200,7 @@ bool Board::stalemate(){
 string Board::generateBoard(){
     string board = "";
     for (unsigned int row = 0; row < 8; ++row){
-         board += to_string(row+1);
+         board += to_string(8-row);
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
             if (chessBoard[row][column] == nullptr){
@@ -213,7 +212,6 @@ string Board::generateBoard(){
             board += "|";
         }
         board += "\n";
-        board + "  ";
     }
     board += "  A  B  C  D  E  F  G  H";
     return board;

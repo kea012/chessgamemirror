@@ -11,17 +11,17 @@ std::string InvalidInput::performAction(Game* activeGame) {
 std::string CreateGame::performAction(Game* activeGame) {
     // Will likely eventually write a specific function to check that certain expected preconditions are met
     // (e.g. gameBoard object exists, currTurn is white or black) and reset Game members if not met
-    /*
+    
     if (!activeGame->createNewBoard()) {
         activeGame->updateGameState(new MenuScreen);
         activeGame->resetWholeGame();
         return "CRITICAL ERROR: Reseting...\nWELCOME TO CHESS\nEnter 'S' to start a new game or 'Q' to quit the program";
     }
-    */
+    
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
     std::string newOutputString = "Starting new game...\n";
-    //outputString += activeGame->getGameBoard()->generateBoard() + "\n";
+    newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
     return newOutputString;
 }
@@ -47,7 +47,7 @@ CheckPiece::CheckPiece(Position newPiecePos) {
 }
 
 std::string CheckPiece::performAction(Game* activeGame) {
-    /*
+    
     Character* tempChar = activeGame->getGameBoard()->getPiece(piecePos.getRow(), piecePos.getCol());
     turn currTurn = activeGame->getTurn();
     // Case where selected position does not contain one of the current player's pieces
@@ -57,13 +57,15 @@ std::string CheckPiece::performAction(Game* activeGame) {
         tempChar = nullptr;
         return "Selected position does not contain one of your pieces\nEnter a position to select a piece";
     }
+    /*
     if (false) { // Case where selected position contains current player's piece but piece has no legal moves
         activeGame->updateGameState(new SelectingPiece);
         tempChar = nullptr;
         return "Selected piece has no legal moves\nEnter a position to select a piece";
     }
-    tempChar = nullptr;
     */
+    tempChar = nullptr;
+    
     activeGame->updatePiecePosition(piecePos.getPositionString());
     activeGame->updateGameState(new SelectingMove);
     return "Enter a position to move selected piece to or 'R' to select a different piece";
@@ -83,7 +85,11 @@ CheckMove::CheckMove(Position newMovePos) {
 }
 
 std::string CheckMove::performAction(Game* activeGame) {
-    if (false) { // User selected position that selected piece cannot move to
+    Position currentPos = activeGame->getSelectedPiecePos();
+    std::string currentColor = activeGame->getGameBoard()->checkPieceColor(currentPos);
+    std::string targetColor = activeGame->getGameBoard()->checkPieceColor(movePos);
+    
+    if (!targetColor.empty() && targetColor == currentColor) { // User selected position that selected piece cannot move to
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
     }
@@ -99,8 +105,8 @@ std::string MovePiece::performAction(Game* activeGame) {
     std::string initialPos = activeGame->getSelectedPiecePos().getPositionString();
     std::string finalPos = activeGame->getSelectedMovePos().getPositionString();
     activeGame->resetPositions();
-    std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos;
-    //newOutputString += "\n" + activeGame->getGameBoard()->generateBoard();
+    std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos + "\n";
+    newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     if (false) { // Check for any game ending conditions
         if (false) { // Checkmate
             newOutputString += "\nSomeone won the game";
