@@ -77,6 +77,46 @@ Board::Board(){
     }
 }
 
+Board::Board(const Board& rhs) {
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currRhsPiece = rhs.getPiece(row, col);
+            if (currRhsPiece == nullptr) {
+                continue;
+            }
+            Character* currPiece = currRhsPiece->clone();
+            chessBoard[row][col] = currPiece;
+            if (currRhsPiece->getColor() == "w") {
+                whitePieces.push_back(currPiece);
+            }
+            currRhsPiece = nullptr;
+            currPiece = nullptr;
+        }
+    }
+}
+
+Board& Board::operator=(const Board& rhs) {
+    whitePieces.clear();
+    blackPieces.clear();
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            delete chessBoard[row][col];
+            chessBoard[row][col] = nullptr;
+            Character* currRhsPiece = rhs.getPiece(row, col);
+            if (currRhsPiece == nullptr) {
+                continue;
+            }
+            Character* currPiece = currRhsPiece->clone();
+            chessBoard[row][col] = currPiece;
+            if (currRhsPiece->getColor() == "w") {
+                whitePieces.push_back(currPiece);
+            }
+            currRhsPiece = nullptr;
+            currPiece = nullptr;
+        }
+    }
+}
+
 //destructor
 Board::~Board() {
     whitePieces.clear();
@@ -174,7 +214,7 @@ void Board::printBoard(string boardString){
     cout << boardString << endl;
 }
 
-Character* Board::getPiece(int row, int column) {
+Character* Board::getPiece(int row, int column) const {
     return chessBoard[row][column];
 }
 

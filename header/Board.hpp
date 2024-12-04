@@ -23,6 +23,8 @@ class Board {
 		std::vector<Character*> blackPieces;
 	public:
 		Board();
+		Board(const Board& rhs);
+		Board& operator=(const Board& rhs);
 		~Board();
 		bool isSpaceOccupied(std::string position);
 		bool isSpaceOccupied(Position pos);
@@ -33,7 +35,7 @@ class Board {
 		void capturePiece();
 		bool stalemate();
 		void printBoard(std::string boardString);
-		Character* getPiece(int row, int column);
+		Character* getPiece(int row, int column) const;
 		void setPiece(int row, int column, Character* insertChar);
 		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 		void pawnPromotion(int row, int column, std::string type);
