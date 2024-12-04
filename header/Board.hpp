@@ -28,7 +28,8 @@ class Board {
 		~Board();
 		bool isSpaceOccupied(std::string position);
 		bool isSpaceOccupied(Position pos);
-		bool hasMoves(Position piecePos);
+		bool colorHasMoves(std::string checkColor);
+		bool pieceHasMoves(Position piecePos);
 		bool isValidMovement(Position piecePos, Position movePos);
 		std::string checkPieceColor(Position piecePos);
 		std::string generateBoard();

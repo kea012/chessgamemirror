@@ -154,7 +154,27 @@ bool Board::isSpaceOccupied(Position pos) {
     return true;
 }
 
-bool Board::hasMoves(Position piecePos) {
+bool Board::colorHasMoves(std::string checkColor) {
+    if (checkColor != "b" && checkColor != "w") {
+        return false;
+    }
+    Character* currPiece;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            currPiece = chessBoard[row][col];
+            if (currPiece != nullptr && currPiece->getColor() == checkColor) {
+                currPiece = nullptr;
+                if (pieceHasMoves(Position(row, col))) {
+                    return true;
+                }
+            }
+        }
+    }
+    currPiece = nullptr;
+    return false;
+}
+
+bool Board::pieceHasMoves(Position piecePos) {
     Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
     if (currPiece == nullptr) {
         return false;
@@ -168,7 +188,7 @@ bool Board::hasMoves(Position piecePos) {
 }
 
 bool Board::isValidMovement(Position piecePos, Position movePos) {
-    if (!(hasMoves(piecePos))) {
+    if (!(pieceHasMoves(piecePos))) {
         return false;
     }
     Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
