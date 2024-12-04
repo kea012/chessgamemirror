@@ -11,12 +11,12 @@ Rook::Rook(string characterColor) : Character(ROOK, characterColor) {
     }
 }
 
-bool Rook::getMovedStatus() const {
+int Rook::getMovedStatus() const {
   return this->characterMoved;
 }
 
 void Rook::setMoved() {
-  this->characterMoved = true;
+  ++this->characterMoved;
 }
 
 /*std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) { 
