@@ -29,8 +29,9 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
         return false;
     row = newRow;
     col = newCol;
-    positionString[0] = row + 'A';
-    positionString[1] = col + '1';
+    positionString = "";
+    positionString += (row + 'A');
+    positionString += (col + '1');
     return true;
 }
 
