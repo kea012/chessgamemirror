@@ -89,10 +89,8 @@ CheckMove::CheckMove(Position newMovePos) {
 
 std::string CheckMove::performAction(Game* activeGame) {
     Position currentPos = activeGame->getSelectedPiecePos();
-    std::string currentColor = activeGame->getGameBoard()->checkPieceColor(currentPos);
-    std::string targetColor = activeGame->getGameBoard()->checkPieceColor(movePos);
     
-    if (!targetColor.empty() && targetColor == currentColor) { // User selected position that selected piece cannot move to
+    if (!activeGame->getGameBoard()->isValidMovement(currentPos, movePos)) { // User selected position that selected piece cannot move to
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
     }
