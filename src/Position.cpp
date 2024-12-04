@@ -37,35 +37,22 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
 bool Position::setPositionFromString(std::string newPositionString) {
     if (newPositionString.length() != 2)
         return false;
-    switch(::toupper(newPositionString.front())) {
-        case('A'):
-        case('B'):
-        case('C'):
-        case('D'):
-        case('E'):
-        case('F'):
-        case('G'):
-        case('H'):
-            break;
-        default:
-            return false;
+        
+    char colChar = ::toupper(newPositionString.front());
+    char rowChar = newPositionString.back();
+    
+    // Validate input
+    if (colChar < 'A' || colChar > 'H' || rowChar < '1' || rowChar > '8') {
+        return false;
     }
-    switch(newPositionString.back()) {
-        case('1'):
-        case('2'):
-        case('3'):
-        case('4'):
-        case('5'):
-        case('6'):
-        case('7'):
-        case('8'):
-            break;
-        default:
-            return false;
-    }
+    
+    // Convert chess notation to array indices
+    col = colChar - 'A';  // A=0, B=1, etc.
+    row = '8' - rowChar;  // 8=0, 7=1, etc. (flipped because chess notation starts from bottom)
+    
     positionString = newPositionString;
-    positionString[0] = ::toupper(positionString.front());
-
+    positionString[0] = colChar;  // Ensure uppercase
+    
     return true;
 }
 
