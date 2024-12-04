@@ -3,6 +3,8 @@
 
 #include "../header/Move.hpp"
 
+class Board;
+
 class RookMove : public Move {
     private:
     Board* chessBoard;

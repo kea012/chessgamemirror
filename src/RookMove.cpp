@@ -1,4 +1,6 @@
 #include "../header/RookMove.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
 
 using namespace std;
 

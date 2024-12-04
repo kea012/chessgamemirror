@@ -7,6 +7,8 @@ class Bishop : public Character {
   public:
     Bishop(std::string characterColor);
     //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+    virtual void updateMoves(Position currPosition, Board* gameBoard);
+    virtual Character* clone();
 };
 
 #endif // BISHOP_HPP

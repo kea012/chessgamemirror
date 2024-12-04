@@ -19,6 +19,7 @@ public:
     int getRow();
     int getCol();
     std::string getPositionString();
+    bool operator==(Position const& rhs) const;
 };
 
 #endif

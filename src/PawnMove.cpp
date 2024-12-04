@@ -1,4 +1,6 @@
 #include "../header/PawnMove.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
 
 using namespace std;
 
@@ -6,7 +8,9 @@ PawnMove::PawnMove(string color, Board* chessBoard) : Move(PAWNMOVE, color), che
 
 vector<string> PawnMove::generatePossibleMoves(int row, int column) {
 
+
     possibleMoves.clear();
+
     //if white the piece moves forward down the board
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
         if (row + 1 < 8 && chessBoard->getPiece(row + 1, column) == nullptr){
@@ -99,5 +103,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     }
 
     return possibleMoves; 
-
+*/
+vector<string> temp;
+return temp;
 }

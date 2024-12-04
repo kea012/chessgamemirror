@@ -39,6 +39,9 @@ ADD_EXECUTABLE(chess
     src/Rook.cpp
     src/Queen.cpp
     src/Move.cpp
+    src/PawnMove.cpp
+    src/BishopMove.cpp
+    src/RookMove.cpp
     src/QueenMove.cpp
 )
 
