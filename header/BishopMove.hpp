@@ -3,6 +3,8 @@
 
 #include "../header/Move.hpp"
 
+class Board;
+
 class BishopMove : public Move {
     private:
     Board* chessBoard;

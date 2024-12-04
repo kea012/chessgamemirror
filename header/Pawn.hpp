@@ -2,7 +2,6 @@
 #define PAWN_HPP
 
 #include "../header/Character.hpp"
-#include "../header/PawnMove.hpp"
 
 class Pawn : public Character {
     private:

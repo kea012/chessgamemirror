@@ -1,14 +1,23 @@
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
-#include "../header/Character.hpp"
-#include "../header/Pawn.hpp"
-#include "../header/King.hpp"
-#include "../header/Knight.hpp"
-#include "../header/Bishop.hpp"
-#include "../header/Rook.hpp"
-#include "../header/Queen.hpp"
-#include "../header/Position.hpp"
+//#include "../header/Character.hpp"
+//#include "../header/Pawn.hpp"
+//#include "../header/King.hpp"
+//#include "../header/Knight.hpp"
+//#include "../header/Bishop.hpp"
+//#include "../header/Rook.hpp"
+//#include "../header/Queen.hpp"
+//#include "../header/Position.hpp"
+
+class Character;
+class Pawn;
+class King;
+class Knight;
+class Bishop;
+class Rook;
+class Queen;
+class Position;
 
 #include <string>
 #include <vector>

@@ -2,7 +2,6 @@
 #define BISHOP_HPP
 
 #include "../header/Character.hpp"
-#include "../header/BishopMove.hpp"
 
 class Bishop : public Character {
   public:

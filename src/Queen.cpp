@@ -1,4 +1,5 @@
 #include "../header/Queen.hpp"
+#include "../header/QueenMove.hpp"
 
 using namespace std;
 

@@ -2,7 +2,6 @@
 #define ROOK_HPP
 
 #include "../header/Character.hpp"
-#include "../header/RookMove.hpp"
 
 class Rook : public Character {
   private:

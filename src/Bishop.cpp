@@ -1,4 +1,5 @@
 #include "../header/Bishop.hpp"
+#include "../header/BishopMove.hpp"
 
 using namespace std;
 

@@ -2,7 +2,6 @@
 #define QUEEN_HPP
 
 #include "../header/Character.hpp"
-#include "../header/QueenMove.hpp"
 
 class Queen : public Character {
     public:

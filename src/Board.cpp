@@ -1,4 +1,12 @@
 #include "../header/Board.hpp"
+#include "../header/Character.hpp"
+#include "../header/Pawn.hpp"
+#include "../header/King.hpp"
+#include "../header/Knight.hpp"
+#include "../header/Bishop.hpp"
+#include "../header/Rook.hpp"
+#include "../header/Queen.hpp"
+#include "../header/Position.hpp"
 #include <iostream>
 
 using namespace std;

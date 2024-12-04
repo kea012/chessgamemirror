@@ -1,4 +1,5 @@
 #include "../header/Rook.hpp"
+#include "../header/RookMove.hpp"
 
 using namespace std;
 

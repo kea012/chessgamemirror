@@ -4,9 +4,7 @@
 #include <string>
 #include <vector>
 #include "../header/Position.hpp"
-#include "../header/Board.hpp"
 
-class Position;
 class Board;
 
 enum CharacterType {PAWN, KING, KNIGHT, BISHOP, ROOK, QUEEN};
@@ -27,9 +25,9 @@ class Character {
     std::string getColor() const;
     std::string getSymbol() const;
     std::vector<Position> getMoveList() const;
-    virtual void updateMoves(Position currPosition, Board* gameBoard);
+    virtual void updateMoves(Position currPosition, Board* gameBoard) = 0;
     void removeSelfCheckMoves(Position currPosition, Position newPosition, Board* gameBoard);
-    virtual Character* clone();
+    virtual Character* clone() = 0;
 };
 
 #endif // CHARACTER_HPP

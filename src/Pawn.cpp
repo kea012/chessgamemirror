@@ -1,4 +1,5 @@
 #include "../header/Pawn.hpp"
+#include "../header/PawnMove.hpp"
 
 using namespace std;
 
