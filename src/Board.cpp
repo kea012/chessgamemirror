@@ -292,10 +292,10 @@ void Board::pawnPromotion(int row, int column, string type) {
     }
 }
 
-void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
     if (!temp) {
-        return;
+        return false;
     }
     if (chessBoard[newRow][newColumn]) {
         delete chessBoard[newRow][newColumn];
@@ -303,6 +303,7 @@ void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
     }
     chessBoard[newRow][newColumn] = temp;
     chessBoard[initialRow][initialColumn] = nullptr;
+    return true;
 }
 
 bool Board::removePieceFromList(Character* pieceToRemove) {

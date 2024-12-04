@@ -38,7 +38,7 @@ class Board {
 		void printBoard(std::string boardString);
 		Character* getPiece(int row, int column) const;
 		void setPiece(int row, int column, Character* insertChar);
-		void movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
+		bool movePiece(int initialRow, int initialColumn, int newRow, int newColumn);
 		void pawnPromotion(int row, int column, std::string type);
 		bool removePieceFromList(Character* pieceToRemove);
 		bool generateAllPlayerMoves(std::string color);
