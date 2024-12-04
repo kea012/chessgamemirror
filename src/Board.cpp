@@ -276,6 +276,10 @@ void Board::pawnPromotion(int row, int column, string type) {
 
 void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
+    if (chessBoard[newRow][newColumn]) {
+        delete chessBoard[newRow][newColumn];
+        chessBoard[newRow][newColumn] = nullptr;
+    }
     chessBoard[newRow][newColumn] = temp;
     chessBoard[initialRow][initialColumn] = nullptr;
 }
