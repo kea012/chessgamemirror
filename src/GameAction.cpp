@@ -24,6 +24,7 @@ std::string CreateGame::performAction(Game* activeGame) {
     
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
+    activeGame->getGameBoard()->generateAllPlayerMoves("w");
     std::string newOutputString = "Starting new game...\n";
     newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
