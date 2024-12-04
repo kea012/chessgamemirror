@@ -74,3 +74,7 @@ int Position::getCol() {
 std::string Position::getPositionString() {
     return positionString;
 }
+
+bool Position::operator==(Position const& rhs) const {
+    return row == rhs.row && col == rhs.col;
+}

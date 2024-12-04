@@ -48,3 +48,12 @@ Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {
   }
   return vec;
 }*/
+
+void Knight::updateMoves(Position currPosition, Board* gameBoard) {
+  moveList.clear();
+  // Full implementation should use KnightMove class
+}
+
+Character* Knight::clone() {
+  return new Knight(characterColor);
+}
