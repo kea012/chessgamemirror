@@ -18,4 +18,30 @@ vector<string> KingMove::generatePossibleMoves(int row, int column) {
       }
     }
   }
+  
+  if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
+    castling(row, column);
+  }
+}
+
+void KingMove::castling(int row, int column ) {
+  if (chessBoard->getPiece(row,0) != nullptr) {
+    if (chessBoard->getPiece(row,0)->getType() == ROOK) {
+      if (static_cast<Rook*>(chessBoard->getPiece(row,0))->getMovedStatus()==0) {
+        possibleMoves.push_back(to_string(row)+to_string(2));
+      }
+    }
+  }
+  if (chessBoard->getPiece(row,7) != nullptr) {
+
+  }
+  if (chessBoard->getPiece(row,7) != nullptr) {
+    if (chessBoard->getPiece(row,7)->getType() == ROOK) {
+      if (static_cast<Rook*>(chessBoard->getPiece(row,7))->getMovedStatus()==0) {
+        possibleMoves.push_back(to_string(row)+to_string(6));
+      }
+    }
+  }
+  // King cannot be in check
+  // King cannot be moved through a square that is under attack
 }
