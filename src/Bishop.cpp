@@ -43,3 +43,7 @@ void Bishop::updateMoves(Position currPosition, Board* gameBoard) {
         moveList.push_back(Position(moveStrings.at(i)));
     }
 }
+
+Character* Bishop::clone() {
+  return new Bishop(characterColor);
+}

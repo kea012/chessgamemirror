@@ -28,3 +28,7 @@ std::string Character::getSymbol() const {
 std::vector<Position> Character::getMoveList() const {
   return this->moveList;
 }
+
+void Character::removeSelfCheckMoves(Position currPosition, Position newPosition, Board* gameBoard) {
+  
+}

@@ -29,6 +29,7 @@ class Character {
     std::vector<Position> getMoveList() const;
     virtual void updateMoves(Position currPosition, Board* gameBoard);
     void removeSelfCheckMoves(Position currPosition, Position newPosition, Board* gameBoard);
+    virtual Character* clone();
 };
 
 #endif // CHARACTER_HPP

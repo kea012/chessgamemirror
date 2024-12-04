@@ -21,3 +21,7 @@ void King::updateMoves(Position currPosition, Board* gameBoard) {
     moveList.clear();
     // Full implementation should use KingMove class
 }
+
+Character* King::clone() {
+    
+}

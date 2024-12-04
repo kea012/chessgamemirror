@@ -52,3 +52,7 @@ void Rook::updateMoves(Position currPosition, Board* gameBoard) {
         moveList.push_back(Position(moveStrings.at(i)));
     }
 }
+
+Character* Rook::clone() {
+  return new Rook(characterColor);
+}

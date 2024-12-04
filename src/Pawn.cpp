@@ -77,3 +77,7 @@ void Pawn::updateMoves(Position currPosition, Board* gameBoard) {
         moveList.push_back(Position(moveStrings.at(i)));
     }
 }
+
+Character* Pawn::clone() {
+    return new Pawn(characterColor);
+}
