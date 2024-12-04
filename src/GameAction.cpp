@@ -1,4 +1,8 @@
 #include "../header/GameAction.hpp"
+#include "../header/Game.hpp"
+#include "../header/GameState.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
 
 // InvalidInput functions
 
