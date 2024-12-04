@@ -26,7 +26,7 @@ class Character {
     std::string getSymbol() const;
     std::vector<Position> getMoveList() const;
     virtual void updateMoves(Position currPosition, Board* gameBoard) = 0;
-    void removeSelfCheckMoves(Position currPosition, Position newPosition, Board* gameBoard);
+    void removeSelfCheckMoves(Position currPosition, Board* gameBoard);
     virtual Character* clone() = 0;
 };
 
