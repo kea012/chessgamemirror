@@ -134,7 +134,6 @@ Board& Board::operator=(const Board& rhs) {
 
 //destructor
 Board::~Board() {
-    cout << "DESTRUCTOR CALLED" << endl;
     whitePieces.clear();
     blackPieces.clear();
     for (unsigned int row = 0; row < 8; ++row){
