@@ -1,4 +1,5 @@
 #include "../header/King.hpp"
+#include "../header/KingMove.hpp"
 
 using namespace std;
 
