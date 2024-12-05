@@ -1,5 +1,7 @@
+#include "../header/PawnMove.hpp"
 #include "../header/Character.hpp" 
 #include "../header/GameAction.hpp"
+#include "../header/Move.hpp"
 
 // InvalidInput functions
 
@@ -65,11 +67,27 @@ std::string CheckPiece::performAction(Game* activeGame) {
         return "Selected piece has no legal moves\nEnter a position to select a piece";
     }
     */
+   //need to implement more pieces here
+   Move* moveGenerator = nullptr;
+   switch(tempChar->getType()){
+    case PAWN:
+    moveGenerator = new PawnMove(tempChar->getColor(), activeGame->getGameBoard());
+    break;
+   }
+   std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(piecePos.getRow(), piecePos.getCol());;
+   delete moveGenerator;
+
+
+   std::string moveString = "\npossible moves: ";
+   for (unsigned int i = 0; i < moveList.size(); ++i){
+    moveString += moveList[i] + " ";
+   }
+   
     tempChar = nullptr;
     
     activeGame->updatePiecePosition(piecePos.getPositionString());
     activeGame->updateGameState(new SelectingMove);
-    return "Enter a position to move selected piece to or 'R' to select a different piece";
+    return "Enter a position to move selected piece to or 'R' to select a different piece" +  moveString;
 }
 
 // SelectMove functions
