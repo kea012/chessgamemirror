@@ -47,6 +47,7 @@ public:
     bool inputToAction(std::string userInput);
     bool performCurrAction();
     bool moveSelectedPiece();
+    bool getNewMoves(std::string color);
 };
 
 #endif

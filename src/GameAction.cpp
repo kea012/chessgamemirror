@@ -24,7 +24,7 @@ std::string CreateGame::performAction(Game* activeGame) {
     
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
-    activeGame->getGameBoard()->generateAllPlayerMoves("w");
+    activeGame->getNewMoves("w");
     std::string newOutputString = "Starting new game...\n";
     newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
@@ -116,7 +116,7 @@ std::string MovePiece::performAction(Game* activeGame) {
     else if (activeGame->getTurn() == whiteTurn) {
         nextTurnColor == "b";
     }
-    activeGame->getGameBoard()->generateAllPlayerMoves(nextTurnColor);
+    activeGame->getNewMoves(nextTurnColor);
 
     if (!activeGame->getGameBoard()->colorHasMoves(nextTurnColor)) {
         if (activeGame->getGameBoard()->isKingInCheck(nextTurnColor)) {

@@ -123,3 +123,11 @@ bool Game::performCurrAction() {
 bool Game::moveSelectedPiece() {
     return gameBoard->movePiece(piecePos.getRow(), piecePos.getCol(), movePos.getRow(), movePos.getCol());
 }
+
+bool Game::getNewMoves(std::string color) {
+    if (color != "b" && color != "w") {
+        return false;
+    }
+    gameBoard->generateAllPlayerMoves(color);
+    gameBoard->removeAllSelfCheckMoves(color);
+}
