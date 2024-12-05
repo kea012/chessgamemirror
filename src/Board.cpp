@@ -279,6 +279,9 @@ void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
         chessBoard[newRow][newColumn] = nullptr;
     }
     chessBoard[newRow][newColumn] = temp;
+    if (chessBoard[newRow][newColumn]->getType() == PAWN){
+        static_cast<Pawn*>(chessBoard[newRow][newColumn])->setMoved();
+    }
     chessBoard[initialRow][initialColumn] = nullptr;
 }
 

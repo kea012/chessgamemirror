@@ -43,7 +43,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     //diagonol down and to the left of the board and en passant
     if (row == 4 && column - 1 >= 0) {
         Character* adjacentPiece = chessBoard->getPiece(row, column - 1);
-        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && dynamic_cast<Pawn*>(adjacentPiece)->getMovedStatus() == 1) {
+        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
             possibleMoves.push_back(to_string(row + 1) + to_string(column - 1));
         }
     }
@@ -51,7 +51,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     // white en passant right
     if (row == 4 && column + 1 < 8) {
         Character* adjacentPiece = chessBoard->getPiece(row, column + 1);
-        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && dynamic_cast<Pawn*>(adjacentPiece)->getMovedStatus() == 1) {
+        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1 ){
             possibleMoves.push_back(to_string(row + 1) + to_string(column + 1));
         }
     }
@@ -89,7 +89,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     // black en passant right
     if (row == 3 && column + 1 < 8) {
         Character* adjacentPiece = chessBoard->getPiece(row, column + 1);
-        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && dynamic_cast<Pawn*>(adjacentPiece)->getMovedStatus() == 1) {
+        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
             possibleMoves.push_back(to_string(row - 1) + to_string(column + 1));
         }
     }
@@ -97,13 +97,10 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     // black en passant left
     if (row == 3 && column - 1 >= 0) {
         Character* adjacentPiece = chessBoard->getPiece(row, column - 1);
-        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && dynamic_cast<Pawn*>(adjacentPiece)->getMovedStatus() == 1) {
+        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
             possibleMoves.push_back(to_string(row - 1) + to_string(column - 1));
         }
     }
 
     return possibleMoves; 
-*/
-vector<string> temp;
-return temp;
 }

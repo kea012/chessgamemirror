@@ -1,16 +1,20 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+class Character;
+class Position;
+class Board;
+class GameState;
+class GameAction;
+
 #include "../header/Position.hpp"
 #include "../header/Board.hpp"
 #include "../header/GameState.hpp"
 #include "../header/GameAction.hpp"
 #include <string>
 
-class Position;
-class Board;
-class GameState;
-class GameAction;
+
+
 
 enum turn { whiteTurn, blackTurn, noTurn };
 
