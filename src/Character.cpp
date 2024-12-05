@@ -1,6 +1,5 @@
 #include "../header/Character.hpp"
 #include "../header/Board.hpp"
-#include <iostream>
 
 using namespace std; 
 
@@ -32,16 +31,13 @@ std::vector<Position> Character::getMoveList() const {
 }
 
 void Character::removeSelfCheckMoves(Position currPosition, Board* gameBoard) {
-  std::vector<Position>::iterator it = moveList.begin();
-  while (it != moveList.end()) {
+  for (int i = 0; i < moveList.size(); i++) {
     Board* tempGameBoard(gameBoard);
-    Position newPosition = *it;
+    Position newPosition = moveList.at(i);
     tempGameBoard->movePiece(currPosition.getRow(), currPosition.getCol(), newPosition.getRow(), newPosition.getCol());
     if (tempGameBoard->isKingInCheck(characterColor)) {
-      it = moveList.erase(it);
-    }
-    else {
-      it++;
+      moveList.erase(moveList.begin() + i);
+      i--;
     }
     delete tempGameBoard;
   }
