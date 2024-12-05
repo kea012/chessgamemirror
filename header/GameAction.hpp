@@ -1,11 +1,10 @@
 #ifndef GAMEACTION_HPP
 #define GAMEACTION_HPP 
 
-#include "../header/Game.hpp"
-#include "../header/GameState.hpp"
+#include <string>
+#include "../header/Position.hpp"
 
 class Game;
-class GameState;
 
 class GameAction {
 public:

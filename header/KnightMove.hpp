@@ -2,6 +2,7 @@
 #define KNIGHTMOVE_HPP
 
 #include "../header/Move.hpp"
+#include "Board.hpp"
 
 class KnightMove : public Move {
     private:

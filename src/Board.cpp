@@ -1,4 +1,12 @@
 #include "../header/Board.hpp"
+#include "../header/Character.hpp"
+#include "../header/Pawn.hpp"
+#include "../header/King.hpp"
+#include "../header/Knight.hpp"
+#include "../header/Bishop.hpp"
+#include "../header/Rook.hpp"
+#include "../header/Queen.hpp"
+#include "../header/Position.hpp"
 #include <iostream>
 
 using namespace std;
@@ -77,6 +85,53 @@ Board::Board(){
     }
 }
 
+Board::Board(const Board& rhs) {
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currRhsPiece = rhs.getPiece(row, col);
+            if (currRhsPiece == nullptr) {
+                continue;
+            }
+            Character* currPiece = currRhsPiece->clone();
+            chessBoard[row][col] = currPiece;
+            if (currRhsPiece->getColor() == "w") {
+                whitePieces.push_back(currPiece);
+            }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
+            }
+            currRhsPiece = nullptr;
+            currPiece = nullptr;
+        }
+    }
+}
+
+Board& Board::operator=(const Board& rhs) {
+    whitePieces.clear();
+    blackPieces.clear();
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            delete chessBoard[row][col];
+            chessBoard[row][col] = nullptr;
+            Character* currRhsPiece = rhs.getPiece(row, col);
+            if (currRhsPiece == nullptr) {
+                continue;
+            }
+            Character* currPiece = currRhsPiece->clone();
+            chessBoard[row][col] = currPiece;
+            if (currRhsPiece->getColor() == "w") {
+                whitePieces.push_back(currPiece);
+            }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
+            }
+            currRhsPiece = nullptr;
+            currPiece = nullptr;
+        }
+    }
+    return *this;
+}
+
 //destructor
 Board::~Board() {
     whitePieces.clear();
@@ -105,27 +160,59 @@ bool Board::isSpaceOccupied(Position pos) {
     return true;
 }
 
-bool hasMoves(Position piecePos) {
-    // Complete function will check if the Character at piecePos has available moves
+bool Board::colorHasMoves(std::string checkColor) {
+    if (checkColor != "b" && checkColor != "w") {
+        return false;
+    }
+    Character* currPiece;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            currPiece = chessBoard[row][col];
+            if (currPiece != nullptr && currPiece->getColor() == checkColor) {
+                currPiece = nullptr;
+                if (pieceHasMoves(Position(row, col))) {
+                    return true;
+                }
+            }
+        }
+    }
+    currPiece = nullptr;
     return false;
 }
 
-bool isValidMovement(Position piecePos, Position movePos) {
-    // Complete function will check if the position in movePos exists in the list of possible moves of the Character at piecePos
+bool Board::pieceHasMoves(Position piecePos) {
+    Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
+    if (currPiece == nullptr) {
+        return false;
+    }
+    std::vector<Position> currPieceMoveList = currPiece->getMoveList();
+    currPiece = nullptr;
+    if (currPieceMoveList.empty()) {
+        return false;
+    }
+    return true;
+}
+
+bool Board::isValidMovement(Position piecePos, Position movePos) {
+    if (!(pieceHasMoves(piecePos))) {
+        return false;
+    }
+    Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
+    std::vector<Position> currPieceMoveList = currPiece->getMoveList();
+    currPiece = nullptr;
+    for (int i = 0; i < currPieceMoveList.size(); i++) {
+        if (currPieceMoveList.at(i) == movePos) {
+            return true;
+        }
+    }
     return false;
 }
 
-string checkPieceColor(Position piecePos) {
-    // Complete function will return color of the Character at piecePos
-    return "black";
-}
-
-Character* Board::addPiece(){
-    return nullptr;
-}
-
-void Board::movePiece(){
-    return;
+string Board::checkPieceColor(Position piecePos) {
+    if (chessBoard[piecePos.getRow()][piecePos.getCol()] == nullptr) {
+        return "No piece at position";
+    }
+    return chessBoard[piecePos.getRow()][piecePos.getCol()]->getColor();
 }
 
 void Board::capturePiece(){
@@ -139,7 +226,7 @@ bool Board::stalemate(){
 string Board::generateBoard(){
     string board = "";
     for (unsigned int row = 0; row < 8; ++row){
-         board += to_string(row+1);
+         board += to_string(8-row);
         for (unsigned int column = 0; column < 8; ++column){
             board += "|";
             if (chessBoard[row][column] == nullptr){
@@ -151,7 +238,6 @@ string Board::generateBoard(){
             board += "|";
         }
         board += "\n";
-        board + "  ";
     }
     board += "  A  B  C  D  E  F  G  H";
     return board;
@@ -161,19 +247,178 @@ void Board::printBoard(string boardString){
     cout << boardString << endl;
 }
 
-Character* Board::getPiece(int row, int column) {
+Character* Board::getPiece(int row, int column) const {
     return chessBoard[row][column];
 }
 
 void Board::setPiece(int row, int column, Character* insertChar) {
     Character* temp = chessBoard[row][column];
+    if (temp != nullptr) {
+        removePieceFromList(temp);
+    }
     chessBoard[row][column] = insertChar;
     delete temp;
 }
 
-void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
-    Character* temp = chessBoard[initialRow][initialColumn];
-    chessBoard[newRow][newColumn] = temp;
-    chessBoard[initialRow][initialColumn] = nullptr;
+void Board::pawnPromotion(int row, int column, string type) {
+    Character* temp = chessBoard[row][column];
+    if (temp->getType() == 0) {
+        if ((row == 7) && (chessBoard[row][column]->getColor() == "w")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("w");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("w");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("w");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("w");
+            }
+            whitePieces.push_back(chessBoard[row][column]);
+        }
+        else if ((row == 0) && (chessBoard[row][column]->getColor() == "b")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("b");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("b");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("b");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("b");
+            }
+            blackPieces.push_back(chessBoard[row][column]);
+        }
+        removePieceFromList(temp);
+        delete temp;
+    }
 }
 
+bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+    Character* temp = chessBoard[initialRow][initialColumn];
+    if (!temp) {
+        return false;
+    }
+    if (chessBoard[newRow][newColumn]) {
+        delete chessBoard[newRow][newColumn];
+        chessBoard[newRow][newColumn] = nullptr;
+    }
+    chessBoard[newRow][newColumn] = temp;
+    chessBoard[initialRow][initialColumn] = nullptr;
+    return true;
+}
+
+bool Board::removePieceFromList(Character* pieceToRemove) {
+    if (pieceToRemove->getColor() == "w") {
+        for (int i = 0; i < whitePieces.size(); i++) {
+            if (whitePieces.at(i) == pieceToRemove) {
+                whitePieces.erase(whitePieces.begin() + i);
+            }
+        }
+        return true;
+    }
+    if (pieceToRemove->getColor() == "b") {
+        for (int i = 0; i < blackPieces.size(); i++) {
+            if (blackPieces.at(i) == pieceToRemove) {
+                blackPieces.erase(blackPieces.begin() + i);
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
+bool Board::generateAllPlayerMoves(std::string color) {
+    if (color != "b" && color != "w")
+        return false;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr && currPiece->getColor() == color) {
+                currPiece->updateMoves(Position(row, col), this);
+            }
+            currPiece = nullptr;
+        }
+    }
+    return true;
+}
+
+bool Board::removeAllSelfCheckMoves(std::string color) {
+    if (color != "b" && color != "w") {
+        return false;
+    }
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr) {
+                if (currPiece->getColor() == color) {
+                    currPiece->removeSelfCheckMoves(Position(row, col), this);
+                }
+                currPiece = nullptr;
+            }
+        }
+    }
+    return true;
+}
+
+Position Board::getKingPosition(std::string color) {
+    Position kingPosition;
+    if (color != "w" && color != "b") {
+        return kingPosition;
+    }
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece != nullptr) {
+                if (currPiece->getColor() == color && currPiece->getType() == KING) {
+                    currPiece = nullptr;
+                    kingPosition.setPositionFromInts(row, col);
+                    return kingPosition;
+                }
+                currPiece = nullptr;
+            }
+        }
+    }
+    return kingPosition;
+}
+
+bool Board::isKingInCheck(std::string color) {
+    Position kingPosition = getKingPosition(color);
+    if (kingPosition.isEmptyPosition())
+        return false;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            Character* currPiece = chessBoard[row][col];
+            if (currPiece == nullptr)
+                continue;
+            std::vector<Position> currPieceMoveList;
+            if (color == "w" && currPiece->getColor() == "b") {
+                currPieceMoveList = currPiece->getMoveList();
+            }
+            if (color == "b" && currPiece->getColor() == "w") {
+                currPieceMoveList = currPiece->getMoveList();
+            }
+            currPiece == nullptr;
+            for (int i = 0; i < currPieceMoveList.size(); i++) {
+                if (currPieceMoveList.at(i) == kingPosition)
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
+void Board::clearBoard() {
+    whitePieces.clear();
+    blackPieces.clear();
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            delete chessBoard[row][column];
+            chessBoard[row][column] = nullptr;
+        }
+    }
+}

@@ -1,11 +1,11 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 
 ADD_SUBDIRECTORY(tests/googletest)
 
-ADD_EXECUTABLE(test
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+ADD_EXECUTABLE(chess
+    src/Chess.cpp
     src/Position.cpp
     src/Game.cpp
     src/GameState.cpp
@@ -19,9 +19,10 @@ ADD_EXECUTABLE(test
     src/Rook.cpp
     src/Queen.cpp
     src/Move.cpp
+    src/PawnMove.cpp
+    src/BishopMove.cpp
+    src/RookMove.cpp
     src/QueenMove.cpp
-    tests/test.cpp
-    tests/GameTests.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest gtest_main)

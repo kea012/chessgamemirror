@@ -1,4 +1,5 @@
 #include "../header/Pawn.hpp"
+#include "../header/PawnMove.hpp"
 
 using namespace std;
 
@@ -11,12 +12,12 @@ Pawn::Pawn(string characterColor) : Character(PAWN, characterColor) {
     }
 }
 
-bool Pawn::getMovedStatus() const {
+int Pawn::getMovedStatus() const {
   return this->characterMoved;
 }
 
 void Pawn::setMoved() {
-  this->characterMoved = true;
+  ++this->characterMoved;
 }
 
 /*std::vector<std::string>* Pawn::generatePossibleMoves(int x, int y) {
@@ -68,3 +69,12 @@ void Pawn::setMoved() {
      
     return move; 
 }*/
+
+std::vector<std::string> Pawn::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  PawnMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
+}
+
+Character* Pawn::clone() {
+    return new Pawn(characterColor);
+}

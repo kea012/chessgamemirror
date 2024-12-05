@@ -101,5 +101,27 @@ TEST (QueenMove, MakeQueenMove) {
 8|♖||♘||♗||♕||♔||♗||♘||♖|
   A  B  C  D  E  F  G  H*/
 
+TEST(Board, getPiece){
+    Board* chessBoard = new Board();
+    Rook*  testRook = new Rook("w");
+    EXPECT_EQ(chessBoard->getPiece(7,0)->getType(), testRook->getType());
+    delete chessBoard;
+}
+
+TEST(Board, movePiece){
+    Board* chessBoard = new Board();
+    chessBoard->movePiece(6,0,5,0);
+    Pawn* testPawn = new Pawn("w");
+    EXPECT_EQ(chessBoard->getPiece(5,0)->getType(), testPawn->getType());
+    delete chessBoard;
+}
+
+//TEST(Board, setPiece){
+   // Board* chessBoard = newBoard();
+  //  chessBoard->setPiece(6,0, chessBoard->getPiece()
+
+//1
+//
+//}
 
 
