@@ -12,7 +12,7 @@ Rook::Rook(string characterColor) : Character(ROOK, characterColor) {
     }
 }
 
-bool Rook::getMovedStatus() const {
+int Rook::getMovedStatus() const {
   return this->characterMoved;
 }
 

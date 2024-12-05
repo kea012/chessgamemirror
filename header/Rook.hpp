@@ -8,7 +8,7 @@ class Rook : public Character {
     bool characterMoved = false;
   public:
     Rook(std::string characterColor);
-    bool getMovedStatus() const;
+    int getMovedStatus() const;
     void setMoved();
     //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
     virtual void updateMoves(Position currPosition, Board* gameBoard);
