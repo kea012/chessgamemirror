@@ -1,3 +1,4 @@
+#include "../header/Character.hpp" 
 #include "../header/GameAction.hpp"
 
 // InvalidInput functions
