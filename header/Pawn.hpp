@@ -8,7 +8,7 @@ class Pawn : public Character {
     int characterMoved = 0;
     public:
     Pawn(std::string characterColor);
-    int getMovedStatus() const;
+    // int getMovedStatus() const;
     void setMoved();
     //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
     virtual void updateMoves(Position currPosition, Board* gameBoard);
