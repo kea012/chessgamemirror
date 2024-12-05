@@ -97,6 +97,9 @@ Board::Board(const Board& rhs) {
             if (currRhsPiece->getColor() == "w") {
                 whitePieces.push_back(currPiece);
             }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
+            }
             currRhsPiece = nullptr;
             currPiece = nullptr;
         }
@@ -118,6 +121,9 @@ Board& Board::operator=(const Board& rhs) {
             chessBoard[row][col] = currPiece;
             if (currRhsPiece->getColor() == "w") {
                 whitePieces.push_back(currPiece);
+            }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
             }
             currRhsPiece = nullptr;
             currPiece = nullptr;
@@ -154,7 +160,27 @@ bool Board::isSpaceOccupied(Position pos) {
     return true;
 }
 
-bool Board::hasMoves(Position piecePos) {
+bool Board::colorHasMoves(std::string checkColor) {
+    if (checkColor != "b" && checkColor != "w") {
+        return false;
+    }
+    Character* currPiece;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            currPiece = chessBoard[row][col];
+            if (currPiece != nullptr && currPiece->getColor() == checkColor) {
+                currPiece = nullptr;
+                if (pieceHasMoves(Position(row, col))) {
+                    return true;
+                }
+            }
+        }
+    }
+    currPiece = nullptr;
+    return false;
+}
+
+bool Board::pieceHasMoves(Position piecePos) {
     Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
     if (currPiece == nullptr) {
         return false;
@@ -168,7 +194,7 @@ bool Board::hasMoves(Position piecePos) {
 }
 
 bool Board::isValidMovement(Position piecePos, Position movePos) {
-    if (!(hasMoves(piecePos))) {
+    if (!(pieceHasMoves(piecePos))) {
         return false;
     }
     Character* currPiece = chessBoard[piecePos.getRow()][piecePos.getCol()];
@@ -272,14 +298,18 @@ void Board::pawnPromotion(int row, int column, string type) {
     }
 }
 
-void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
+    if (!temp) {
+        return false;
+    }
     if (chessBoard[newRow][newColumn]) {
         delete chessBoard[newRow][newColumn];
         chessBoard[newRow][newColumn] = nullptr;
     }
     chessBoard[newRow][newColumn] = temp;
     chessBoard[initialRow][initialColumn] = nullptr;
+    return true;
 }
 
 bool Board::removePieceFromList(Character* pieceToRemove) {
@@ -314,7 +344,6 @@ bool Board::generateAllPlayerMoves(std::string color) {
             currPiece = nullptr;
         }
     }
-    removeAllSelfCheckMoves(color);
     return true;
 }
 

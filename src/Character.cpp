@@ -1,6 +1,8 @@
 #include "../header/Character.hpp"
 #include "../header/Board.hpp"
 
+#include <iostream>
+
 using namespace std; 
 
 Character::Character(CharacterType type, string characterColor) : type(type), characterColor(characterColor) {}
@@ -30,14 +32,28 @@ std::vector<Position> Character::getMoveList() const {
   return this->moveList;
 }
 
+void Character::updateMoves(Position currPosition, Board* gameBoard) {
+  moveList.clear();
+  std::vector<std::string> moveStrings = getSpecificMoveStrings(currPosition, gameBoard);
+  for (auto i = moveStrings.begin(); i < moveStrings.end(); i++) {
+    Position newMove;
+    if (newMove.setPositionFromInts(i->front() - '0', i->back() - '0')) {
+      moveList.push_back(newMove);
+    }
+  }
+}
+
 void Character::removeSelfCheckMoves(Position currPosition, Board* gameBoard) {
-  for (int i = 0; i < moveList.size(); i++) {
-    Board* tempGameBoard(gameBoard);
-    Position newPosition = moveList.at(i);
-    tempGameBoard->movePiece(currPosition.getRow(), currPosition.getCol(), newPosition.getRow(), newPosition.getCol());
+  std::vector<Position>::iterator it = moveList.begin();
+  while (it < moveList.end()) {
+    Board* tempGameBoard = new Board(*gameBoard);
+    tempGameBoard->movePiece(currPosition.getRow(), currPosition.getCol(), it->getRow(), it->getCol());
+    tempGameBoard->generateAllPlayerMoves(gameBoard->checkPieceColor(currPosition));
     if (tempGameBoard->isKingInCheck(characterColor)) {
-      moveList.erase(moveList.begin() + i);
-      i--;
+      it = moveList.erase(it);
+    }
+    else {
+      it++;
     }
     delete tempGameBoard;
   }

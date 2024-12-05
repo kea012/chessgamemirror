@@ -36,13 +36,9 @@ Bishop::Bishop(string characterColor) : Character(BISHOP, characterColor) {
   return vec;
 }*/
 
-void Bishop::updateMoves(Position currPosition, Board* gameBoard) {
-    moveList.clear();
-    BishopMove moveGetter(characterColor, gameBoard);
-    std::vector<std::string> moveStrings = moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
-    for (int i = 0; i < moveStrings.size(); i++) {
-        moveList.push_back(Position(moveStrings.at(i)));
-    }
+std::vector<std::string> Bishop::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  BishopMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
 }
 
 Character* Bishop::clone() {
