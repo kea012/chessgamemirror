@@ -30,8 +30,8 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
     row = newRow;
     col = newCol;
     positionString = "";
-    positionString += (row + 'A');
-    positionString += (col + '1');
+    positionString += (col + 'A');
+    positionString += ('8' - row);
     return true;
 }
 
