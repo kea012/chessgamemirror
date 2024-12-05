@@ -111,10 +111,10 @@ std::string MovePiece::performAction(Game* activeGame) {
 
     std::string nextTurnColor;
     if (activeGame->getTurn() == blackTurn) {
-        nextTurnColor == "w";
+        nextTurnColor = "w";
     }
     else if (activeGame->getTurn() == whiteTurn) {
-        nextTurnColor == "b";
+        nextTurnColor = "b";
     }
     activeGame->getNewMoves(nextTurnColor);
 
