@@ -130,4 +130,5 @@ bool Game::getNewMoves(std::string color) {
     }
     gameBoard->generateAllPlayerMoves(color);
     gameBoard->removeAllSelfCheckMoves(color);
+    return true;
 }
