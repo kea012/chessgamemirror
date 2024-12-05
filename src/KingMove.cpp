@@ -26,17 +26,14 @@ vector<string> KingMove::generatePossibleMoves(int row, int column) {
 
 void KingMove::castling(int row, int column ) {
   if (chessBoard->getPiece(row,0) != nullptr) {
-    if (chessBoard->getPiece(row,0)->getType() == ROOK) {
+    if (chessBoard->getPiece(row,0)->getType() == ROOK && chessBoard->getPiece(row,1) == nullptr && chessBoard->getPiece(row,2) == nullptr && chessBoard->getPiece(row,3) == nullptr) {
       if (static_cast<Rook*>(chessBoard->getPiece(row,0))->getMovedStatus()==0) {
         possibleMoves.push_back(to_string(row)+to_string(2));
       }
     }
   }
   if (chessBoard->getPiece(row,7) != nullptr) {
-
-  }
-  if (chessBoard->getPiece(row,7) != nullptr) {
-    if (chessBoard->getPiece(row,7)->getType() == ROOK) {
+    if (chessBoard->getPiece(row,7)->getType() == ROOK && chessBoard->getPiece(row,5) == nullptr && chessBoard->getPiece(row,6) == nullptr) {
       if (static_cast<Rook*>(chessBoard->getPiece(row,7))->getMovedStatus()==0) {
         possibleMoves.push_back(to_string(row)+to_string(6));
       }
