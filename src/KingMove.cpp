@@ -12,7 +12,7 @@ vector<string> KingMove::generatePossibleMoves(int row, int column) {
         continue;
       }
       if ((row+hor_move>=0 && column+ver_move>=0 && row+hor_move<8 && column+ver_move<8) && 
-      (chessBoard->getPiece(row+hor_move,column+ver_move) != nullptr || 
+      (chessBoard->getPiece(row+hor_move,column+ver_move) == nullptr || 
       color != chessBoard->getPiece(row+hor_move,column+ver_move)->getColor())) {
         possibleMoves.push_back(to_string(row+hor_move)+to_string(column+ver_move));
       }
@@ -22,6 +22,7 @@ vector<string> KingMove::generatePossibleMoves(int row, int column) {
   if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
     castling(row, column);
   }
+  return possibleMoves;
 }
 
 void KingMove::castling(int row, int column ) {
