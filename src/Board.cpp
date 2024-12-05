@@ -97,6 +97,9 @@ Board::Board(const Board& rhs) {
             if (currRhsPiece->getColor() == "w") {
                 whitePieces.push_back(currPiece);
             }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
+            }
             currRhsPiece = nullptr;
             currPiece = nullptr;
         }
@@ -119,6 +122,9 @@ Board& Board::operator=(const Board& rhs) {
             if (currRhsPiece->getColor() == "w") {
                 whitePieces.push_back(currPiece);
             }
+            if (currRhsPiece->getColor() == "b") {
+                blackPieces.push_back(currPiece);
+            }
             currRhsPiece = nullptr;
             currPiece = nullptr;
         }
@@ -128,6 +134,7 @@ Board& Board::operator=(const Board& rhs) {
 
 //destructor
 Board::~Board() {
+    cout << "DESTRUCTOR CALLED" << endl;
     whitePieces.clear();
     blackPieces.clear();
     for (unsigned int row = 0; row < 8; ++row){
@@ -338,7 +345,6 @@ bool Board::generateAllPlayerMoves(std::string color) {
             currPiece = nullptr;
         }
     }
-    removeAllSelfCheckMoves(color);
     return true;
 }
 
