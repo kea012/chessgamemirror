@@ -1,3 +1,4 @@
+#include "../header/Character.hpp" 
 #include "../header/Game.hpp"
 
 Game::Game() {
