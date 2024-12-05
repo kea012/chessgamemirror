@@ -1,6 +1,7 @@
 #include "../header/PawnMove.hpp"
 #include "../header/Board.hpp"
 #include "../header/Character.hpp"
+#include "../header/Pawn.hpp"
 
 using namespace std;
 
@@ -102,8 +103,5 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
         }
     }
 
-    return possibleMoves; 
-*/
-vector<string> temp;
-return temp;
+    return possibleMoves;
 }
