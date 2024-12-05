@@ -11,6 +11,14 @@ King::King(string characterColor) : Character(KING, characterColor) {
     }
 }
 
+int King::getMovedStatus() const {
+  return this->characterMoved;
+}
+
+void King::setMoved() {
+  ++this->characterMoved;
+}
+
 /*std::vector<std::string>* King::generatePossibleMoves(int x, int y) {
     vector<string>* move;
     move->push_back("");
