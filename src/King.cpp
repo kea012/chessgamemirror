@@ -27,10 +27,8 @@ void King::setMoved() {
 }*/
 
 std::vector<std::string> King::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
-  //KingMove moveGetter(characterColor, gameBoard);
-  //return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
-  std::vector<std::string> emptyList;
-  return emptyList;
+  KingMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
 }
 
 Character* King::clone() {
