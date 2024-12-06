@@ -64,21 +64,22 @@ Player 1 select your input.
 
 Chess Game Menu:
 
-create new game enter “cng”
+Enter 'S' to start a new game or 'Q' to quit the program
 
-to quit game enter “qg”
-
-make a move enter “m”
+Enter 'M' to make a movee or 'Q' to quit game
 
 m
 
-Enter position of piece.
+Enter a position to select a piece.
 
 A2
 
-Where do you want to move this piece?
+Enter a position to move selected piece to or 'R' to select a different piece
+Possible moves: A3, A4
 
 A3
+
+Enter 'C' to confirm movement or 'R' to select a different position
 
 Display Board:
 
