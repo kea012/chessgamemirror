@@ -1,13 +1,19 @@
 #include "../header/Character.hpp"
 #include "../header/Board.hpp"
 #include "../header/Pawn.hpp"
+#include "../header/PawnMove.hpp"
 #include "../header/Queen.hpp"
-#include "../header/Bishop.hpp"
-#include "../header/Knight.hpp"
-#include "../header/Rook.hpp"
-#include "../header/King.hpp"
-#include "../header/Move.hpp"
 #include "../header/QueenMove.hpp"
+#include "../header/Bishop.hpp"
+#include "../header/BishopMove.hpp"
+#include "../header/Knight.hpp"
+#include "../header/KnightMove.hpp"
+#include "../header/Rook.hpp"
+#include "../header/RookMove.hpp"
+#include "../header/King.hpp"
+#include "../header/KingMove.hpp"
+#include "../header/Move.hpp"
+
 #include "gtest/gtest.h"
 #include <string>
 
@@ -79,7 +85,7 @@ TEST (Board, MakeBoard) {
 
 TEST (Board, PrintBoard) {
     Board* testBoard = new Board();
-    string board = "1|♜||♞||♝||♚||♛||♝||♞||♜|\n2|♟||♟||♟||♟||♟||♟||♟||♟|\n3| || || || || || || || |\n4| || || || || || || || |\n5| || || || || || || || |\n6| || || || || || || || |\n7|♙||♙||♙||♙||♙||♙||♙||♙|\n8|♖||♘||♗||♕||♔||♗||♘||♖|\n  A  B  C  D  E  F  G  H";
+    string board = "8|♜||♞||♝||♛||♚||♝||♞||♜|\n7|♟||♟||♟||♟||♟||♟||♟||♟|\n6| || || || || || || || |\n5| || || || || || || || |\n4| || || || || || || || |\n3| || || || || || || || |\n2|♙||♙||♙||♙||♙||♙||♙||♙|\n1|♖||♘||♗||♕||♔||♗||♘||♖|\n  A  B  C  D  E  F  G  H";
     string printBoard = testBoard->generateBoard();
     EXPECT_EQ(printBoard, board);
 }
