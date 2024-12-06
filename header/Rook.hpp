@@ -10,7 +10,6 @@ class Rook : public Character {
     Rook(std::string characterColor);
     int getMovedStatus() const;
     void setMoved();
-    //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
     virtual std::vector<std::string> getSpecificMoveStrings(Position currPosition, Board* gameBoard);
     virtual Character* clone();
 };
