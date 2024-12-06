@@ -131,3 +131,11 @@ The Move class was introduced to better follow the single-responsibility rule an
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
+ Unit Testing: First, we made sure that all the object works for the game. Then, we made a unit test for funtions of our classes, including Board class, Character classes 
+ (Bishop, King, Knight, Pawn, Queen, Rook), Move classes (BishopMove, KingMove, KnightMove, PawnMove, QueenMove, RookMove), Position class, GameAction class, GameState class. Each 
+ function of our classes will be tested multiple times with different cases if necessary.
+
+ Playtesting: The game was played by different players to ensure moves following the rule of chess and smooth gameplay. Additionally, playtesting helped us discover errors and fix 
+ them.
+
+
