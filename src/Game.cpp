@@ -112,6 +112,7 @@ void Game::resetWholeGame() {
 bool Game::inputToAction(std::string userInput) {
     if (!currGameState)
         return false;
+    delete currAction;
     currAction = currGameState->parseUserInput(userInput);
     return true;
 }
