@@ -11,15 +11,25 @@ King::King(string characterColor) : Character(KING, characterColor) {
     }
 }
 
+int King::getMovedStatus() const {
+  return this->characterMoved;
+}
+
+void King::setMoved() {
+  ++this->characterMoved;
+}
+
 /*std::vector<std::string>* King::generatePossibleMoves(int x, int y) {
     vector<string>* move;
     move->push_back("");
     return move;
 }*/
 
-void King::updateMoves(Position currPosition, Board* gameBoard) {
-    moveList.clear();
-    // Full implementation should use KingMove class
+std::vector<std::string> King::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  //KingMove moveGetter(characterColor, gameBoard);
+  //return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
+  std::vector<std::string> emptyList;
+  return emptyList;
 }
 
 Character* King::clone() {

@@ -1,4 +1,6 @@
 #include "../header/GameState.hpp"
+#include "../header/Game.hpp"
+#include "../header/GameAction.hpp"
 
 // MenuScreen functions
 

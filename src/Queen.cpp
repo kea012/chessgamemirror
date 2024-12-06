@@ -129,13 +129,9 @@ Queen::Queen(string characterColor) : Character(QUEEN, characterColor) {
     return move;
 }*/
 
-void Queen::updateMoves(Position currPosition, Board* gameBoard) {
-    moveList.clear();
-    QueenMove moveGetter(characterColor, gameBoard);
-    std::vector<std::string> moveStrings = moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
-    for (int i = 0; i < moveStrings.size(); i++) {
-        moveList.push_back(Position(moveStrings.at(i)));
-    }
+std::vector<std::string> Queen::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  QueenMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
 }
 
 Character* Queen::clone() {

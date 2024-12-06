@@ -11,7 +11,7 @@ class Pawn : public Character {
     // int getMovedStatus() const;
     void setMoved();
     //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
-    virtual void updateMoves(Position currPosition, Board* gameBoard);
+    virtual std::vector<std::string> getSpecificMoveStrings(Position currPosition, Board* gameBoard);
     virtual Character* clone();
     int getMovedStatus() const override;
 };

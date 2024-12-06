@@ -49,9 +49,11 @@ Knight::Knight(string characterColor) : Character(KNIGHT, characterColor) {
   return vec;
 }*/
 
-void Knight::updateMoves(Position currPosition, Board* gameBoard) {
-  moveList.clear();
-  // Full implementation should use KnightMove class
+std::vector<std::string> Knight::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  //KnightMove moveGetter(characterColor, gameBoard);
+  //return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
+  std::vector<std::string> emptyList;
+  return emptyList;
 }
 
 Character* Knight::clone() {

@@ -25,7 +25,8 @@ class Character {
     std::string getColor() const;
     std::string getSymbol() const;
     std::vector<Position> getMoveList() const;
-    virtual void updateMoves(Position currPosition, Board* gameBoard) = 0;
+    virtual std::vector<std::string> getSpecificMoveStrings(Position currPosition, Board* gameBoard) = 0;
+    virtual void updateMoves(Position currPosition, Board* gameBoard);
     void removeSelfCheckMoves(Position currPosition, Board* gameBoard);
     virtual Character* clone() = 0;
     virtual int getMovedStatus() const{return 0;}

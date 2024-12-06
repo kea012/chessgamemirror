@@ -1,6 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+
 class Character;
 class Position;
 class Board;
@@ -11,7 +12,10 @@ class GameAction;
 #include "../header/Board.hpp"
 #include "../header/GameState.hpp"
 #include "../header/GameAction.hpp"
+=======
+
 #include <string>
+#include "../header/Position.hpp"
 
 
 
@@ -54,6 +58,7 @@ public:
     bool inputToAction(std::string userInput);
     bool performCurrAction();
     bool moveSelectedPiece();
+    bool getNewMoves(std::string color);
 };
 
 #endif

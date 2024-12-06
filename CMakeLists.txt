@@ -47,6 +47,8 @@ ADD_EXECUTABLE(chess
     src/BishopMove.cpp
     src/RookMove.cpp
     src/QueenMove.cpp
+    src/KnightMove.cpp
+    src/KingMove.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest gtest_main)

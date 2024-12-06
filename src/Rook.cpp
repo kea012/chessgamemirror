@@ -17,7 +17,7 @@ int Rook::getMovedStatus() const {
 }
 
 void Rook::setMoved() {
-  this->characterMoved = true;
+  ++this->characterMoved;
 }
 
 /*std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) { 
@@ -45,13 +45,9 @@ void Rook::setMoved() {
   return vec;
 }*/
 
-void Rook::updateMoves(Position currPosition, Board* gameBoard) {
-    moveList.clear();
-    RookMove moveGetter(characterColor, gameBoard);
-    std::vector<std::string> moveStrings = moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
-    for (int i = 0; i < moveStrings.size(); i++) {
-        moveList.push_back(Position(moveStrings.at(i)));
-    }
+std::vector<std::string> Rook::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
+  RookMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
 }
 
 Character* Rook::clone() {

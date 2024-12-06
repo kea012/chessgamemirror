@@ -1,5 +1,9 @@
 #include "../header/Character.hpp" 
 #include "../header/Game.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
+#include "../header/GameState.hpp"
+#include "../header/GameAction.hpp"
 
 Game::Game() {
     currGameState = new MenuScreen();
@@ -118,18 +122,14 @@ bool Game::performCurrAction() {
 }
 
 bool Game::moveSelectedPiece() {
-    if (piecePos.isEmptyPosition() || movePos.isEmptyPosition()) {
-        return false;
-    }
+    return gameBoard->movePiece(piecePos.getRow(), piecePos.getCol(), movePos.getRow(), movePos.getCol());
+}
 
-    Character* piece = gameBoard->getPiece(piecePos.getRow(), piecePos.getCol());
-    //probably can be updated to use other functions we implemented
-    if (!piece || (currTurn == whiteTurn && piece->getColor() != "w") ||
-                 (currTurn == blackTurn && piece->getColor() != "b")) {
+bool Game::getNewMoves(std::string color) {
+    if (color != "b" && color != "w") {
         return false;
     }
-    // Will check that gameBoard actually contains piece at piecePos and that
-    // movePos is a legal move for the piece
-    gameBoard->movePiece(piecePos.getRow(), piecePos.getCol(), movePos.getRow(), movePos.getCol());
+    gameBoard->generateAllPlayerMoves(color);
+    gameBoard->removeAllSelfCheckMoves(color);
     return true;
 }
