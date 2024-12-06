@@ -1,3 +1,4 @@
+#include "../header/Move.hpp"
 #include "../header/Pawn.hpp"
 #include "../header/PawnMove.hpp"
 

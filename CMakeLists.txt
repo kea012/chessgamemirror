@@ -20,8 +20,12 @@ ADD_EXECUTABLE(test
     src/Queen.cpp
     src/Move.cpp
     src/QueenMove.cpp
+    src/PawnMove.cpp
+    src/BishopMove.cpp
+    src/RookMove.cpp
     tests/test.cpp
     tests/GameTests.cpp
+    
 )
 
 ADD_EXECUTABLE(chess

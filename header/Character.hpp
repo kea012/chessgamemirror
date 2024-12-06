@@ -29,6 +29,7 @@ class Character {
     virtual void updateMoves(Position currPosition, Board* gameBoard);
     void removeSelfCheckMoves(Position currPosition, Board* gameBoard);
     virtual Character* clone() = 0;
+    virtual int getMovedStatus() const{return 0;}
 };
 
 #endif // CHARACTER_HPP

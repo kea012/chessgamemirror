@@ -1,3 +1,4 @@
+#include "../header/Character.hpp" 
 #include "../header/Game.hpp"
 #include "../header/Board.hpp"
 #include "../header/Character.hpp"

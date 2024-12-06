@@ -36,6 +36,7 @@ private:
 public:
     CheckPiece(Position newPiecePos);
     virtual std::string performAction(Game* activeGame);
+    std::vector<std::string> userDisplayMovements(std::vector<std::string>);
 };
 
 class SelectMove : public GameAction {
@@ -49,6 +50,7 @@ private:
 public:
     CheckMove(Position newMovePos);
     virtual std::string performAction(Game* activeGame);
+    
 };
 
 class MovePiece : public GameAction {
