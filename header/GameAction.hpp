@@ -2,6 +2,7 @@
 #define GAMEACTION_HPP 
 
 #include <string>
+#include <vector>
 #include "../header/Position.hpp"
 
 class Game;
@@ -36,7 +37,7 @@ private:
 public:
     CheckPiece(Position newPiecePos);
     virtual std::string performAction(Game* activeGame);
-    std::vector<std::string> userDisplayMovements(std::vector<std::string>);
+    std::vector<std::string> userDisplayMovements(std::vector<Position> moveList);
 };
 
 class SelectMove : public GameAction {

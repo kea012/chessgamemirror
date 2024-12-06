@@ -1,32 +1,22 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-
 class Character;
-class Position;
 class Board;
 class GameState;
 class GameAction;
+
 
 #include "../header/Position.hpp"
 #include "../header/Board.hpp"
 #include "../header/GameState.hpp"
 #include "../header/GameAction.hpp"
 
+
 #include <string>
 #include "../header/Position.hpp"
 
-
-
-
 enum turn { whiteTurn, blackTurn, noTurn };
-
-/*
-// Game outcomes
-const int WHITE_WIN = 0;
-const int BLACK_WIN = 1;
-const int DRAW = 2;
-*/
 
 class Game {
 private:

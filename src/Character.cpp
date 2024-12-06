@@ -1,8 +1,6 @@
 #include "../header/Character.hpp"
 #include "../header/Board.hpp"
 
-#include <iostream>
-
 using namespace std; 
 
 Character::Character(CharacterType type, string characterColor) : type(type), characterColor(characterColor) {}
@@ -48,7 +46,7 @@ void Character::removeSelfCheckMoves(Position currPosition, Board* gameBoard) {
   while (it < moveList.end()) {
     Board* tempGameBoard = new Board(*gameBoard);
     tempGameBoard->movePiece(currPosition.getRow(), currPosition.getCol(), it->getRow(), it->getCol());
-    tempGameBoard->generateAllPlayerMoves(gameBoard->checkPieceColor(currPosition));
+    tempGameBoard->generateAllPlayerMoves();
     if (tempGameBoard->isKingInCheck(characterColor)) {
       it = moveList.erase(it);
     }

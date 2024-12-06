@@ -1,11 +1,16 @@
+
 #include "../header/PawnMove.hpp"
 #include "../header/BishopMove.hpp"
 #include "../header/QueenMove.hpp"
 #include "../header/RookMove.hpp"
 #include "../header/KnightMove.hpp"
 #include "../header/KingMove.hpp" 
+
 #include "../header/Character.hpp" 
+#include "../header/Board.hpp"
+#include "../header/Game.hpp"
 #include "../header/GameAction.hpp"
+#include "../header/GameState.hpp"
 #include "../header/Move.hpp"
 #include "../header/Game.hpp"
 
@@ -29,6 +34,7 @@ std::string CreateGame::performAction(Game* activeGame) {
     
     activeGame->updateGameState(new TurnStart);
     activeGame->updateTurn();
+    activeGame->getNewMoves("w");
     std::string newOutputString = "Starting new game...\n";
     newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
     newOutputString += "White player's turn\nEnter 'M' to make a move or 'Q' to quit game";
@@ -55,19 +61,12 @@ CheckPiece::CheckPiece(Position newPiecePos) {
     piecePos.setPositionFromString(newPiecePos.getPositionString());
 }
 
-std::vector<std::string> CheckPiece::userDisplayMovements(std::vector<std::string> numVector){
-    std::vector<std::string> letterVector;
-    const std::string letters = "ABCDEFGH";
-    for (unsigned int i = 0; i < numVector.size(); ++i){
-        int row = numVector[i].at(0) - '0';   
-        int col = numVector[i].at(1) - '0';    
-
-        std::string newMove = "";
-        newMove += letters[col];              
-        newMove += ('8' - row);               
-        letterVector.push_back(newMove);
+std::vector<std::string> CheckPiece::userDisplayMovements(std::vector<Position> movePositionList){
+    std::vector<std::string> moveStringList;
+    for (auto i = movePositionList.begin(); i < movePositionList.end(); i++){
+        moveStringList.push_back(i->getPositionString());
     }
-    return letterVector;
+    return moveStringList;
 }
 
 std::string CheckPiece::performAction(Game* activeGame) {
@@ -81,12 +80,13 @@ std::string CheckPiece::performAction(Game* activeGame) {
         tempChar = nullptr;
         return "Selected position does not contain one of your pieces\nEnter a position to select a piece";
     }
-    /*
-    if (false) { // Case where selected position contains current player's piece but piece has no legal moves
+    // Case where selected position contains current player's piece but piece has no legal moves
+    if (tempChar->getMoveList().empty()) {
         activeGame->updateGameState(new SelectingPiece);
         tempChar = nullptr;
         return "Selected piece has no legal moves\nEnter a position to select a piece";
     }
+
     */
    //need to implement more pieces here
    Move* moveGenerator = nullptr;
@@ -119,19 +119,21 @@ std::string CheckPiece::performAction(Game* activeGame) {
         return "Selected piece has no legal moves\nEnter a position to select a different piece";
     }
 
-    moveList = userDisplayMovements(moveList);
-
-   std::string moveString = "\nPossible moves: ";
-   for (unsigned int i = 0; i < moveList.size(); ++i){
-    moveString += moveList[i] + " ";
-
-   }
-   
+    std::vector<std::string> moveStringsList = userDisplayMovements(tempChar->getMoveList());
     tempChar = nullptr;
+
+    std::string singleMoveString = "\n(Possible moves: ";
+    for (int i = 0; i < moveStringsList.size(); i++) {
+        singleMoveString += moveStringsList.at(i);
+        if (i != moveStringsList.size() - 1) {
+            singleMoveString += " ";
+        }
+    }
+    singleMoveString += ")";
     
     activeGame->updatePiecePosition(piecePos.getPositionString());
     activeGame->updateGameState(new SelectingMove);
-    return "Enter a position to move selected piece to or 'R' to select a different piece" +  moveString;
+    return "Enter a position to move selected piece to or 'R' to select a different piece" + singleMoveString;
 }
 
 // SelectMove functions
@@ -147,18 +149,13 @@ CheckMove::CheckMove(Position newMovePos) {
     movePos.setPositionFromString(newMovePos.getPositionString());
 }
 
-
-
 std::string CheckMove::performAction(Game* activeGame) {
     Position currentPos = activeGame->getSelectedPiecePos();
-    Character* piece = activeGame->getGameBoard()->getPiece(currentPos.getRow(), currentPos.getCol());
-    std::string currentColor = activeGame->getGameBoard()->checkPieceColor(currentPos);
-    std::string targetColor = activeGame->getGameBoard()->checkPieceColor(movePos);
-    
-    if (!targetColor.empty() && targetColor == currentColor) { // User selected position that selected piece cannot move to
+    if (!activeGame->getGameBoard()->isValidMovement(currentPos, movePos)) { // User selected position that selected piece cannot move to
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
     }
+
     Move* moveGenerator = nullptr;
         switch(piece->getType()){
             case PAWN:
@@ -208,11 +205,26 @@ std::string MovePiece::performAction(Game* activeGame) {
     activeGame->resetPositions();
     std::string newOutputString = "Moved piece from " + initialPos + " to " + finalPos + "\n";
     newOutputString += activeGame->getGameBoard()->generateBoard() + "\n";
-    if (false) { // Check for any game ending conditions
-        if (false) { // Checkmate
-            newOutputString += "\nSomeone won the game";
+    
+    std::string nextTurnColor;
+    if (activeGame->getTurn() == blackTurn) {
+        nextTurnColor = "w";
+    }
+    else if (activeGame->getTurn() == whiteTurn) {
+        nextTurnColor = "b";
+    }
+    activeGame->getNewMoves(nextTurnColor);
+
+    if (!activeGame->getGameBoard()->colorHasMoves(nextTurnColor)) {
+        if (activeGame->getGameBoard()->isKingInCheck(nextTurnColor)) {
+            if (activeGame->getTurn() == blackTurn) {
+                newOutputString += "\nBlack has won the game!";
+            }
+            else if (activeGame->getTurn() == whiteTurn)  {
+                newOutputString += "\nWhite has won the game!";
+            }
         }
-        else if (false) { // Draw
+        else { // Draw
             newOutputString += "\nThe game ended in a draw";
         }
         activeGame->updateGameState(new EndScreen);

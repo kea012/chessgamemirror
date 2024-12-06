@@ -1,4 +1,5 @@
 #include "../header/Knight.hpp"
+#include "../header/KnightMove.hpp"
 
 using namespace std;
 

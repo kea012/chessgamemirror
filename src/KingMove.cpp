@@ -2,6 +2,7 @@
 #include "../header/Board.hpp"
 #include "../header/Character.hpp"
 
+
 using namespace std;
 
 KingMove::KingMove(string color, Board* chessBoard) : Move(KINGMOVE, color), chessBoard(chessBoard) {}
