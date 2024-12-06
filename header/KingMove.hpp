@@ -14,6 +14,7 @@ class KingMove : public Move {
     Board* chessBoard;
   public:
     KingMove(std::string color, Board* chessBoard);
+    virtual ~KingMove() = default; 
     std::vector<std::string> generatePossibleMoves(int x, int y) override; 
     void castling(int row, int column);
 };
