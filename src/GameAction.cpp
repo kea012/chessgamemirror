@@ -98,15 +98,15 @@ std::string CheckPiece::performAction(Game* activeGame) {
     case ROOK:
         moveGenerator = new RookMove(tempChar->getColor(), activeGame->getGameBoard());
         break;
-    case KNIGHT:
-        moveGenerator = new KnightMove(tempChar->getColor(), activeGame->getGameBoard());
-        break;
+    // case KNIGHT:
+    //     moveGenerator = new KnightMove(tempChar->getColor(), activeGame->getGameBoard());
+    //     break;
     case QUEEN:
         moveGenerator = new QueenMove(tempChar->getColor(), activeGame->getGameBoard());
         break;
-    case KING:
-        moveGenerator = new KingMove(tempChar->getColor(), activeGame->getGameBoard());
-        break;
+    // case KING:
+    //     moveGenerator = new KingMove(tempChar->getColor(), activeGame->getGameBoard());
+    //     break;
    }
    std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(piecePos.getRow(), piecePos.getCol());;
    delete moveGenerator;
@@ -149,6 +149,7 @@ CheckMove::CheckMove(Position newMovePos) {
 
 std::string CheckMove::performAction(Game* activeGame) {
     Position currentPos = activeGame->getSelectedPiecePos();
+    Character* piece = activeGame->getGameBoard()->getPiece(currentPos.getRow(), currentPos.getCol());
     std::string currentColor = activeGame->getGameBoard()->checkPieceColor(currentPos);
     std::string targetColor = activeGame->getGameBoard()->checkPieceColor(movePos);
     
@@ -156,9 +157,44 @@ std::string CheckMove::performAction(Game* activeGame) {
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
     }
-    activeGame->updateMovePosition(movePos.getPositionString());
-    activeGame->updateGameState(new ConfirmingMove);
-    return "Enter 'C' to confirm movement or 'R' to select a different position";
+    Move* moveGenerator = nullptr;
+        switch(piece->getType()){
+            case PAWN:
+        moveGenerator = new PawnMove(piece->getColor(), activeGame->getGameBoard());
+        break;
+    case BISHOP:
+        moveGenerator = new BishopMove(piece->getColor(), activeGame->getGameBoard());
+        break;
+    case ROOK:
+        moveGenerator = new RookMove(piece->getColor(), activeGame->getGameBoard());
+        break;
+    // case KNIGHT:
+    //     moveGenerator = new KnightMove(piece->getColor(), activeGame->getGameBoard());
+    //     break;
+    case QUEEN:
+        moveGenerator = new QueenMove(piece->getColor(), activeGame->getGameBoard());
+        break;
+    // case KING:
+    //     moveGenerator = new KingMove(piece->getColor(), activeGame->getGameBoard());
+    //     break;
+    }
+    
+    std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(currentPos.getRow(), currentPos.getCol());
+    delete moveGenerator;
+
+    std::string targetMove = std::to_string(movePos.getRow()) + std::to_string(movePos.getCol());
+    
+    
+    for (unsigned int i = 0; i < moveList.size(); ++i){
+        if (moveList[i] == targetMove){
+            activeGame->updateMovePosition(movePos.getPositionString());
+            activeGame->updateGameState(new ConfirmingMove);
+            return "Enter 'C' to confirm movement or 'R' to select a different position";
+        }
+    }
+
+    activeGame->updateGameState(new SelectingMove);
+    return "Invalid move. Select from the available moves shown.";
 }
 
 // MovePiece functions
