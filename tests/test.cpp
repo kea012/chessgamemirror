@@ -105,6 +105,16 @@ TEST(Board, movePiece){
     delete chessBoard;
 }
 
+TEST(Board, TestIsSpaceOccupieForPosition00) {
+    Board* chessBoard = new Board();
+    EXPECT_FALSE(chessBoard->isSpaceOccupied("00"));
+}
+
+TEST(Board, TestIsSpaceOccupieForPosition75) {
+    Board* chessBoard = new Board();
+    EXPECT_FALSE(chessBoard->isSpaceOccupied("75"));
+}
+
 TEST (QueenMove, MakeQueenMove) {
     Board* chessBoard = new Board();
     EXPECT_NO_THROW(QueenMove("w", chessBoard));
