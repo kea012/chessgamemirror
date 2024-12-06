@@ -2,6 +2,10 @@
 #define KINGMOVE_HPP
 
 #include "../header/Move.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
+#include "../header/King.hpp"
+#include "../header/Rook.hpp"
 
 class Board;
 
