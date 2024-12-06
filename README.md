@@ -117,7 +117,7 @@ The Move class was introduced to better follow the single-responsibility rule an
 
 ![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/a90974da-cd3d-4981-ad41-3cab8dae8183)
 
- > ## Final deliverable
+ ## Final deliverable
  ## Screenshots
  <img width="708" alt="Screenshot 2024-12-06 at 12 28 43 PM" src="https://github.com/user-attachments/assets/244ab9e9-483b-4eb1-bfba-97b1685e0ee9">
 <img width="691" alt="Screenshot 2024-12-06 at 12 30 12 PM" src="https://github.com/user-attachments/assets/e2284d82-8280-42ff-85b7-67e4319d2801">
