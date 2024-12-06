@@ -31,8 +31,8 @@ Board::Board(){
     whitePieces.push_back(new Rook("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Bishop("w"));
-    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Queen("w"));
+    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Rook("w"));
@@ -326,6 +326,27 @@ bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
         }
         static_cast<Pawn*>(chessBoard[newRow][newColumn])->setMoved();
     }
+    if (chessBoard[newRow][newColumn]->getType() == KING) {
+        if (chessBoard[initialRow][initialColumn+1] == nullptr) {
+            if(chessBoard[newRow][newColumn]->getMovedStatus() == 0 && chessBoard[initialRow][initialColumn+3]->getMovedStatus() == 0) {
+                chessBoard[initialRow][initialColumn+1] = chessBoard[initialRow][initialColumn+3];
+                chessBoard[initialRow][initialColumn+3] = nullptr;
+                static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+            }
+        }
+        else if (chessBoard[initialRow][initialColumn-1] == nullptr && chessBoard[initialRow][initialColumn-3] == nullptr) {
+            if(chessBoard[newRow][newColumn]->getMovedStatus() == 0 && chessBoard[initialRow][initialColumn-4]->getMovedStatus() == 0) {
+                chessBoard[initialRow][initialColumn-1] = chessBoard[initialRow][initialColumn-4];
+                chessBoard[initialRow][initialColumn-4] = nullptr;
+                static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+            }
+        }
+        static_cast<King*>(chessBoard[newRow][newColumn])->setMoved();
+    }
+    if (chessBoard[newRow][newColumn]->getType() == ROOK) {
+        static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+    }
+    
     chessBoard[initialRow][initialColumn] = nullptr;
     return true;
 }

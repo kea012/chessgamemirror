@@ -126,9 +126,9 @@ vector<string> KingMove::generatePossibleMoves(int row, int column) {
         break;
     }
     
-    /*if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
+    if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
         castling(row, column);
-    }*/
+    }
 
     return possibleMoves;
 }
