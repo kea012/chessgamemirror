@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 #include "../header/Game.hpp"
+#include "../header/GameAction.hpp"
+#include "../header/GameState.hpp"
 
 TEST(GameConstructorTests, DefaultOutputString) {
     Game tGame;
@@ -90,8 +92,6 @@ TEST(UpdateTurnTests, noUpdate) {
     EXPECT_TRUE(!tGame.updateTurn(true));
     EXPECT_EQ(tGame.getTurn(), noTurn);
 }
-
-// Will try to update StateToActionTests to check that performCurrAction results in expected GameState
 
 TEST(StateToActionTests, MenuScreenToCreateGame) {
     Game tGame;

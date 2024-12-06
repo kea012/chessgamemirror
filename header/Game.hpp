@@ -11,13 +11,6 @@ class GameAction;
 
 enum turn { whiteTurn, blackTurn, noTurn };
 
-/*
-// Game outcomes
-const int WHITE_WIN = 0;
-const int BLACK_WIN = 1;
-const int DRAW = 2;
-*/
-
 class Game {
 private:
     Position piecePos;
