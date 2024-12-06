@@ -31,8 +31,8 @@ Board::Board(){
     whitePieces.push_back(new Rook("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Bishop("w"));
-    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Queen("w"));
+    whitePieces.push_back(new King("w"));
     whitePieces.push_back(new Bishop("w"));
     whitePieces.push_back(new Knight("w"));
     whitePieces.push_back(new Rook("w"));
@@ -298,6 +298,8 @@ void Board::pawnPromotion(int row, int column, string type) {
     }
 }
 
+
+
 bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
     if (!temp) {
@@ -307,10 +309,44 @@ bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
         delete chessBoard[newRow][newColumn];
         chessBoard[newRow][newColumn] = nullptr;
     }
+    //sets the piece after deleting it
     chessBoard[newRow][newColumn] = temp;
-    if (chessBoard[newRow][newColumn]->getType() == PAWN){
+    //check if the new spot is now a pawn do en passant capture
+    if (chessBoard[newRow][newColumn]->getType() == PAWN) {
+        //if the moved status to the pawn piece behind it is 1 capture it
+        if (chessBoard[initialRow][newColumn] != nullptr) {
+            if (chessBoard[initialRow][newColumn]->getType() == PAWN) {
+                if (chessBoard[initialRow][newColumn]->getColor() != chessBoard[newRow][newColumn]->getColor()) {
+                    if(chessBoard[initialRow][newColumn]->getMovedStatus() == 1) {
+                        delete chessBoard[initialRow][newColumn];
+                        chessBoard[initialRow][newColumn] = nullptr;
+                    }
+                }
+            }
+        }
         static_cast<Pawn*>(chessBoard[newRow][newColumn])->setMoved();
     }
+    if (chessBoard[newRow][newColumn]->getType() == KING) {
+        if (chessBoard[initialRow][initialColumn+1] == nullptr) {
+            if(chessBoard[newRow][newColumn]->getMovedStatus() == 0 && chessBoard[initialRow][initialColumn+3]->getMovedStatus() == 0) {
+                chessBoard[initialRow][initialColumn+1] = chessBoard[initialRow][initialColumn+3];
+                chessBoard[initialRow][initialColumn+3] = nullptr;
+                static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+            }
+        }
+        else if (chessBoard[initialRow][initialColumn-1] == nullptr && chessBoard[initialRow][initialColumn-3] == nullptr) {
+            if(chessBoard[newRow][newColumn]->getMovedStatus() == 0 && chessBoard[initialRow][initialColumn-4]->getMovedStatus() == 0) {
+                chessBoard[initialRow][initialColumn-1] = chessBoard[initialRow][initialColumn-4];
+                chessBoard[initialRow][initialColumn-4] = nullptr;
+                static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+            }
+        }
+        static_cast<King*>(chessBoard[newRow][newColumn])->setMoved();
+    }
+    if (chessBoard[newRow][newColumn]->getType() == ROOK) {
+        static_cast<Rook*>(chessBoard[newRow][newColumn])->setMoved();
+    }
+    
     chessBoard[initialRow][initialColumn] = nullptr;
     temp = nullptr;
     return true;

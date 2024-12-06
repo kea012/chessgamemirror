@@ -6,6 +6,13 @@ class Board;
 class GameState;
 class GameAction;
 
+
+#include "../header/Position.hpp"
+#include "../header/Board.hpp"
+#include "../header/GameState.hpp"
+#include "../header/GameAction.hpp"
+
+
 #include <string>
 #include "../header/Position.hpp"
 

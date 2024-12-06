@@ -40,15 +40,54 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     }
 }
 
-    //diagonol down and to the left of the board and en passant
+    //diagonol down and to the left en passant
     if (row == 4 && column - 1 >= 0) {
         Character* adjacentPiece = chessBoard->getPiece(row, column - 1);
-        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
+        if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN &&
+         adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
             possibleMoves.push_back(to_string(row + 1) + to_string(column - 1));
         }
     }
 
-    // white en passant right
+    //    if (chessBoard->getPiece(row, column)->getColor() == "w") {
+    //     for (int i = row + 1, j = column + 1; (i < 8)&&(j < 8); ++i, ++j) {
+    //         if (chessBoard->getPiece(i, j) == nullptr){
+    //             if (chessBoard->getPiece(row, j) != nullptr && row == 4) {
+    //                 if ((chessBoard->getPiece(row, j)->getType() == 0) && (chessBoard->getPiece(row, j)->getColor() != chessBoard->getPiece(row, column)->getColor())) {
+    //                     if (chessBoard->getPiece(row, j)->getMovedStatus() == 1) {
+    //                         possibleMoves.push_back(to_string(i)+to_string(j));
+    //                     }
+    //                 }
+    //             }
+    //             break;
+    //         }
+    //         else if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
+    //             possibleMoves.push_back(to_string(i)+to_string(j));
+    //             break;
+    //         }
+    //     }
+    // }
+    // //diagonol down and to the left of the board and en passant
+    // if (chessBoard->getPiece(row, column)->getColor() == "w") {
+    //     for (int i = row + 1, j = column - 1; (i < 8)&&(j >= 0); ++i, --j) {
+    //         if (chessBoard->getPiece(i, j) == nullptr){
+    //             if (chessBoard->getPiece(row, j) != nullptr && row == 4) {
+    //                 if ((chessBoard->getPiece(row, j)->getType() == 0) && (chessBoard->getPiece(row, j)->getColor() != chessBoard->getPiece(row, column)->getColor())) {
+    //                     if (chessBoard->getPiece(row, j)->getMovedStatus() == 1) {
+    //                         possibleMoves.push_back(to_string(i)+to_string(j));
+    //                     }
+    //                 }
+    //             }
+    //             break;
+    //         }
+    //         else if (chessBoard->getPiece(i, j)->getColor() != chessBoard->getPiece(row, column)->getColor()) {
+    //             possibleMoves.push_back(to_string(i)+to_string(j));
+    //             break;
+    //         }
+    //     }
+    // }
+
+    //white en passant right
     if (row == 4 && column + 1 < 8) {
         Character* adjacentPiece = chessBoard->getPiece(row, column + 1);
         if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1 ){
