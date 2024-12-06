@@ -9,7 +9,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   int newColumn = column+2;
   if (newRow<8 && newColumn<8) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -20,7 +20,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column+1;
   if (newRow<8 && newColumn<8) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -31,7 +31,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column-1;
   if (newRow<8 && newColumn>=0) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -42,7 +42,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column-2;
   if (newRow<8 && newColumn>=0) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -53,7 +53,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column-2;
   if (newRow>=0 && newColumn>=0) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -64,7 +64,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column-1;
   if (newRow>=0 && newColumn>=0) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -75,7 +75,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column+1;
   if (newRow>=0 && newColumn<8) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
@@ -86,7 +86,7 @@ vector<string> KnightMove::generatePossibleMoves(int row, int column) {
   newColumn = column+2;
   if (newRow>=0 && newColumn<8) {
     if (chessBoard->getPiece(newRow,column+2) != nullptr) {
-      if (chessBoard->getPiece(row,column)->getColor() != chessBoard->getPiece(newRow,newColumn)->getColor())
+      if (color != chessBoard->getPiece(newRow,newColumn)->getColor())
         possibleMoves.push_back(to_string(newRow)+to_string(newColumn));
     }
     else
