@@ -87,7 +87,7 @@ std::string CheckPiece::performAction(Game* activeGame) {
         return "Selected piece has no legal moves\nEnter a position to select a piece";
     }
 
-    */
+    
    //need to implement more pieces here
    Move* moveGenerator = nullptr;
    switch(tempChar->getType()){
@@ -151,6 +151,7 @@ CheckMove::CheckMove(Position newMovePos) {
 
 std::string CheckMove::performAction(Game* activeGame) {
     Position currentPos = activeGame->getSelectedPiecePos();
+    Character* piece = activeGame->getGameBoard()->getPiece(currentPos.getRow(), currentPos.getCol());
     if (!activeGame->getGameBoard()->isValidMovement(currentPos, movePos)) { // User selected position that selected piece cannot move to
         activeGame->updateGameState(new SelectingMove);
         return "Select a valid position";
