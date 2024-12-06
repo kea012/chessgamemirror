@@ -14,6 +14,7 @@ class Move {
     public:
         Move(MoveType type, std::string color);
         virtual std::vector<std::string> generatePossibleMoves(int x, int y) = 0;
+        virtual ~Move() = default;
 };
 
 #endif // MOVE_HPP
