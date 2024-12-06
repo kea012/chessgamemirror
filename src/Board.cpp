@@ -312,6 +312,7 @@ bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
         static_cast<Pawn*>(chessBoard[newRow][newColumn])->setMoved();
     }
     chessBoard[initialRow][initialColumn] = nullptr;
+    temp = nullptr;
     return true;
 }
 
@@ -335,13 +336,11 @@ bool Board::removePieceFromList(Character* pieceToRemove) {
     return false;
 }
 
-bool Board::generateAllPlayerMoves(std::string color) {
-    if (color != "b" && color != "w")
-        return false;
+bool Board::generateAllPlayerMoves() {
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
             Character* currPiece = chessBoard[row][col];
-            if (currPiece != nullptr && currPiece->getColor() == color) {
+            if (currPiece != nullptr) {
                 currPiece->updateMoves(Position(row, col), this);
             }
             currPiece = nullptr;
@@ -390,14 +389,19 @@ Position Board::getKingPosition(std::string color) {
 }
 
 bool Board::isKingInCheck(std::string color) {
-    Position kingPosition = getKingPosition(color);
-    if (kingPosition.isEmptyPosition())
+    if (color != "b" && color != "w") {
         return false;
+    }
+    Position kingPosition = getKingPosition(color);
+    if (kingPosition.isEmptyPosition()) {
+        return false;
+    }
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
             Character* currPiece = chessBoard[row][col];
-            if (currPiece == nullptr)
+            if (currPiece == nullptr) {
                 continue;
+            }
             std::vector<Position> currPieceMoveList;
             if (color == "w" && currPiece->getColor() == "b") {
                 currPieceMoveList = currPiece->getMoveList();
@@ -405,10 +409,11 @@ bool Board::isKingInCheck(std::string color) {
             if (color == "b" && currPiece->getColor() == "w") {
                 currPieceMoveList = currPiece->getMoveList();
             }
-            currPiece == nullptr;
+            currPiece = nullptr;
             for (int i = 0; i < currPieceMoveList.size(); i++) {
-                if (currPieceMoveList.at(i) == kingPosition)
+                if (currPieceMoveList.at(i) == kingPosition) {
                     return true;
+                }
             }
         }
     }

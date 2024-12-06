@@ -7,6 +7,8 @@
 #include "../header/King.hpp"
 #include "../header/Rook.hpp"
 
+class Board;
+
 class KingMove : public Move {
   private: 
     Board* chessBoard;

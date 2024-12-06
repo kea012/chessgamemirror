@@ -129,7 +129,7 @@ bool Game::getNewMoves(std::string color) {
     if (color != "b" && color != "w") {
         return false;
     }
-    gameBoard->generateAllPlayerMoves(color);
+    gameBoard->generateAllPlayerMoves();
     gameBoard->removeAllSelfCheckMoves(color);
     return true;
 }

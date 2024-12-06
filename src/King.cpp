@@ -1,4 +1,5 @@
 #include "../header/King.hpp"
+#include "../header/KingMove.hpp"
 
 using namespace std;
 
@@ -19,17 +20,9 @@ void King::setMoved() {
   ++this->characterMoved;
 }
 
-/*std::vector<std::string>* King::generatePossibleMoves(int x, int y) {
-    vector<string>* move;
-    move->push_back("");
-    return move;
-}*/
-
 std::vector<std::string> King::getSpecificMoveStrings(Position currPosition, Board* gameBoard) {
-  //KingMove moveGetter(characterColor, gameBoard);
-  //return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
-  std::vector<std::string> emptyList;
-  return emptyList;
+  KingMove moveGetter(characterColor, gameBoard);
+  return moveGetter.generatePossibleMoves(currPosition.getRow(), currPosition.getCol());
 }
 
 Character* King::clone() {

@@ -19,10 +19,12 @@ ADD_EXECUTABLE(test
     src/Rook.cpp
     src/Queen.cpp
     src/Move.cpp
-    src/QueenMove.cpp
     src/PawnMove.cpp
     src/BishopMove.cpp
     src/RookMove.cpp
+    src/QueenMove.cpp
+    src/KnightMove.cpp
+    src/KingMove.cpp
     tests/test.cpp
     tests/GameTests.cpp
     
