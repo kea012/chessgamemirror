@@ -14,6 +14,10 @@
 #include "../header/Move.hpp"
 #include "../header/Game.hpp"
 
+GameAction::~GameAction() {
+    
+}
+
 // InvalidInput functions
 
 std::string InvalidInput::performAction(Game* activeGame) {

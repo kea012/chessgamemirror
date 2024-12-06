@@ -9,7 +9,7 @@ class Game;
 
 class GameAction {
 public:
-    virtual std::string performAction(Game* activeGame) = 0;
+    virtual std::string performAction(Game* activeGame) = 0;  
 };
 
 class InvalidInput : public GameAction {
