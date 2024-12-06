@@ -49,6 +49,19 @@ CheckPiece::CheckPiece(Position newPiecePos) {
     piecePos.setPositionFromString(newPiecePos.getPositionString());
 }
 
+std::vector<std::string> CheckPiece::userDisplayMovements(std::vector<std::string> numVector){
+    std::vector<std::string> letterVector;
+    const std::string letters = "ABCDEFGH";
+    for (unsigned int i = 0; i < numVector.size(); ++i){
+        char c1 = numVector[i].at(0);
+        char c2 = numVector[i].at(0);
+
+        c2 = letters.at(c2 - '0');
+        letterVector.push_back(std::to_string(c2)+std::to_string(c1));
+    }
+    return letterVector;
+}
+
 std::string CheckPiece::performAction(Game* activeGame) {
     
     Character* tempChar = activeGame->getGameBoard()->getPiece(piecePos.getRow(), piecePos.getCol());
@@ -76,11 +89,12 @@ std::string CheckPiece::performAction(Game* activeGame) {
    }
    std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(piecePos.getRow(), piecePos.getCol());;
    delete moveGenerator;
+    moveList = userDisplayMovements(moveList);
 
-
-   std::string moveString = "\npossible moves: ";
+   std::string moveString = "\nPossible moves: ";
    for (unsigned int i = 0; i < moveList.size(); ++i){
     moveString += moveList[i] + " ";
+
    }
    
     tempChar = nullptr;
@@ -102,6 +116,8 @@ std::string SelectMove::performAction(Game* activeGame) {
 CheckMove::CheckMove(Position newMovePos) {
     movePos.setPositionFromString(newMovePos.getPositionString());
 }
+
+
 
 std::string CheckMove::performAction(Game* activeGame) {
     Position currentPos = activeGame->getSelectedPiecePos();
