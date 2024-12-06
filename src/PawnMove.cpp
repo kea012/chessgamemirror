@@ -14,10 +14,10 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     //if white the piece moves forward down the board
     if (chessBoard->getPiece(row, column)->getColor() == "w") {
         if (row + 1 < 8 && chessBoard->getPiece(row + 1, column) == nullptr){
-            possibleMoves.push_back(to_string(column) + to_string(row + 1));
+            possibleMoves.push_back(to_string(row + 1)+to_string(column));
 
             if (row == 1 && chessBoard->getPiece(row + 2, column) == nullptr){
-                possibleMoves.push_back(to_string(column) + to_string(row + 2));
+                possibleMoves.push_back(to_string(row + 2) + to_string(column));
             }
         }
 
@@ -28,7 +28,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row + 1 < 8 && column + 1 < 8) {
         Character* targetPiece = chessBoard->getPiece(row + 1, column + 1);
         if (targetPiece != nullptr && targetPiece->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-            possibleMoves.push_back(to_string(column + 1) + to_string(row + 1));
+            possibleMoves.push_back(to_string(row + 1) + to_string(column + 1));
         }
     }
 
@@ -36,7 +36,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row + 1 < 8 && column - 1 >= 0) {
     Character* targetPiece = chessBoard->getPiece(row + 1, column - 1);
     if (targetPiece != nullptr && targetPiece->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-        possibleMoves.push_back(to_string(column - 1) + to_string(row + 1));
+        possibleMoves.push_back(to_string(row + 1) + to_string(column - 1));
     }
 }
 
@@ -44,7 +44,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row == 4 && column - 1 >= 0) {
         Character* adjacentPiece = chessBoard->getPiece(row, column - 1);
         if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
-            possibleMoves.push_back(to_string(column - 1) + to_string(row + 1));
+            possibleMoves.push_back(to_string(row + 1) + to_string(column - 1));
         }
     }
 
@@ -52,7 +52,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row == 4 && column + 1 < 8) {
         Character* adjacentPiece = chessBoard->getPiece(row, column + 1);
         if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1 ){
-            possibleMoves.push_back(to_string(column + 1) + to_string(row + 1));
+            possibleMoves.push_back(to_string(row + 1) + to_string(column + 1));
         }
     }
 
@@ -63,7 +63,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(row - 1)+to_string(column));
 
             if (row == 6 && row - 2 >= 0 && chessBoard->getPiece(row - 2, column) == nullptr){
-                possibleMoves.push_back(to_string(column) + to_string(row - 2));
+                possibleMoves.push_back(to_string(row - 2) + to_string(column));
             }
         }
 
@@ -74,7 +74,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row - 1 >= 0 && column + 1 < 8) {
         Character* targetPiece = chessBoard->getPiece(row - 1, column + 1);
         if (targetPiece != nullptr && targetPiece->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-            possibleMoves.push_back(to_string(column + 1) + to_string(row - 1));
+            possibleMoves.push_back(to_string(row - 1) + to_string(column + 1));
         }
     }
 
@@ -82,7 +82,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row - 1 >= 0 && column - 1 >= 0) {
         Character* targetPiece = chessBoard->getPiece(row - 1, column - 1);
         if (targetPiece != nullptr && targetPiece->getColor() != chessBoard->getPiece(row, column)->getColor()) {
-            possibleMoves.push_back(to_string(column - 1) + to_string(row - 1));
+            possibleMoves.push_back(to_string(row - 1) + to_string(column - 1));
         }
     }
 
@@ -90,7 +90,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row == 3 && column + 1 < 8) {
         Character* adjacentPiece = chessBoard->getPiece(row, column + 1);
         if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
-            possibleMoves.push_back(to_string(column + 1) + to_string(row - 1));
+            possibleMoves.push_back(to_string(row - 1) + to_string(column + 1));
         }
     }
 
@@ -98,7 +98,7 @@ vector<string> PawnMove::generatePossibleMoves(int row, int column) {
     if (row == 3 && column - 1 >= 0) {
         Character* adjacentPiece = chessBoard->getPiece(row, column - 1);
         if (adjacentPiece != nullptr && adjacentPiece->getType() == PAWN && adjacentPiece->getColor() != chessBoard->getPiece(row, column)->getColor() && adjacentPiece->getMovedStatus() == 1) {
-            possibleMoves.push_back(to_string(column - 1) + to_string(row - 1));
+            possibleMoves.push_back(to_string(row - 1) + to_string(column - 1));
         }
     }
 

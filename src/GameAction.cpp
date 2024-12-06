@@ -1,4 +1,8 @@
 #include "../header/PawnMove.hpp"
+#include "../header/BishopMove.hpp"
+#include "../header/QueenMove.hpp"
+#include "../header/RookMove.hpp"
+//#include "../header/KnightMove.hpp"
 #include "../header/Character.hpp" 
 #include "../header/GameAction.hpp"
 #include "../header/Move.hpp"
@@ -53,11 +57,13 @@ std::vector<std::string> CheckPiece::userDisplayMovements(std::vector<std::strin
     std::vector<std::string> letterVector;
     const std::string letters = "ABCDEFGH";
     for (unsigned int i = 0; i < numVector.size(); ++i){
-        char c1 = numVector[i].at(0);
-        char c2 = numVector[i].at(0);
+        int row = numVector[i].at(0) - '0';   
+        int col = numVector[i].at(1) - '0';    
 
-        c2 = letters.at(c2 - '0');
-        letterVector.push_back(std::to_string(c2)+std::to_string(c1));
+        std::string newMove = "";
+        newMove += letters[col];              
+        newMove += ('8' - row);               
+        letterVector.push_back(newMove);
     }
     return letterVector;
 }
@@ -84,11 +90,33 @@ std::string CheckPiece::performAction(Game* activeGame) {
    Move* moveGenerator = nullptr;
    switch(tempChar->getType()){
     case PAWN:
-    moveGenerator = new PawnMove(tempChar->getColor(), activeGame->getGameBoard());
-    break;
+        moveGenerator = new PawnMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
+    case BISHOP:
+        moveGenerator = new BishopMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
+    case ROOK:
+        moveGenerator = new RookMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
+    case KNIGHT:
+        moveGenerator = new KnightMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
+    case QUEEN:
+        moveGenerator = new QueenMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
+    case KING:
+        moveGenerator = new KingMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
    }
    std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(piecePos.getRow(), piecePos.getCol());;
    delete moveGenerator;
+
+    if (moveList.empty() || (moveList.size() == 1 && moveList[0] == "0")) {
+        activeGame->updateGameState(new SelectingPiece);
+        tempChar = nullptr;
+        return "Selected piece has no legal moves\nEnter a position to select a different piece";
+    }
+
     moveList = userDisplayMovements(moveList);
 
    std::string moveString = "\nPossible moves: ";
