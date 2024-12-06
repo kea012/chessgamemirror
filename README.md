@@ -118,21 +118,16 @@ The Move class was introduced to better follow the single-responsibility rule an
 ![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/3acdf2b6-2fba-4d17-ab9e-062b3677cfd4)
  
  > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
->  * Each team member should also submit the Individual Contributions Form on Canvas for this final phase. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for the final phase, and a description of their contributions. Remember that each team member should submit the form individually.
- 
  ## Screenshots
- > Screenshots of the input/output after running your application
+ <img width="708" alt="Screenshot 2024-12-06 at 12 28 43 PM" src="https://github.com/user-attachments/assets/244ab9e9-483b-4eb1-bfba-97b1685e0ee9">
+<img width="691" alt="Screenshot 2024-12-06 at 12 30 12 PM" src="https://github.com/user-attachments/assets/e2284d82-8280-42ff-85b7-67e4319d2801">
+<img width="553" alt="Screenshot 2024-12-06 at 12 34 10 PM" src="https://github.com/user-attachments/assets/22b3face-a586-4e8e-91ea-809ddbcef282">
+<img width="659" alt="Screenshot 2024-12-06 at 12 35 26 PM" src="https://github.com/user-attachments/assets/cc270d46-c0da-4ef9-9dba-db85685f8f73">
+<img width="682" alt="Screenshot 2024-12-06 at 12 36 16 PM" src="https://github.com/user-attachments/assets/eec57d31-5c7d-4920-aeaf-5e4923379772">
+<img width="742" alt="Screenshot 2024-12-06 at 12 38 22 PM" src="https://github.com/user-attachments/assets/e3ceeb16-ffef-4751-a0f2-ef2d13a065dd">
  ## Installation/Usage
- > Instructions on installing and running your application
  To play the game, compile the Chess.cpp file and run the executable. This can be done by running "cmake .", "make chess", and "./chess". The game is played entirely in the console, and output to the console informs players of what types of inputs they can make and what those inputs will do.
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
  Unit Testing: First, we made sure that all the object works for the game. Then, we made a unit test for funtions of our classes, including Board class, Character classes 
  (Bishop, King, Knight, Pawn, Queen, Rook), Move classes (BishopMove, KingMove, KnightMove, PawnMove, QueenMove, RookMove), Position class, GameAction class, GameState class. Each 
  function of our classes will be tested multiple times with different cases if necessary.
