@@ -125,6 +125,7 @@ The Move class was introduced to better follow the single-responsibility rule an
 <img width="659" alt="Screenshot 2024-12-06 at 12 35 26 PM" src="https://github.com/user-attachments/assets/cc270d46-c0da-4ef9-9dba-db85685f8f73">
 <img width="682" alt="Screenshot 2024-12-06 at 12 36 16 PM" src="https://github.com/user-attachments/assets/eec57d31-5c7d-4920-aeaf-5e4923379772">
 <img width="742" alt="Screenshot 2024-12-06 at 12 38 22 PM" src="https://github.com/user-attachments/assets/e3ceeb16-ffef-4751-a0f2-ef2d13a065dd">
+
  ## Installation/Usage
  To play the game, compile the Chess.cpp file and run the executable. This can be done by running "cmake .", "make chess", and "./chess". The game is played entirely in the console, and output to the console informs players of what types of inputs they can make and what those inputs will do.
  ## Testing
