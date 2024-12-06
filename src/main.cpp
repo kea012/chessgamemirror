@@ -6,6 +6,7 @@
 #include "../header/RookMove.hpp"
 #include "../header/BishopMove.hpp"
 #include "../header/PawnMove.hpp"
+#include "../header/Character.hpp"
 
 using namespace std;
 

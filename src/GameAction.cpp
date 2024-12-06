@@ -2,10 +2,12 @@
 #include "../header/BishopMove.hpp"
 #include "../header/QueenMove.hpp"
 #include "../header/RookMove.hpp"
-//#include "../header/KnightMove.hpp"
+#include "../header/KnightMove.hpp"
+#include "../header/KingMove.hpp" 
 #include "../header/Character.hpp" 
 #include "../header/GameAction.hpp"
 #include "../header/Move.hpp"
+#include "../header/Game.hpp"
 
 // InvalidInput functions
 
@@ -98,15 +100,15 @@ std::string CheckPiece::performAction(Game* activeGame) {
     case ROOK:
         moveGenerator = new RookMove(tempChar->getColor(), activeGame->getGameBoard());
         break;
-    // case KNIGHT:
-    //     moveGenerator = new KnightMove(tempChar->getColor(), activeGame->getGameBoard());
-    //     break;
+    case KNIGHT:
+        moveGenerator = new KnightMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
     case QUEEN:
         moveGenerator = new QueenMove(tempChar->getColor(), activeGame->getGameBoard());
         break;
-    // case KING:
-    //     moveGenerator = new KingMove(tempChar->getColor(), activeGame->getGameBoard());
-    //     break;
+    case KING:
+        moveGenerator = new KingMove(tempChar->getColor(), activeGame->getGameBoard());
+        break;
    }
    std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(piecePos.getRow(), piecePos.getCol());;
    delete moveGenerator;
@@ -168,15 +170,15 @@ std::string CheckMove::performAction(Game* activeGame) {
     case ROOK:
         moveGenerator = new RookMove(piece->getColor(), activeGame->getGameBoard());
         break;
-    // case KNIGHT:
-    //     moveGenerator = new KnightMove(piece->getColor(), activeGame->getGameBoard());
-    //     break;
+    case KNIGHT:
+        moveGenerator = new KnightMove(piece->getColor(), activeGame->getGameBoard());
+        break;
     case QUEEN:
         moveGenerator = new QueenMove(piece->getColor(), activeGame->getGameBoard());
         break;
-    // case KING:
-    //     moveGenerator = new KingMove(piece->getColor(), activeGame->getGameBoard());
-    //     break;
+    case KING:
+        moveGenerator = new KingMove(piece->getColor(), activeGame->getGameBoard());
+        break;
     }
     
     std::vector<std::string> moveList = moveGenerator->generatePossibleMoves(currentPos.getRow(), currentPos.getCol());

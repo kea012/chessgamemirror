@@ -4,6 +4,8 @@
 #include "../header/Character.hpp"
 #include "../header/GameState.hpp"
 #include "../header/GameAction.hpp"
+#include "../header/Pawn.hpp"
+#include <iostream>
 
 Game::Game() {
     currGameState = new MenuScreen();

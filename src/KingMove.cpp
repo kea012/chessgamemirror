@@ -1,31 +1,139 @@
 #include "../header/KingMove.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
 
 using namespace std;
 
 KingMove::KingMove(string color, Board* chessBoard) : Move(KINGMOVE, color), chessBoard(chessBoard) {}
 
 vector<string> KingMove::generatePossibleMoves(int row, int column) {
-  // Regular Moves
-  for (int hor_move = -1; hor_move <= 1; hor_move++) {
-    for (int ver_move = -1; ver_move <= 1; ver_move++) {
-      if (hor_move == 0 && ver_move == 0)
-        continue;
-      if (row+hor_move>=0 && column+ver_move>=0 && row+hor_move<8 && column+ver_move<8) {
-        if (chessBoard->getPiece(row+hor_move,column+ver_move) != nullptr) {
-          if (color != chessBoard->getPiece(row+hor_move,column+ver_move)->getColor())
-            possibleMoves.push_back(to_string(row+hor_move)+to_string(column+ver_move));
+    for (int i = row + 1; i < 8; ++i) {
+        if (chessBoard->getPiece(i, column) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(column));
         }
-        else 
-          possibleMoves.push_back(to_string(row+hor_move)+to_string(column+ver_move));
-      }
+        else if (chessBoard->getPiece(i, column)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(column));
+            break;
+        }
+        break;
     }
-  }
-  
-  if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
-    castling(row, column);
-  }
-  return possibleMoves;
+
+    //down the board
+    for (int i = row - 1; (i >=0)&&(i < 8); --i) {
+        if (chessBoard->getPiece(i, column) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(column));
+        }
+        else if (chessBoard->getPiece(i, column)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(column));
+            break;
+        }
+        break;
+    }
+
+    //right side of the board
+    for (int i = column + 1; i < 8; ++i) {
+        if (chessBoard->getPiece(row, i) == nullptr){
+            possibleMoves.push_back(to_string(row)+to_string(i));
+        }
+        else if (chessBoard->getPiece(row, i)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(row)+to_string(i));
+            break;
+        }
+        break;
+    }
+
+    //left side of the board;
+    for (int i = column - 1; (i >= 0)&&(i < 8); --i) {
+        if (chessBoard->getPiece(row, i) == nullptr){
+            possibleMoves.push_back(to_string(row)+to_string(i));
+        }
+        else if (chessBoard->getPiece(row, i)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(row)+to_string(i));
+            break;
+        }
+        break;
+    }
+
+    //diagonol down and to the right of the board
+    for (int i = row + 1, j = column + 1; (i < 8)&&(j < 8); ++i, ++j) {
+        if (chessBoard->getPiece(i, j) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(j));
+        }
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(j));
+            break;
+        }
+        break;
+    }
+
+    //diagnol up and to the right of the board
+    for (int i = row - 1, j = column + 1; (i >= 0)&&(j < 8); --i, ++j) {
+        if (chessBoard->getPiece(i, j) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(j));
+        }
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(j));
+            break;
+        }
+        break;
+    }
+
+    //diagnol down and to the left of the board
+    for (int i = row + 1, j = column - 1; (i < 8)&&(j >= 0); ++i, --j) {
+        if (chessBoard->getPiece(i, j) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(j));
+        }
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(j));
+            break;
+        }
+        break;
+    }
+
+    //diagnol up and to the left of the board
+    for (int i = row - 1, j = column - 1; (i >= 0)&&(j >= 0); --i, --j) {
+        if (chessBoard->getPiece(i, j) == nullptr){
+            possibleMoves.push_back(to_string(i)+to_string(j));
+        }
+        else if (chessBoard->getPiece(i, j)->getColor() == chessBoard->getPiece(row, column)->getColor()) {
+            break;
+        }
+        else {
+            possibleMoves.push_back(to_string(i)+to_string(j));
+            break;
+        }
+        break;
+    }
+    
+    /*if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
+        castling(row, column);
+    }*/
+
+    return possibleMoves;
 }
+  
+
 
 void KingMove::castling(int row, int column ) {
   if (chessBoard->getPiece(row,0) != nullptr) {

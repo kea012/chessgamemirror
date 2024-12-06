@@ -12,7 +12,6 @@ class GameAction;
 #include "../header/Board.hpp"
 #include "../header/GameState.hpp"
 #include "../header/GameAction.hpp"
-=======
 
 #include <string>
 #include "../header/Position.hpp"

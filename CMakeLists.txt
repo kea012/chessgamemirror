@@ -25,6 +25,8 @@ ADD_EXECUTABLE(test
     src/RookMove.cpp
     tests/test.cpp
     tests/GameTests.cpp
+    src/KingMove.cpp
+    src/KnightMove.cpp
     
 )
 

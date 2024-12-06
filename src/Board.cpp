@@ -298,6 +298,8 @@ void Board::pawnPromotion(int row, int column, string type) {
     }
 }
 
+
+
 bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
     Character* temp = chessBoard[initialRow][initialColumn];
     if (!temp) {
@@ -307,8 +309,21 @@ bool Board::movePiece(int initialRow, int initialColumn, int newRow, int newColu
         delete chessBoard[newRow][newColumn];
         chessBoard[newRow][newColumn] = nullptr;
     }
+    //sets the piece after deleting it
     chessBoard[newRow][newColumn] = temp;
-    if (chessBoard[newRow][newColumn]->getType() == PAWN){
+    //check if the new spot is now a pawn do en passant capture
+    if (chessBoard[newRow][newColumn]->getType() == PAWN) {
+        //if the moved status to the pawn piece behind it is 1 capture it
+        if (chessBoard[initialRow][newColumn] != nullptr) {
+            if (chessBoard[initialRow][newColumn]->getType() == PAWN) {
+                if (chessBoard[initialRow][newColumn]->getColor() != chessBoard[newRow][newColumn]->getColor()) {
+                    if(chessBoard[initialRow][newColumn]->getMovedStatus() == 1) {
+                        delete chessBoard[initialRow][newColumn];
+                        chessBoard[initialRow][newColumn] = nullptr;
+                    }
+                }
+            }
+        }
         static_cast<Pawn*>(chessBoard[newRow][newColumn])->setMoved();
     }
     chessBoard[initialRow][initialColumn] = nullptr;
