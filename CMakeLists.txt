@@ -27,6 +27,7 @@ ADD_EXECUTABLE(test
     src/KingMove.cpp
     tests/test.cpp
     tests/GameTests.cpp
+    
 )
 
 ADD_EXECUTABLE(chess

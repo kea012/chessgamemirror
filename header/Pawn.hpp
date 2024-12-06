@@ -8,10 +8,11 @@ class Pawn : public Character {
     int characterMoved = 0;
     public:
     Pawn(std::string characterColor);
-    int getMovedStatus() const;
+    // int getMovedStatus() const;
     void setMoved();
     virtual std::vector<std::string> getSpecificMoveStrings(Position currPosition, Board* gameBoard);
     virtual Character* clone();
+    int getMovedStatus() const override;
 };
 
 #endif // PAWN_HPP
