@@ -10,6 +10,7 @@ class KnightMove : public Move {
     Board* chessBoard;
     public:
     KnightMove(std::string color, Board* chessBoard);
+    virtual ~KnightMove() = default;
     std::vector<std::string> generatePossibleMoves(int x, int y) override; 
 };
 
