@@ -129,6 +129,7 @@ The Move class was introduced to better follow the single-responsibility rule an
  > Screenshots of the input/output after running your application
  ## Installation/Usage
  > Instructions on installing and running your application
+ To play the game, compile the Chess.cpp file and run the executable. This can be done by running "cmake .", "make chess", and "./chess". The game is played entirely in the console, and output to the console informs players of what types of inputs they can make and what those inputs will do.
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
