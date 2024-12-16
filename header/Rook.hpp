@@ -6,12 +6,12 @@
 
 class Rook : public Character {
   private:
-    bool Character_Moved = false;
+    bool characterMoved = false;
   public:
-    Rook(std::string Character_Color);
+    Rook(std::string characterColor);
     bool getMovedStatus() const;
     void setMoved();
-    std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+    //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 
 #endif // ROOK_HPP

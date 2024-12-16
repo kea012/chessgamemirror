@@ -6,7 +6,7 @@
 class Queen : public Character {
     public:
     Queen(std::string characterColor);
-    std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+    //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
 };
 
 #endif // QUEEN_HPP

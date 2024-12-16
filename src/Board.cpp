@@ -1,4 +1,7 @@
 #include "../header/Board.hpp"
+#include <iostream>
+
+using namespace std;
 
 //Sets up the piece color vectors and sets up pieces on the board
 //all indices without pieces are set to nullptr - check if that works in a character pointer class
@@ -17,32 +20,34 @@ Board::Board(){
     int column = 0;
 
     //Push back all white pieces into white piece vector Z
-    whitePieces.push_back(Rook('w'));
-    whitePieces.push_back(Knight('w'));
-    whitePieces.push_back(Bishop('w'));
-    whitePieces.push_back(Queen('w'));
-    whitePieces.push_back(Bishop('w'));
-    whitePieces.push_back(Knight('w'));
-    whitePieces.push_back(Rook('w'));
-    for (unsigned int i = 0; i < 7; i++){
-        whitePieces.push_back(Pawn('w'));
+    whitePieces.push_back(new Rook("w"));
+    whitePieces.push_back(new Knight("w"));
+    whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new King("w"));
+    whitePieces.push_back(new Queen("w"));
+    whitePieces.push_back(new Bishop("w"));
+    whitePieces.push_back(new Knight("w"));
+    whitePieces.push_back(new Rook("w"));
+    for (unsigned int i = 0; i < 8; i++){
+        whitePieces.push_back(new Pawn("w"));
     }
-    blackPieces.push_back(Rook('w'));
-    blackPieces.push_back(Knight('w'));
-    blackPieces.push_back(Bishop('w'));
-    blackPieces.push_back(Queen('w'));
-    blackPieces.push_back(Bishop('w'));
-    blackPieces.push_back(Knight('w'));
-    blackPieces.push_back(Rook('w'));
-    for (unsigned int i = 0; i < 7; i++){
-        blackPieces.push_back(Pawn('w'));
+    blackPieces.push_back(new Rook("b"));
+    blackPieces.push_back(new Knight("b"));
+    blackPieces.push_back(new Bishop("b"));
+    blackPieces.push_back(new Queen("b"));
+    blackPieces.push_back(new King("b"));
+    blackPieces.push_back(new Bishop("b"));
+    blackPieces.push_back(new Knight("b"));
+    blackPieces.push_back(new Rook("b"));
+    for (unsigned int i = 0; i < 8; i++){
+        blackPieces.push_back(new Pawn("b"));
     }
 
     row = 0;
     column = 0;
     //set back pieces first then pawns for white
-    for (unsigned int i = 0; i < 15; ++i){
-        chessBoard[row][column] = whitePieces(i);
+    for (unsigned int i = 0; i < whitePieces.size(); ++i){
+        chessBoard[row][column] = whitePieces.at(i);
         column++;
         if (column == 8){
             row++;
@@ -51,8 +56,8 @@ Board::Board(){
     }
     row = 7;
     column = 0;
-    for (unsigned int i = 0; i < 15; ++i){
-        chessBoard[row][column] = blackPieces(i);
+    for (unsigned int i = 0; i < blackPieces.size(); ++i){
+        chessBoard[row][column] = blackPieces.at(i);
         column++;
         if (column == 8){
             row--;
@@ -62,12 +67,23 @@ Board::Board(){
 
     row = 2;
     column = 0;
-    for (unsigned int i = 0; i < 32; ++i){
+    for (unsigned int i = 0; i < 32; ++i){ 
         chessBoard[row][column] = nullptr;
         column++;
         if (column == 8){
             row++;
             column = 0;
+        }
+    }
+}
+
+//destructor
+Board::~Board() {
+    whitePieces.clear();
+    blackPieces.clear();
+    for (unsigned int row = 0; row < 8; ++row){
+        for (unsigned int column = 0; column < 8; ++column){
+            delete chessBoard[row][column];
         }
     }
 }
@@ -83,7 +99,10 @@ bool Board::isSpaceOccupied(std::string position) {
 
 bool Board::isSpaceOccupied(Position pos) {
     // Complete function will check if there is a Character at pos
-    return false;
+    if (chessBoard[pos.getRow()][pos.getCol()] ==  nullptr){
+        return false;
+    }
+    return true;
 }
 
 bool hasMoves(Position piecePos) {
@@ -96,93 +115,100 @@ bool isValidMovement(Position piecePos, Position movePos) {
     return false;
 }
 
-std::string checkPieceColor(Position piecePos) {
+string checkPieceColor(Position piecePos) {
     // Complete function will return color of the Character at piecePos
     return "black";
 }
-
 
 Character* Board::addPiece(){
     return nullptr;
 }
 
 void Board::movePiece(){
-
+    return;
 }
 
 void Board::capturePiece(){
-
+    return;
 }
 
 bool Board::stalemate(){
     return false;
 }
 
-void Board::printBoard(){
-    int row = 0;
-    int column = 0;
-    std::string board = "";
-    for (unsigned int i = 0; i < 63; ++i){
-        board += "|";
-        if (chessBoard[row][column] == Pawn){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♙";
+string Board::generateBoard(){
+    string board = "";
+    for (unsigned int row = 0; row < 8; ++row){
+         board += to_string(row+1);
+        for (unsigned int column = 0; column < 8; ++column){
+            board += "|";
+            if (chessBoard[row][column] == nullptr){
+                board += " ";
             }
             else{
-                board += "♟";
+                board += chessBoard[row][column]->getSymbol();
             }
+            board += "|";
         }
-        else if (chessBoard[row][column] == Rook){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♖";
-            }
-            else{
-                board += "♜";
-            }
-        }
-        else if (chessBoard[row][column] == Knight){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♘";
-            }
-            else{
-                board += "♞";
-            }
-        }
-        else if (chessBoard[row][column] == Bishop){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♗";
-            }
-            else{
-                board += "♝";
-            }
-        }
-        else if (chessBoard[row][column] == Queen){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♕";
-            }
-            else{
-                board += "♛";
-            }
-        }
-        else if (chessBoard[row][column] == King){
-            if (chessBoard[row][column].getColor() = "w"){
-                board += "♔";
-            }
-            else{
-                board += "♚";
-            }
-        }
-        else if (chessBoard[row][column] == nullptr){
-            board += "   ";
-        }
-        column++;
-        if (column == 8){
-            column = 0;
-            row++;
-        }
+        board += "\n";
+        board + "  ";
+    }
+    board += "  A  B  C  D  E  F  G  H";
+    return board;
+}
 
+void Board::printBoard(string boardString){
+    cout << boardString << endl;
+}
 
+Character* Board::getPiece(int row, int column) {
+    return chessBoard[row][column];
+}
+
+void Board::setPiece(int row, int column, Character* insertChar) {
+    Character* temp = chessBoard[row][column];
+    chessBoard[row][column] = insertChar;
+    delete temp;
+}
+
+void Board::pawnPromotion(int row, int column, string type) {
+    Character* temp = chessBoard[row][column];
+    if (temp->getType() == 0) {
+        if ((row == 7) && (chessBoard[row][column]->getColor() == "w")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("w");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("w");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("w");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("w");
+            }
+        }
+        else if ((row == 0) && (chessBoard[row][column]->getColor() == "b")) {
+            if ("KNIGHT") {
+                chessBoard[row][column] = new Knight("b");
+            }
+            else if ("BISHOP") {
+                chessBoard[row][column] = new Bishop("b");
+                }
+            else if ("ROOK") {
+                chessBoard[row][column] = new Rook("b");
+            }
+            else if ("QUEEN") {
+                chessBoard[row][column] = new Queen("b");
+            }
+        }
+        delete temp;
     }
 }
 
+void Board::movePiece(int initialRow, int initialColumn, int newRow, int newColumn) {
+    Character* temp = chessBoard[initialRow][initialColumn];
+    chessBoard[newRow][newColumn] = temp;
+    chessBoard[initialRow][initialColumn] = nullptr;
+}
 

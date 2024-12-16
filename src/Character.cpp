@@ -20,3 +20,8 @@ bool Character::getAliveStatus() const {
 std::string Character::getColor() const {
   return this->characterColor;
 }
+
+std::string Character::getSymbol() const {
+  return this->symbol;
+} 
+

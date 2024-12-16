@@ -2,17 +2,24 @@
 
 using namespace std;
 
-Rook::Rook(string characterColor) : Character(ROOK, characterColor) {}
+Rook::Rook(string characterColor) : Character(ROOK, characterColor) {
+    if (characterColor == "w") {
+        symbol = "♜";
+    }
+    else if (characterColor == "b") {
+        symbol = "♖";
+    }
+}
 
 bool Rook::getMovedStatus() const {
-  return this->Character_Moved;
+  return this->characterMoved;
 }
 
 void Rook::setMoved() {
-  this->Character_Moved = true;
+  this->characterMoved = true;
 }
 
-std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) { 
+/*std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) { 
   std::vector<std::string>* vec = new std::vector<std::string>();
   std::string move;
   // Horizontal Moves
@@ -35,4 +42,4 @@ std::vector<std::string>* Rook::generatePossibleMoves(int x, int y) {
   }
 
   return vec;
-}
+}*/

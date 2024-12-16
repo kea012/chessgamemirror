@@ -46,7 +46,7 @@ void Game::updateGameState(GameState* newGameState) {
 
 bool Game::updateTurn(bool gameEnding) {
     if (gameEnding) {
-        if (currTurn = noTurn)
+        if (currTurn == noTurn)
             return false;
         else
             currTurn = noTurn;

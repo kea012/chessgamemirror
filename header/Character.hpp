@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include "../header/Board.hpp"
 
 enum CharacterType {PAWN, KING, KNIGHT, BISHOP, ROOK, QUEEN};
 
@@ -12,14 +11,15 @@ class Character {
     bool alive = true;
     CharacterType type;
     std::string characterColor;
-    std::string board[64];
+    std::string symbol;
   public: 
     Character(CharacterType type, std::string characterColor);
+    virtual ~Character() = default;
     CharacterType getType() const;
     bool setAliveStatus();
     bool getAliveStatus() const;
     std::string getColor() const;
-    virtual std::vector<std::string>* generatePossibleMoves(int x, int y) = 0;
+    std::string getSymbol() const;
 };
 
 #endif // CHARACTER_HPP

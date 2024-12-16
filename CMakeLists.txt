@@ -3,6 +3,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 ADD_SUBDIRECTORY(tests/googletest)
 
 ADD_EXECUTABLE(test
+    src/Position.cpp
+    src/Game.cpp
+    src/GameState.cpp
+    src/GameAction.cpp
+    src/Board.cpp
     src/Character.cpp
     src/Pawn.cpp
     src/King.cpp
@@ -10,7 +15,10 @@ ADD_EXECUTABLE(test
     src/Bishop.cpp
     src/Rook.cpp
     src/Queen.cpp
+    src/Move.cpp
+    src/QueenMove.cpp
     tests/test.cpp
+    tests/GameTests.cpp
 )
 
 TARGET_LINK_LIBRARIES(test gtest gtest_main)
