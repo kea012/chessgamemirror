@@ -64,21 +64,22 @@ Player 1 select your input.
 
 Chess Game Menu:
 
-create new game enter “cng”
+Enter 'S' to start a new game or 'Q' to quit the program
 
-to quit game enter “qg”
-
-make a move enter “m”
+Enter 'M' to make a movee or 'Q' to quit game
 
 m
 
-Enter position of piece.
+Enter a position to select a piece.
 
 A2
 
-Where do you want to move this piece?
+Enter a position to move selected piece to or 'R' to select a different piece
+Possible moves: A3, A4
 
 A3
+
+Enter 'C' to confirm movement or 'R' to select a different position
 
 Display Board:
 
@@ -101,40 +102,38 @@ Class Diagram Visual:
 
 <img width="690" alt="Screenshot 2024-11-08 at 2 20 06 PM" src="https://github.com/user-attachments/assets/cc6b4dc8-1972-4775-a55c-93f19a1a6b9e">
 
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
->  * Each team member should also submit the Individual Contributions Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
+## Project Revision
 
- 
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history.
->  * Each team member should also submit the Individual Contributions Form on Canvas for this final phase. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for the final phase, and a description of their contributions. Remember that each team member should submit the form individually.
- 
+After meeting with the TA, the only thing that we needed to revise was the UML diagram. Below we not only fixed their suggestions, but we also added more to our diagram/project to account for the SOLID principle methodologies that we learned.
+
+The Position class was introduced to help better follow the single-responsibility principle. The class helps to aggregate information regarding position, including the row and column in the chess board as separate integers and the position as a string containing a letter and number, which are very commonly used to describe a specific position in a chess board. The class is also able to convert between these different representations of position, helping to eliminate the need to do so in other classes.
+
+The GameState and GameAction classes and their subclasses were introduced to help better follow the single-responsibility rule, open-closed principle, and dependency inversion principle. Rather than having the Game class track all the different ways to parse user input, which regularly changes throughout an actual game, the Game class has a single GameState object, containing a subclass of GameState that implements the parseUserInput function according to the state the subclass represents. The parseUserInput function has a GameAction return type and will always return a specific GameAction subclass depending on the state itself and what input was read. Each GameAction subclass implements the performAction function, which performs actions on the Game object (which almost always includes updating its GameState variable) and returns a string to be output for the user.
+
+The Move class was introduced to better follow the single-responsibility rule and to avoid circular dependencies. Originally, the movement of pieces was to be in either the Board or Character class, but we realized that this would likely bloat the classes beyond their initial uses. We also found that because the movement of pieces required the interaction between the two classes, it was very possible that putting the functionality in either of the classes may have lead to circular dependencies, a problem that would have required a lot of extra work to fix. As a result, we determined that a new Move class would fulfill our needs in supplying the information as to how each piece moves and generating their possible moves based on a piece’s location relative to others. This class follows the Single-Responsibility Principle by having the single purpose of determining where a selected piece may move.
+
+
+## Class Diagram With Solid Principles
+
+![UML Diagram Project CS100 drawio](https://github.com/user-attachments/assets/a90974da-cd3d-4981-ad41-3cab8dae8183)
+
+ ## Final deliverable
  ## Screenshots
- > Screenshots of the input/output after running your application
+ <img width="708" alt="Screenshot 2024-12-06 at 12 28 43 PM" src="https://github.com/user-attachments/assets/244ab9e9-483b-4eb1-bfba-97b1685e0ee9">
+<img width="691" alt="Screenshot 2024-12-06 at 12 30 12 PM" src="https://github.com/user-attachments/assets/e2284d82-8280-42ff-85b7-67e4319d2801">
+<img width="553" alt="Screenshot 2024-12-06 at 12 34 10 PM" src="https://github.com/user-attachments/assets/22b3face-a586-4e8e-91ea-809ddbcef282">
+<img width="659" alt="Screenshot 2024-12-06 at 12 35 26 PM" src="https://github.com/user-attachments/assets/cc270d46-c0da-4ef9-9dba-db85685f8f73">
+<img width="682" alt="Screenshot 2024-12-06 at 12 36 16 PM" src="https://github.com/user-attachments/assets/eec57d31-5c7d-4920-aeaf-5e4923379772">
+<img width="742" alt="Screenshot 2024-12-06 at 12 38 22 PM" src="https://github.com/user-attachments/assets/e3ceeb16-ffef-4751-a0f2-ef2d13a065dd">
+
  ## Installation/Usage
- > Instructions on installing and running your application
+ To play the game, compile the Chess.cpp file and run the executable. This can be done by running "cmake .", "make chess", and "./chess". The game is played entirely in the console, and output to the console informs players of what types of inputs they can make and what those inputs will do.
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
+ Unit Testing: First, we made sure that all the object works for the game. Then, we made a unit test for funtions of our classes, including Board class, Character classes 
+ (Bishop, King, Knight, Pawn, Queen, Rook), Move classes (BishopMove, KingMove, KnightMove, PawnMove, QueenMove, RookMove), Position class, GameAction class, GameState class. Each 
+ function of our classes will be tested multiple times with different cases if necessary.
+
+ Playtesting: The game was played by different players to ensure moves following the rule of chess and smooth gameplay. Additionally, playtesting helped us discover errors and fix 
+ them.
+
+

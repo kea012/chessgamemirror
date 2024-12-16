@@ -4,9 +4,14 @@
 #include "../header/Character.hpp"
 
 class King : public Character {
+    private:
+        int characterMoved = 0;
     public:
-    King(std::string characterColor);
-    //std::vector<std::string>* generatePossibleMoves(int x, int y) override;
+        King(std::string characterColor);
+        int getMovedStatus() const;
+        void setMoved();
+        virtual std::vector<std::string> getSpecificMoveStrings(Position currPosition, Board* gameBoard);
+        virtual Character* clone();
 };
 
 #endif // KING_HPP

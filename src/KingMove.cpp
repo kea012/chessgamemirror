@@ -1,14 +1,13 @@
-#include "../header/QueenMove.hpp"
+#include "../header/KingMove.hpp"
 #include "../header/Board.hpp"
 #include "../header/Character.hpp"
 
+
 using namespace std;
 
-QueenMove::QueenMove(string color, Board* chessBoard) : Move(QUEENMOVE, color), chessBoard(chessBoard) {} 
+KingMove::KingMove(string color, Board* chessBoard) : Move(KINGMOVE, color), chessBoard(chessBoard) {}
 
-vector<string> QueenMove::generatePossibleMoves(int row, int column) {
-    //up the board
-    
+vector<string> KingMove::generatePossibleMoves(int row, int column) {
     for (int i = row + 1; i < 8; ++i) {
         if (chessBoard->getPiece(i, column) == nullptr){
             possibleMoves.push_back(to_string(i)+to_string(column));
@@ -20,6 +19,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(column));
             break;
         }
+        break;
     }
 
     //down the board
@@ -34,6 +34,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(column));
             break;
         }
+        break;
     }
 
     //right side of the board
@@ -48,6 +49,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(row)+to_string(i));
             break;
         }
+        break;
     }
 
     //left side of the board;
@@ -62,6 +64,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(row)+to_string(i));
             break;
         }
+        break;
     }
 
     //diagonol down and to the right of the board
@@ -76,6 +79,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
+        break;
     }
 
     //diagnol up and to the right of the board
@@ -90,6 +94,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
+        break;
     }
 
     //diagnol down and to the left of the board
@@ -104,6 +109,7 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
+        break;
     }
 
     //diagnol up and to the left of the board
@@ -118,7 +124,33 @@ vector<string> QueenMove::generatePossibleMoves(int row, int column) {
             possibleMoves.push_back(to_string(i)+to_string(j));
             break;
         }
+        break;
     }
     
+    if (static_cast<King*>(chessBoard->getPiece(row,column))->getMovedStatus()==0) {
+        castling(row, column);
+    }
+
     return possibleMoves;
+}
+  
+
+
+void KingMove::castling(int row, int column ) {
+  if (chessBoard->getPiece(row,0) != nullptr) {
+    if (chessBoard->getPiece(row,0)->getType() == ROOK && chessBoard->getPiece(row,1) == nullptr && chessBoard->getPiece(row,2) == nullptr && chessBoard->getPiece(row,3) == nullptr) {
+      if (static_cast<Rook*>(chessBoard->getPiece(row,0))->getMovedStatus()==0) {
+        possibleMoves.push_back(to_string(row)+to_string(2));
+      }
+    }
+  }
+  if (chessBoard->getPiece(row,7) != nullptr) {
+    if (chessBoard->getPiece(row,7)->getType() == ROOK && chessBoard->getPiece(row,5) == nullptr && chessBoard->getPiece(row,6) == nullptr) {
+      if (static_cast<Rook*>(chessBoard->getPiece(row,7))->getMovedStatus()==0) {
+        possibleMoves.push_back(to_string(row)+to_string(6));
+      }
+    }
+  }
+  // King cannot be in check
+  // King cannot be moved through a square that is under attack
 }

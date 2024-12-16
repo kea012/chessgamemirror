@@ -1,4 +1,6 @@
 #include "../header/BishopMove.hpp"
+#include "../header/Board.hpp"
+#include "../header/Character.hpp"
 
 using namespace std;
 
@@ -61,8 +63,6 @@ vector<string> BishopMove::generatePossibleMoves(int row, int column) {
             break;
         }
     }
-    if (possibleMoves.size() == 0) {
-        possibleMoves.push_back("0");
-    }
+    
     return possibleMoves;
 }

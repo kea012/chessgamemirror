@@ -10,8 +10,8 @@ Position::Position(int newRow, int newCol) {
     }
 }
 
-Position::Position(std::string newPosStr) {
-    if (!setPositionFromString(newPosStr)) {
+Position::Position(std::string newPositionString) {
+    if (!setPositionFromString(newPositionString)) {
         resetPosition();
     }
 }
@@ -19,7 +19,7 @@ Position::Position(std::string newPosStr) {
 void Position::resetPosition() {
     row = -1;
     col = -1;
-    posStr = "--";
+    positionString = "--";
 }
 
 bool Position::setPositionFromInts(int newRow, int newCol) {
@@ -29,44 +29,39 @@ bool Position::setPositionFromInts(int newRow, int newCol) {
         return false;
     row = newRow;
     col = newCol;
-    posStr[0] = row + 'A';
-    posStr[1] = col + '1';
+    positionString = "";
+    positionString += (col + 'A');
+    positionString += ('8' - row);
     return true;
 }
 
-bool Position::setPositionFromString(std::string newPosStr) {
-    if (newPosStr.length() != 2)
+bool Position::setPositionFromString(std::string newPositionString) {
+    if (newPositionString.length() != 2)
         return false;
-    switch(::toupper(newPosStr.front())) {
-        case('A'):
-        case('B'):
-        case('C'):
-        case('D'):
-        case('E'):
-        case('F'):
-        case('G'):
-        case('H'):
-            break;
-        default:
-            return false;
+        
+    char colChar = ::toupper(newPositionString.front());
+    char rowChar = newPositionString.back();
+    
+    // Validate input
+    if (colChar < 'A' || colChar > 'H' || rowChar < '1' || rowChar > '8') {
+        return false;
     }
-    switch(newPosStr.back()) {
-        case('1'):
-        case('2'):
-        case('3'):
-        case('4'):
-        case('5'):
-        case('6'):
-        case('7'):
-        case('8'):
-            break;
-        default:
-            return false;
-    }
-    posStr = newPosStr;
-    posStr[0] = ::toupper(posStr.front());
-
+    
+    // Convert chess notation to array indices
+    col = colChar - 'A';  // A=0, B=1, etc.
+    row = '8' - rowChar;  // 8=0, 7=1, etc. (flipped because chess notation starts from bottom)
+    
+    positionString = newPositionString;
+    positionString[0] = colChar;  // Ensure uppercase
+    
     return true;
+}
+
+bool Position::isEmptyPosition() {
+    if (row == -1 || col == -1 || positionString == "--") {
+        return true;
+    }
+    return false;
 }
 
 int Position::getRow() {
@@ -78,5 +73,9 @@ int Position::getCol() {
 }
 
 std::string Position::getPositionString() {
-    return posStr;
+    return positionString;
+}
+
+bool Position::operator==(Position const& rhs) const {
+    return row == rhs.row && col == rhs.col;
 }
